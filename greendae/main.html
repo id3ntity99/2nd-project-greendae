@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>main</title>
+</head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font: normal 12px "Noto Sans KR";
+        }
+
+        ul, ol {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: #111;
+        }
+
+        #wrapper {
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+        }
+
+        .header_Top{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 27px;
+            background: #3F97F6;
+
+        }
+
+        
+
+        .header_Top_Menu{
+            display: flex;
+            align-items: center;
+            float: right;
+            width: 260px;
+            height: 27px;
+
+        }
+        
+        .header_Top_Menu a{
+            color: #ffffff;
+            flex: 1 1 0;
+            text-align: center;
+
+        }
+
+        .header_Top_Menu span{
+            color: #ffffff;
+            text-align: center;
+
+        }
+
+        .header_Top > div{
+            width: 1200px;
+            height: 27px;
+
+        }
+
+        .header_Bottom{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 77px;
+
+        }
+
+        .header_Bottom > div{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;;
+            height: 77px;
+
+        }
+
+        .header_logo{
+            display: flex;
+            width: 196px;
+            height: 50px;
+            background-image: url('/images/header_logo.png');
+            
+        }
+        .header_Bottom_Menu{
+            display: flex;
+            align-items: center;
+            float: right;
+            width: 660px;
+            height: 100%;
+        }
+
+        .header_Bottom_Menu a {
+            flex: 1 1 0;
+            text-align: center;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 21px;
+            margin-right: 10px;
+        }
+
+
+        main{
+            width: 100%;
+            height: auto;
+     
+        }
+
+    
+
+        .main_background{
+            
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            width: 100%;
+            height: 560px;
+            background-image: url('/images/bg-main-vi01.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+
+        .main_background > div{
+            display: flex;
+            width: 1200px;
+            height: 560px;
+            margin: auto;
+            flex-direction: column;
+            justify-content: center;
+            color: #FFFFFF;
+            text-align: center;
+        }
+
+        .main_background > div > div{
+            display: flex;
+            width: 212px;
+            height: 48px;
+            
+        }
+
+
+        .main_background > div > div > a{
+            
+            width: 212px;
+            height: 48px;
+            color: #FFFFFF;
+            border: 1px solid #ffffff;
+            box-sizing: border-box;
+        }
+        
+
+        .main_background p:nth-child(1) {
+            font-size: 24px;
+        }
+
+        .main_background p:nth-child(2) {
+            font-size: 48px;
+            font-weight: bold;
+        }
+
+        .main_background p:nth-child(3) {
+            font-size: 16px;
+        }
+
+        .main_background button {
+            width: 210px;
+            height: 48px;
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+
+        
+
+        main > div:nth-child(2){
+            margin: 0 auto;
+            margin-top: -130px;
+            width: 1200px;
+            height: 350px;
+            border: 1px solid black;
+            box-sizing: border-box;
+        }
+
+        .main_article{
+            display: flex;
+            border: 1px solid black;
+            box-sizing: border-box;
+
+        }
+
+        .main_article > article:nth-child(1){
+            
+            width: 50%;
+            height: 100%;
+            background: #ffffff;
+            border: 1px solid black;
+            box-sizing: border-box;
+
+        }
+
+        .main_article > article:nth-child(2){
+            width: 50%;
+            height: 100%;
+            background: #3F97F6;
+            border: 1px solid black;
+            box-sizing: border-box;
+
+        }
+
+        .main_photo_gallery{
+            width: 1200px;
+            margin: auto;
+            margin-top: 50px;
+            border: 1px solid black;
+            box-sizing: border-box;
+            
+        }
+
+        .main_photo_gallery > p {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #3F97F6;
+        }
+
+        .gallery-items > div > div {
+            display: flex; 
+            flex-direction: column; 
+            justify-content: flex-end;
+            height: 200px; 
+            border: 1px solid blue;
+            box-sizing: border-box;
+        }
+
+
+        .main_photo_gallery > .gallery-items > div{
+            display: flex;
+            justify-content: space-between;
+            
+        }
+
+        .main_photo_gallery > .gallery-items > div > div {
+            
+            width: 285px;
+            height: 220px;
+            border: 1px solid black;
+            box-sizing: border-box;
+        }
+
+        .main_photo_gallery > .gallery-items > div p {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            height: 53px;
+            background-color: #0282D5BF;
+            color: #ffffff;
+            font-size: 16px;
+            line-height: 22px;
+            font-weight: 350;
+            
+        }
+
+        
+
+        .main_club_helper{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 152px;
+            margin-top: 50px;
+            background-image: url('/images/bg-main-banner.gif');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .main_club_helper > div{
+            width: 1200px;
+            height: 100%;
+        }
+
+        .main_club_helper > div p{
+            color: #FFFFFF;
+        }
+
+
+        .main_club_helper > div > p:nth-child(1){
+            margin-top: 35px;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 23px;
+        }
+
+        .main_club_helper > div > p:nth-child(2){
+            margin-top: 10px;
+            font-weight: 350;
+            font-size: 16px;
+            line-height: 22px;
+        }
+
+        .main_club_helper > div > a{
+            color: #FFFFFF;
+        }
+
+
+
+        .main_news_link{
+            width: 100%;
+            height: 337px;
+            border: 1px solid blue;
+            box-sizing: border-box;
+        }
+
+        .main_news_link > div{
+            display: flex;
+            width: 1200px;
+            height: 337px;
+            margin: auto;
+            border: 1px solid black;
+            box-sizing: border-box;
+        }
+
+        .main_news_link > div > div:nth-child(1){
+            width: 50%;
+            height: 337px;
+            border: 1px solid black;
+            box-sizing: border-box;
+        }
+
+        .main_news_link > div > div:nth-child(2){
+            width: 50%;
+            height: 337px;
+            border: 1px solid black;
+            box-sizing: border-box;
+        }
+
+
+        
+        .footer_Top{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 27px;
+            background-color: #1F2838;
+            color: #ffffff;
+        }
+
+        .footer_Top > div{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 1200px;
+            height: 27px;
+
+        }
+
+        .footer_Top > div a{
+            flex: 1 1 0;
+            text-align: center;
+            color: #ffffff;
+
+        }
+
+        .footer_Bottom{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            background-color: #19202D;
+        }
+
+        .footer_Bottom > div{
+            width: 1200px;
+            height: 169px;
+
+        }
+
+        .footer_Bottom > div > div{
+            height: 104px;
+
+        }
+
+        .footer_Container > div{
+
+            display: flex;
+            margin-top: 30px;
+        }
+
+        .footer_p{
+            margin-left: 40px;
+        }
+
+
+        .footer_p{
+            
+            font-size: 14px;
+            color: #A8A9AC;
+
+        }
+
+        #main-site{
+            margin-left: auto;
+            width: 200px;
+            height: 36px;
+            background-color: #121721;
+            color: #A8A9AC;
+            padding-left: 8px;
+            font-size: 14px;
+        }
+
+
+
+
+
+    </style>
+<body>
+    <header>
+        <div>
+            <div class="header_Top">
+                <div>
+                    <div class="header_Top_Menu">
+                        <a href="#">HOME</a>
+                        <span class="separator">|</span>
+                        <a href="#">사이트맵</a>
+                        <span class="separator">|</span>
+                        <a href="#">로그인</a>
+                        <span class="separator">|</span>
+                        <a href="#">학생지원</a>
+                    </div>
+                </div>
+            </div>
+            <div class="header_Bottom">
+                <div class="header_Bottom_container">
+                    <a href="#" class="header_logo"></a>
+                    <div class="header_Bottom_Menu">
+                        <a href="#">대학소개</a>
+                        <a href="#">입학안내</a>
+                        <a href="#">대학·대학원</a>
+                        <a href="#">학사안내</a>
+                        <a href="#">대학생활</a>
+                        <a href="#">커뮤니티</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+
+    <main>
+        <div class="main_background">
+            <div>
+                <p>IT기술로 세상을 변화시키는 인재를 양성</p>
+                <p>그린대학교 컴퓨터과학과</p>
+                <p>급변하는 컴퓨터 기술의 발전에 선도적으로 참여하고 컴퓨터의 활용을 통해 미래를 만들어 나갈 수 있는 인력을 배양</p>
+                <div>
+                    <a href="#">학과소개 바로가기 ></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="main_article">
+            <article>
+
+            </article>
+            <article>
+
+            </article>
+
+        </div>
+
+        
+
+        <div class="main_photo_gallery">
+            <p>PHOTO GALLERY</p>
+            <div class="gallery-items">
+                <div>
+                    <div>
+                        <p>글로벌 명문대학 그린대학교</p>
+                    </div>
+                    <div>
+                        <p>글로벌 명문대학 그린대학교</p>
+                    </div>
+                    <div>
+                        <p>글로벌 명문대학 그린대학교</p>
+                    </div>
+                    <div>
+                        <p>글로벌 명문대학 그린대학교</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="main_club_helper">
+            <div>
+                <p>동아리 HELPER</p>
+                <p>공무원 시험 준비반을 운용함으로써 정치행정학과에서 공무원 시험을 준비하는 학생들에게<br>
+                   인터넷 강의, 교재를 제공하고 스터디 그룹의 활동을 도와주고 있습니다.</p>
+                <div>
+                    <a href="">자세히보기</a>
+                </div>    
+            </div> 
+        </div>
+        
+        <div class="main_news_link">
+            <div>
+                <div>
+                    <p>뉴스 및 칼럼</p>
+                    
+                </div>
+                <div></div>
+            </div>
+            
+        </div>
+
+    </main>
+
+
+    <footer>
+
+        <div class="footer_Top">
+            <div>
+                <span class="separator">|</span>
+                <a href="#">개인정보처리방침</a>
+                <span class="separator">|</span>
+                <a href="#">통합정보시스템</a>
+                <span class="separator">|</span>
+                <a href="#">학사일정</a>
+                <span class="separator">|</span>
+                <a href="#">주요민원 연락처</a>
+                <span class="separator">|</span>
+                <a href="#">교내공지사항</a>
+            </div>
+        </div>
+        <div class="footer_Bottom">
+            <div class="footer_Container">
+                <div>
+                    <div class="footer_img">
+                        <img src="/images/footer_logo.png">
+                    </div>
+                    <div class="footer_p">
+                        <p>
+                            그린대학교<br>
+                            [12345]부산광역시 부산진구 부전대로 123 그린대학교 / 대표전화:051-123-1000 /<br>
+                            입학안내:051-123-1302 팩스:051-123-3333<br><br>
+                        </p>
+                        <p>
+                            copyrightⓒ Green University All rights reserved.
+                        </p>
+                    </div>
+                    <select name="main-site" id="main-site">
+                        <option value="#">주요 사이트</option>
+                    </select>
+                </div>
+            </div>
+
+        </div>
+
+    </footer>
+
+</body>
+</html>
