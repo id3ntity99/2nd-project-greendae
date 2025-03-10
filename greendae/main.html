@@ -136,28 +136,37 @@
             display: flex;
             width: 1200px;
             height: 560px;
-            margin: auto;
             flex-direction: column;
             justify-content: center;
+            align-items: center;
             color: #FFFFFF;
             text-align: center;
         }
 
         .main_background > div > div{
             display: flex;
+            justify-content: center;
+            align-items: center;
             width: 212px;
             height: 48px;
+            margin-top: 40px;
             
+        }
+
+        .main_background > div > div:nth-of-type(1){
+            border: 1px solid #ffffff;
         }
 
 
         .main_background > div > div > a{
-            
-            width: 212px;
-            height: 48px;
             color: #FFFFFF;
-            border: 1px solid #ffffff;
+            font-size: 16px;
+            font-weight: 350;
+            line-height: 24px;
+            letter-spacing: -0.5px;
+            vertical-align: middle;
             box-sizing: border-box;
+
         }
         
 
@@ -168,11 +177,35 @@
         .main_background p:nth-child(2) {
             font-size: 48px;
             font-weight: bold;
+            margin-top: 10px;
         }
 
         .main_background p:nth-child(3) {
             font-size: 16px;
+            margin-top: 20px;
         }
+
+        .main_background > div > div:nth-of-type(2) {
+            margin-top: 20px;
+        }
+
+        .main_background > div > div:nth-of-type(2) div {
+            width: 12px;
+            height: 12px;
+
+            border: 1px solid #ffffff;
+            margin: 4px;
+            border-radius: 30px;
+            
+        }
+
+        .main_background > div > div:nth-of-type(2) > div:nth-child(1) {
+            
+            background-color: #ffffff;   
+        }
+
+
+
 
         .main_background button {
             width: 210px;
@@ -186,7 +219,7 @@
 
         main > div:nth-child(2){
             margin: 0 auto;
-            margin-top: -130px;
+            margin-top: -100px;
             width: 1200px;
             height: 350px;
             border: 1px solid black;
@@ -200,7 +233,7 @@
 
         }
 
-        .main_article > article:nth-child(1){
+        .main_article > div:nth-child(1){
             
             width: 50%;
             height: 100%;
@@ -210,7 +243,7 @@
 
         }
 
-        .main_article > article:nth-child(2){
+        .main_article > div:nth-child(2){
             width: 50%;
             height: 100%;
             background: #3F97F6;
@@ -218,6 +251,37 @@
             box-sizing: border-box;
 
         }
+
+        .Academic_Information > div{
+            margin: 40px;
+
+        }
+
+        .Academic_Information > div > div:nth-child(1){
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 25px;
+            color: #3F97F6;
+            border-bottom: 2px solid #3F97F6;
+        }
+
+        .Academic_Information > div > div:nth-child(1) > p{
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 25px;
+            color: #3F97F6;
+            margin-bottom: 20px;
+            
+        }
+
+
+        .Academic_Information > div > div:nth-child(1) > p > a > img{
+            float: right;
+        }
+
+        
+
+
 
         .main_photo_gallery{
             width: 1200px;
@@ -468,19 +532,40 @@
                 <p>그린대학교 컴퓨터과학과</p>
                 <p>급변하는 컴퓨터 기술의 발전에 선도적으로 참여하고 컴퓨터의 활용을 통해 미래를 만들어 나갈 수 있는 인력을 배양</p>
                 <div>
-                    <a href="#">학과소개 바로가기 ></a>
+                    <a href="#">학과소개 바로가기  ></a>
+                </div>
+                <div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
                 </div>
             </div>
         </div>
         
         <div class="main_article">
-            <article>
-
-            </article>
-            <article>
-
-            </article>
-
+            <div class="Academic_Information">
+                <div>
+                    <div>
+                        <p>
+                            학사안내
+                            <a href="#">
+                                <img src="/images/bg-viewmore01.png" alt="학사안내 더보기">
+                            </a>
+                        </p>
+                        
+                    </div>
+                    <div>
+                        <ul>
+                            <li>교과목 폐지 및 신설 안내<span style="float: right;">2023-03-01</span></li>
+                            <li>2019-2학기 진로 취업 프로그램 설계를 위한 학생대상<span style="float: right;">2023-03-01</span></li>
+                            <li>제8회 KNDA 학술논문상 공모<span style="float: right;">2023-03-01</span></li>
+                            <li>대학 진로취업지원 현황 조사 안내<span style="float: right;">2023-03-01</span></li>
+                            <li>[진로취업특강] 유망직무 전무가 초청 특강<span style="float: right;">2023-03-01</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div></div>
         </div>
 
         
