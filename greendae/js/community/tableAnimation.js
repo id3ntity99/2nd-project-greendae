@@ -13,7 +13,7 @@ for (let i = 1; i < len; i++) {
 }
 
 function onMouseOver(tr) {
-  tr.style.backgroundColor = "#dedede";
+  tr.style.backgroundColor = "#fafafa";
 }
 
 function onMouseOut(tr) {
