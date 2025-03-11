@@ -1,0 +1,32 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+  margin: 20px auto;
+}
+
+.pagination > button {
+  margin-right: 5px;
+  width: 35px;
+  height: 35px;
+  border: 1px solid #dedede;
+  color: #888;
+  background-color: white;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.pagination > button:hover {
+  background-color: #3f97f6;
+  color: white;
+  border: 1px solid #3f97f6;
+}
+
+.pagination > .prev {
+  margin-right: 20px;
+}
+
+.pagination > .next {
+  margin-left: 15px;
+}

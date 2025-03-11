@@ -1,0 +1,112 @@
+nav {
+  width: 100%;
+  height: 30px;
+  background-color: #ecf2f6;
+}
+
+nav > div {
+  width: 1200px;
+  height: auto;
+  margin: 0 auto;
+}
+
+nav > div > div {
+  float: right;
+  height: auto;
+  display: flex;
+  margin: 8px auto;
+}
+
+nav > div > div > a:nth-child(1) > img {
+  width: 18px;
+  height: 14px;
+}
+nav > div > div > a:nth-child(1):after {
+  content: url(/images/bg-path-arrow.png);
+}
+nav > div > div > a:nth-child(2):after {
+  content: url(/images/bg-path-arrow.png);
+}
+
+#container {
+  width: 1200px;
+  min-height: 677px;
+  margin: 0 auto;
+}
+
+#container > section {
+  float: right;
+  width: 980px;
+  height: auto;
+  margin: 0 auto;
+}
+
+#container > section > .title-area {
+  width: 100%;
+  height: auto;
+  margin-top: 15px;
+  border-bottom: 2px solid #111;
+  padding: 10px 0px;
+}
+
+#container > section > .title-area > h1 {
+  font-size: 26px;
+  font-weight: bolder;
+}
+
+#search-area {
+  float: right;
+  margin: 35px 0px;
+}
+
+#search-area > .search-input {
+  border-radius: 0;
+  border: 1px solid #dedede;
+}
+
+#search-area > select {
+  width: 150px;
+  height: 35px;
+  color: #666;
+  cursor: pointer;
+}
+
+#search-area > .search-box {
+  width: 200px;
+  height: 35px;
+}
+
+.search-btn {
+  width: 70px;
+  height: 35px;
+  background-color: #3f97ef;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+#container table {
+  width: 100%;
+  height: auto;
+  border-collapse: collapse;
+  border-top: 2px solid #111;
+}
+
+#container table th {
+  padding: 20px 10px;
+  font-size: 14px;
+  font-weight: bolder;
+}
+
+#container table td {
+  text-align: center;
+  padding: 10px 0px;
+}
+
+#container table tr {
+  border-bottom: 1px solid #d8d8d8;
+}
+
+#container table td:nth-child(2) {
+  text-align: left;
+}
