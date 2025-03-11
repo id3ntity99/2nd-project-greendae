@@ -24,6 +24,7 @@
             margin: 0;
             padding: 0;
             font: normal 12px "Noto Sans KR";
+            background-color: ;
         }
 
         ul, ol {
@@ -128,7 +129,7 @@
         main{
             width: 100%;
             height: auto;
-     
+            background-color: #f3f5f9;
         }
 
     
@@ -207,7 +208,6 @@
         .main_background > div > div:nth-of-type(2) div {
             width: 12px;
             height: 12px;
-
             border: 1px solid #ffffff;
             margin: 4px;
             border-radius: 30px;
@@ -237,14 +237,12 @@
             margin-top: -100px;
             width: 1200px;
             height: 350px;
-            border: 1px solid black;
-            box-sizing: border-box;
+
         }
 
         .main_article{
             display: flex;
-            border: 1px solid black;
-            box-sizing: border-box;
+
 
         }
 
@@ -253,8 +251,7 @@
             width: 50%;
             height: 100%;
             background: #ffffff;
-            border: 1px solid black;
-            box-sizing: border-box;
+
 
         }
 
@@ -262,8 +259,7 @@
             width: 50%;
             height: 100%;
             background: #3F97F6;
-            border: 1px solid black;
-            box-sizing: border-box;
+
 
         }
 
@@ -277,7 +273,7 @@
             font-weight: 700;
             line-height: 25px;
             color: #3F97F6;
-            border-bottom: 2px solid #3F97F6;
+            border-bottom: 3px solid #3F97F6;
         }
 
         .Academic_Information > div > div:nth-child(1) > p{
@@ -293,27 +289,69 @@
             float: right;
         }
 
-        .Academic_Information > div > div:nth-child(2) > ul{
+        .Academic_Information > div > div:nth-child(2){
             margin-top: 30px;
-
         }
 
-        .Academic_Information > div > div:nth-child(2) > ul li{
-            margin-top: 20px;
+        .Academic_Information > div > div:nth-child(2) a{
+            margin-top: 25px;
+            display: block;
             color: #333333;
-            font-size: 16px;
+            font-size: 18px;
             line-height: 100%;
-            vertical-align: middle;
-        }
-        
-        .Academic_Information > div > div:nth-child(2) > ul span{
-            color: #333333;
-            font-size: 16px;
             font-weight: 350;
-            line-height: 21px;
-            vertical-align: middle;
         }
 
+        .Academic_Information > div > div:nth-child(2) a span{
+            font-size: 14px;
+
+        }
+
+        
+        
+        .Academic_Announcement > div{
+            margin: 40px;
+
+        }
+
+        .Academic_Announcement > div > div:nth-child(1){
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 25px;
+            color: #ffffff;
+            border-bottom: 3px solid #ffffff;
+        }
+
+        .Academic_Announcement > div > div:nth-child(1) > p{
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 25px;
+            color: #ffffff;
+            margin-bottom: 20px;
+            
+        }
+
+        .Academic_Announcement > div > div:nth-child(1) > p > a > img{
+            float: right;
+        }
+
+        .Academic_Announcement > div > div:nth-child(2){
+            margin-top: 30px;
+        }
+
+        .Academic_Announcement > div > div:nth-child(2) a{
+            margin-top: 25px;
+            display: block;
+            color: #ffffff;
+            font-size: 18px;
+            line-height: 100%;
+            font-weight: 100;
+        }
+
+        .Academic_Announcement > div > div:nth-child(2) a span{
+            font-size: 14px;
+
+        }
 
 
         .main_photo_gallery{
@@ -337,8 +375,7 @@
             flex-direction: column; 
             justify-content: flex-end;
             height: 200px; 
-            border: 1px solid blue;
-            box-sizing: border-box;
+
         }
 
 
@@ -417,8 +454,7 @@
         .main_news_link{
             width: 100%;
             height: 337px;
-            border: 1px solid blue;
-            box-sizing: border-box;
+
         }
 
         .main_news_link > div{
@@ -426,24 +462,65 @@
             width: 1200px;
             height: 337px;
             margin: auto;
-            border: 1px solid black;
-            box-sizing: border-box;
+
         }
 
         .main_news_link > div > div:nth-child(1){
             width: 50%;
             height: 337px;
-            border: 1px solid black;
-            box-sizing: border-box;
+
         }
 
         .main_news_link > div > div:nth-child(2){
             width: 50%;
             height: 337px;
-            border: 1px solid black;
-            box-sizing: border-box;
+
         }
 
+
+        .news_column > div{
+            margin: 40px;
+
+        }
+
+        .news_column > div > div:nth-child(1){
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 25px;
+            color: #3F97F6;
+            border-bottom: 3px solid #3F97F6;
+        }
+
+        .news_column > div > div:nth-child(1) > p{
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 25px;
+            color: #3F97F6;
+            margin-bottom: 20px;
+            
+        }
+
+        .news_column > div > div:nth-child(1) > p > a > img{
+            float: right;
+        }
+
+        .news_column > div > div:nth-child(2){
+            margin-top: 30px;
+        }
+
+        .news_column > div > div:nth-child(2) a{
+            margin-top: 23px;
+            display: block;
+            color: #333333;
+            font-size: 18px;
+            line-height: 100%;
+            font-weight: 350;
+        }
+
+        .news_column > div > div:nth-child(2) a span{
+            font-size: 14px;
+
+        }
 
         
         .footer_Top{
@@ -520,7 +597,72 @@
         }
 
 
+        .smart_Link > div{
+            margin-left: 30px;
+            margin-top: 30px;
+            margin-right: 30px;
+        }
 
+        .smart_Link > div > div:nth-child(1){
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 25px;
+            color: #3F97F6;
+            border-bottom: 3px solid #3F97F6;
+        }
+
+        .smart_Link > div > div:nth-child(1) > p{
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 25px;
+            color: #3F97F6;
+            margin-bottom: 20px;
+            
+        }
+
+
+        .smart_Link > div > div:nth-child(2) {
+            display: flex;
+            gap: 5px;
+            margin-top: 50px;
+
+        }
+
+        .smart_Link > div > div:nth-child(2) > a {
+            display: flex;
+            align-items: center;
+            width: 104px;
+            height: 130px;
+            display: inline-block;
+
+        }
+
+        .smart_Link > div > div:nth-child(2) > a > div:nth-child(1){
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            width: 100px;
+            height: 100px;
+            background-color: #9ABEDF;
+            border-radius: 50px;
+
+        }
+
+        .smart_Link > div > div:nth-child(2) > a > div:nth-child(2){
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 100%;
+            margin-top: 7px;
+        }
+
+        
+        
 
 
     </style>
@@ -588,17 +730,34 @@
                         
                     </div>
                     <div>
-                        <ul>
-                            <li>교과목 폐지 및 신설 안내<span style="float: right;">2023-03-01</span></li>
-                            <li>2019-2학기 진로 취업 프로그램 설계를 위한 학생대상<span style="float: right;">2023-03-01</span></li>
-                            <li>제8회 KNDA 학술논문상 공모<span style="float: right;">2023-03-01</span></li>
-                            <li>대학 진로취업지원 현황 조사 안내<span style="float: right;">2023-03-01</span></li>
-                            <li>[진로취업특강] 유망직무 전무가 초청 특강<span style="float: right;">2023-03-01</span></li>
-                        </ul>
+                        <a href="#">교과목 폐지 및 신설 안내<span style="float: right;">2023-03-01</span></a>
+                        <a href="#">2019-2학기 진로 취업 프로그램 설계를 위한 학생대상<span style="float: right;">2023-03-01</span></a>
+                        <a href="#">제8회 KNDA 학술논문상 공모<span style="float: right;">2023-03-01</span></a>
+                        <a href="#">[진로취업특강] 유망직무 전무가 초청 특강<span style="float: right;">2023-03-01</span></a>
+                        <a href="#">대학 진로 취업지원 현황 조사 안내<span style="float: right;">2023-03-01</span></a>
                     </div>
                 </div>
             </div>
-            <div></div>
+            <div class="Academic_Announcement">
+                <div>
+                    <div>
+                        <p>
+                            공지사항
+                            <a href="#">
+                                <img src="/images/bg-viewmore01.png" alt="공지사항 더보기">
+                            </a>
+                        </p>
+                        
+                    </div>
+                    <div>
+                        <a href="#">교과목 폐지 및 신설 안내<span style="float: right;">2023-03-01</span></a>
+                        <a href="#">2019-2학기 진로 취업 프로그램 설계를 위한 학생대상<span style="float: right;">2023-03-01</span></a>
+                        <a href="#">제8회 KNDA 학술논문상 공모<span style="float: right;">2023-03-01</span></a>
+                        <a href="#">[진로취업특강] 유망직무 전무가 초청 특강<span style="float: right;">2023-03-01</span></a>
+                        <a href="#">대학 진로 취업지원 현황 조사 안내<span style="float: right;">2023-03-01</span></a>
+                    </div>
+                </div>
+            </div>
         </div>
 
         
@@ -637,11 +796,66 @@
         
         <div class="main_news_link">
             <div>
-                <div>
-                    <p>뉴스 및 칼럼</p>
-                    
+                <div class="news_column">
+                    <div>
+                        <div>
+                            <p>
+                                뉴스 및 칼럼
+                                <a href="#">
+                                    <img src="/images/bg-viewmore01.png" alt="공지사항 더보기">
+                                </a>
+                            </p>
+                            
+                        </div>
+                        <div>
+                            <a href="#">교과목 폐지 및 신설 안내<span style="float: right;">2023-03-01</span></a>
+                            <a href="#">2019-2학기 진로 취업 프로그램 설계를 위한 학생대상<span style="float: right;">2023-03-01</span></a>
+                            <a href="#">제8회 KNDA 학술논문상 공모<span style="float: right;">2023-03-01</span></a>
+                            <a href="#">[진로취업특강] 유망직무 전무가 초청 특강<span style="float: right;">2023-03-01</span></a>
+                            <a href="#">대학 진로 취업지원 현황 조사 안내<span style="float: right;">2023-03-01</span></a>
+                        </div>
+                    </div>
                 </div>
-                <div></div>
+                <div class="smart_Link">
+                    <div>
+                        <div>
+                            <p>SMART LINK</p>
+                        </div>
+                        <div>
+                            <a href="#">
+                                <div>
+                                    <img src="/images/bg-main-link01.png" alt="">
+                                </div>
+                                <div>입학안내</div>
+                            </a>
+                            <a href="#">
+                                <div>
+                                    <img src="/images/bg-main-link02.png" alt="">
+                                </div>
+                                <div>학사일정</div>
+                            </a>
+                            <a href="#">
+                                <div>
+                                    <img src="/images/bg-main-link03.png" alt="">
+                                </div>
+                                <div>학생회</div>
+                            </a>
+                            <a href="#">
+                                <div>
+                                    <img src="/images/bg-main-link04.png" alt="">
+                                </div>
+                                <div>교과과정</div>
+                            </a>
+                            <a href="#">
+                                <div>
+                                    <img src="/images/bg-main-link05.png" alt="">
+                                </div>
+                                <div>취업안내</div>
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
             </div>
             
         </div>
