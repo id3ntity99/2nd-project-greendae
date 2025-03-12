@@ -24,7 +24,6 @@
             margin: 0;
             padding: 0;
             font: normal 12px "Noto Sans KR";
-            background-color: ;
         }
 
         ul, ol {
@@ -358,9 +357,7 @@
             width: 1200px;
             margin: auto;
             margin-top: 50px;
-            border: 1px solid black;
-            box-sizing: border-box;
-            
+
         }
 
         .main_photo_gallery > p {
@@ -368,6 +365,13 @@
             font-weight: 700;
             margin-bottom: 20px;
             color: #3F97F6;
+        }
+
+        .gallery-items > div > div {
+            display: flex; 
+            flex-direction: column; 
+            justify-content: flex-end;
+            height: 200px; 
         }
 
         .gallery-items > div > div {
@@ -389,9 +393,33 @@
             
             width: 285px;
             height: 220px;
-            border: 1px solid black;
-            box-sizing: border-box;
+
         }
+
+        .main_photo_gallery > .gallery-items > div > div:nth-child(1){
+            background-image: url(/images/gallary_sample1.jpg);
+            background-size: cover;
+            background-position: center;
+        }
+
+        .main_photo_gallery > .gallery-items > div > div:nth-child(2){
+            background-image: url(/images/gallary_sample2.jpg);
+            background-size: cover;
+            background-position: center;
+        }
+
+        .main_photo_gallery > .gallery-items > div > div:nth-child(3){
+            background-image: url(/images/gallary_sample3.jpg);
+            background-size: cover;
+            background-position: center;
+        }
+
+        .main_photo_gallery > .gallery-items > div > div:nth-child(4){
+            background-image: url(/images/gallary_sample4.jpg);
+            background-size: cover;
+            background-position: center;
+        }
+
 
         .main_photo_gallery > .gallery-items > div p {
             display: flex;
@@ -409,6 +437,8 @@
 
         
 
+        
+
         .main_club_helper{
             display: flex;
             justify-content: center;
@@ -422,32 +452,51 @@
         }
 
         .main_club_helper > div{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             width: 1200px;
             height: 100%;
         }
 
-        .main_club_helper > div p{
+
+        
+        
+
+        .main_club_helper > div > div:nth-child(1) p{
             color: #FFFFFF;
+
         }
 
 
-        .main_club_helper > div > p:nth-child(1){
-            margin-top: 35px;
+        .main_club_helper > div > div:nth-child(1) > p:nth-child(1){
             font-weight: 700;
             font-size: 18px;
             line-height: 23px;
         }
 
-        .main_club_helper > div > p:nth-child(2){
+        .main_club_helper > div > div:nth-child(1) > p:nth-child(2){
             margin-top: 10px;
             font-weight: 350;
-            font-size: 16px;
+            font-size: 15px;
             line-height: 22px;
         }
 
         .main_club_helper > div > a{
-            color: #FFFFFF;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 182px;
+            height: 42px;
+            font-weight: 350;
+            font-size: 16px;
+            line-height: 22px;
+            color: #ffffff;
+            border: 1px solid #ffffff;
+            box-sizing: border-box;
         }
+
+
 
 
 
@@ -744,7 +793,7 @@
                         <p>
                             공지사항
                             <a href="#">
-                                <img src="/images/bg-viewmore01.png" alt="공지사항 더보기">
+                                <img src="/images/bg-viewmore02.png" alt="공지사항 더보기">
                             </a>
                         </p>
                         
@@ -785,12 +834,16 @@
 
         <div class="main_club_helper">
             <div>
-                <p>동아리 HELPER</p>
-                <p>공무원 시험 준비반을 운용함으로써 정치행정학과에서 공무원 시험을 준비하는 학생들에게<br>
-                   인터넷 강의, 교재를 제공하고 스터디 그룹의 활동을 도와주고 있습니다.</p>
                 <div>
-                    <a href="">자세히보기</a>
-                </div>    
+                    <p>동아리 HELPER</p>
+                    <p>
+                    공무원 시험 준비반을 운용함으로써 정치행정학과에서 공무원 시험을 준비하는 학생들에게<br>
+                    인터넷 강의, 교재를 제공하고 스터디 그룹의 활동을 도와주고 있습니다.
+                    </p>
+                </div>
+                
+                <a href="#">자세히보기</a>
+                   
             </div> 
         </div>
         
