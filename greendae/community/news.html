@@ -3,13 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>공지사항</title>
+    <title>뉴스 및 칼럼</title>
     <link rel="stylesheet" href="/css/common/header.css" />
     <link rel="stylesheet" href="/css/common/footer.css" />
     <link rel="stylesheet" href="/css/common/nav.css" />
     <link rel="stylesheet" href="/css/common/table.css" />
     <link rel="stylesheet" href="/css/common/pagination.css" />
     <link rel="stylesheet" href="/css/common/side-menu.css" />
+    <link rel="stylesheet" href="/css/community/news.css" />
   </head>
   <body>
     <div id="wrapper">
@@ -55,7 +56,8 @@
           </div>
         </div>
       </nav>
-      <main id="container">
+
+      <div id="container">
         <aside id="side-menu">
           <div class="title-area">
             <h1>커뮤니티</h1>
@@ -87,6 +89,7 @@
           <table>
             <tr>
               <th>번호</th>
+              <th>구분</th>
               <th>제목</th>
               <th>작성자</th>
               <th>작성일</th>
@@ -96,31 +99,22 @@
               <tr>
                 <td>3</td>
                 <td>
-                  <a href="#">
-                  2025학년도 1학기 그린장학회 장학생 신청 안내</td>
-                  </a>
-                <td>학사지원실</td>
-                <td>의료, 인공지능 융합인재 양성사업단 사업설명회</td>
-                <td>160</td>
-              </tr>
-              <tr>
-                <td>3</td>
+                  <div class="category news-category">뉴스</div>
+                  <div class="category column-category" style="display: none">
+                    칼럼
+                  </div>
+                </td>
                 <td>
-                  <a href="#">
-                  2025학년도 1학기 그린장학회 장학생 신청 안내</td>
+                  <a href="#"
+                    >정원호(식품자원경제) 교수, 시론 - 4차 산업 시대와 Lorem
+                    ipsum, dolor sit amet consectetur adipisicing elit. Error at
+                    voluptatibus provident expedita natus dolores autem quas
+                    fuga ipsam eos, id nobis ab soluta excepturi vitae aperiam
+                    rerum! Quidem, dolor.
                   </a>
+                </td>
                 <td>학사지원실</td>
-                <td>의료, 인공지능 융합인재 양성사업단 사업설명회</td>
-                <td>160</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>
-                  <a href="#">
-                  2025학년도 1학기 그린장학회 장학생 신청 안내</td>
-                  </a>
-                <td>학사지원실</td>
-                <td>의료, 인공지능 융합인재 양성사업단 사업설명회</td>
+                <td>24.03.10</td>
                 <td>160</td>
               </tr>
             </tbody>
@@ -136,7 +130,7 @@
             <button>>></button>
           </div>
         </section>
-      </main>
+      </div>
       <footer>
         <div class="footer_Top">
           <div>
@@ -177,5 +171,6 @@
     </div>
     <script src="/js/community/request.js"></script>
     <script src="/js/community/animation.js"></script>
+    <script src="/js/community/concat.js"></script>
   </body>
 </html>

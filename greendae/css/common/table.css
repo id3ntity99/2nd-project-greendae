@@ -1,33 +1,3 @@
-nav {
-  width: 100%;
-  height: 30px;
-  background-color: #ecf2f6;
-}
-
-nav > div {
-  width: 1200px;
-  height: auto;
-  margin: 0 auto;
-}
-
-nav > div > div {
-  float: right;
-  height: auto;
-  display: flex;
-  margin: 8px auto;
-}
-
-nav > div > div > a:nth-child(1) > img {
-  width: 18px;
-  height: 14px;
-}
-nav > div > div > a:nth-child(1):after {
-  content: url(/images/bg-path-arrow.png);
-}
-nav > div > div > a:nth-child(2):after {
-  content: url(/images/bg-path-arrow.png);
-}
-
 #container {
   width: 1200px;
   min-height: 677px;
@@ -109,4 +79,13 @@ nav > div > div > a:nth-child(2):after {
 
 #container table td:nth-child(2) {
   text-align: left;
+}
+
+#container table td > .category {
+  width: 30px;
+  height: 20px;
+  margin: 0 auto;
+  text-align: center;
+  box-sizing: border-box;
+  color: #fff;
 }
