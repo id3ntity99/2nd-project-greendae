@@ -80,3 +80,12 @@
 #container table td:nth-child(2) {
   text-align: left;
 }
+
+#container table td > .category {
+  width: 30px;
+  height: 20px;
+  margin: 0 auto;
+  text-align: center;
+  box-sizing: border-box;
+  color: #fff;
+}
