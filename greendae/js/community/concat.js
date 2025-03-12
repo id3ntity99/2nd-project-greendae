@@ -5,6 +5,6 @@ for (let title of titles) {
   let concatTitle = "";
   if (value.length > MAX_TITLE_LEN) {
     concatTitle = value.substring(0, MAX_TITLE_LEN - 1);
+    title.innerText = concatTitle + "...";
   }
-  title.innerText = concatTitle + "...";
 }
