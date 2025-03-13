@@ -1,20 +1,20 @@
 <!--
     작성자: id3ntity99(이현민)
-    설명 : 학생지원 > 수강신청 페이지
+    설명 : 학생지원 > 수강신청내역 페이지
 -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>수강신청</title>
+    <title>수강신청내역</title>
     <link rel="stylesheet" href="/css/common/header.css" />
     <link rel="stylesheet" href="/css/common/nav.css" />
     <link rel="stylesheet" href="/css/common/side-menu.css" />
     <link rel="stylesheet" href="/css/common/table.css" />
     <link rel="stylesheet" href="/css/common/pagination.css" />
     <link rel="stylesheet" href="/css/common/footer.css" />
-    <link rel="stylesheet" href="/css/support/lecture-register.css" />
+    <link rel="stylesheet" href="/css/support/register-history.css" />
   </head>
   <body>
     <div id="wrapper">
@@ -56,7 +56,7 @@
               &ensp;&ensp;
             </a>
             <a href="">&ensp;&ensp;학생지원&ensp;&ensp;</a>
-            <a href="">&ensp;&ensp;수강신청</a>
+            <a href="">&ensp;&ensp;수강신청내역</a>
           </div>
         </div>
       </nav>
@@ -73,7 +73,7 @@
         </aside>
         <section>
           <div class="title-area">
-            <h1>수강신청</h1>
+            <h1>수강신청내역</h1>
           </div>
           <form id="search-form" action="#">
             <div id="search-area">
@@ -105,7 +105,7 @@
               <th>담당교수</th>
               <th>수강인원</th>
               <th>비고</th>
-              <th>신청</th>
+              <th>관리</th>
             </tr>
             <tbody>
               <tr>
@@ -119,7 +119,7 @@
                 <td>12/30</td>
                 <td></td>
                 <td>
-                  <button class="register-btn">신청</button>
+                  <button class="cancel-btn">취소</button>
                 </td>
               </tr>
               <tr>
@@ -133,7 +133,7 @@
                 <td>12/30</td>
                 <td></td>
                 <td>
-                  <button class="register-btn">신청</button>
+                  <button class="cancel-btn">취소</button>
                 </td>
               </tr>
               <tr>
@@ -147,7 +147,7 @@
                 <td>12/30</td>
                 <td></td>
                 <td>
-                  <button class="register-btn">신청</button>
+                  <button class="cancel-btn">취소</button>
                 </td>
               </tr>
               <tr>
@@ -161,7 +161,7 @@
                 <td>12/30</td>
                 <td></td>
                 <td>
-                  <button class="register-btn">신청</button>
+                  <button class="cancel-btn">취소</button>
                 </td>
               </tr>
             </tbody>
@@ -228,13 +228,10 @@
           </div>
         </div>
       </footer>
-
-      <script src="/js/community/request.js"></script>
-      <script src="/js/community/animation.js"></script>
-      <script src="/js/support/disable.js"></script>
-      <script src="/js/support/register.js"></script>
-      <!--<script src="/js/community/concat.js"></script>-->
-      <script src="/js/community/search.js"></script>
     </div>
+    <script src="/js/community/request.js"></script>
+    <script src="/js/support/disable.js"></script>
+    <script src="/js/support/cancel.js"></script>
+    <script src="/js/community/search.js"></script>
   </body>
 </html>

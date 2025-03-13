@@ -1,20 +1,23 @@
 <!--
     작성자: id3ntity99(이현민)
-    설명 : 학생지원 > 수강신청 페이지
+    설명 : 학생지원 > 성적조회 페이지
 -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>수강신청</title>
+    <title>성적조회</title>
     <link rel="stylesheet" href="/css/common/header.css" />
     <link rel="stylesheet" href="/css/common/nav.css" />
     <link rel="stylesheet" href="/css/common/side-menu.css" />
     <link rel="stylesheet" href="/css/common/table.css" />
-    <link rel="stylesheet" href="/css/common/pagination.css" />
     <link rel="stylesheet" href="/css/common/footer.css" />
-    <link rel="stylesheet" href="/css/support/lecture-register.css" />
+    <link rel="stylesheet" href="/css/support/score.css" />
+    <link
+      rel="stylesheet"
+      href="https://code.jquery.com/ui/1.14.1/themes/base/jquery-ui.css"
+    />
   </head>
   <body>
     <div id="wrapper">
@@ -56,7 +59,7 @@
               &ensp;&ensp;
             </a>
             <a href="">&ensp;&ensp;학생지원&ensp;&ensp;</a>
-            <a href="">&ensp;&ensp;수강신청</a>
+            <a href="">&ensp;&ensp;성적조회</a>
           </div>
         </div>
       </nav>
@@ -73,20 +76,17 @@
         </aside>
         <section>
           <div class="title-area">
-            <h1>수강신청</h1>
+            <h1>성적조회</h1>
           </div>
           <form id="search-form" action="#">
             <div id="search-area">
-              <select class="search-input">
-                <option value="all">전체</option>
-                <option value="notice">공지</option>
+              <select class="search-input year-input">
+                <option value="2024">2024</option>
               </select>
-              <input
-                type="search"
-                name="keyword"
-                class="search-box search-input"
-                placeholder="검색어를 입력하세요"
-              />
+              <select class="search-input semester-input">
+                <option value="1">1</option>
+                <option value="2">2</option>
+              </select>
               <input
                 type="submit"
                 class="search-btn search-input"
@@ -96,99 +96,45 @@
           </form>
           <table>
             <tr>
-              <th>개설학과</th>
-              <th>구분</th>
-              <th>학년</th>
-              <th>코드</th>
+              <th>교과목코드</th>
               <th>과목명</th>
-              <th>학점</th>
+              <th>대상학년</th>
               <th>담당교수</th>
-              <th>수강인원</th>
-              <th>비고</th>
-              <th>신청</th>
+              <th>이수구분</th>
+              <th>점수</th>
+              <th>등급</th>
+              <th>취득학점</th>
+              <th>기타</th>
             </tr>
             <tbody>
               <tr>
-                <td>컴퓨터공학</td>
+                <td>830003</td>
+                <td>자바 프로그래밍</td>
+                <td>2학년</td>
+                <td>손광훈</td>
                 <td>전공</td>
-                <td>1</td>
-                <td>830001</td>
-                <td>컴퓨터과학개론</td>
+                <td>99.0</td>
+                <td>A+</td>
                 <td>3</td>
-                <td>김컴공</td>
-                <td>12/30</td>
-                <td></td>
                 <td>
-                  <button class="register-btn">신청</button>
+                  <button class="detail-btn">상세확인</button>
                 </td>
               </tr>
               <tr>
-                <td>컴퓨터공학</td>
+                <td>830003</td>
+                <td>계산 이론</td>
+                <td>3학년</td>
+                <td>변영우</td>
                 <td>전공</td>
-                <td>1</td>
-                <td>830001</td>
-                <td>컴퓨터과학개론</td>
+                <td>99.0</td>
+                <td>A+</td>
                 <td>3</td>
-                <td>김컴공</td>
-                <td>12/30</td>
-                <td></td>
                 <td>
-                  <button class="register-btn">신청</button>
-                </td>
-              </tr>
-              <tr>
-                <td>컴퓨터공학</td>
-                <td>전공</td>
-                <td>1</td>
-                <td>830001</td>
-                <td>컴퓨터과학개론</td>
-                <td>3</td>
-                <td>김컴공</td>
-                <td>12/30</td>
-                <td></td>
-                <td>
-                  <button class="register-btn">신청</button>
-                </td>
-              </tr>
-              <tr>
-                <td>컴퓨터공학</td>
-                <td>전공</td>
-                <td>1</td>
-                <td>830001</td>
-                <td>컴퓨터과학개론</td>
-                <td>3</td>
-                <td>김컴공</td>
-                <td>12/30</td>
-                <td></td>
-                <td>
-                  <button class="register-btn">신청</button>
+                  <button class="detail-btn">상세확인</button>
                 </td>
               </tr>
             </tbody>
           </table>
-          <div class="pagination">
-            <button>
-              <a href="#"> << </a>
-            </button>
-            <button class="prev">
-              <a href="#"> < </a>
-            </button>
-            <button>
-              <a href="#"> 1 </a>
-            </button>
-            <button>
-              <a href="#"> 2 </a>
-            </button>
-            <button>
-              <a href="#"> 3 </a>
-            </button>
-            <button class="next">
-              <a href="#"> > </a>
-            </button>
-            <button>
-              <a href="#">>></a>
-            </button>
-          </div>
         </section>
       </main>
       <footer>
@@ -226,15 +172,102 @@
               </select>
             </div>
           </div>
+          <div id="dialog" style="display: none">
+            <div class="subtitle-area">
+              <img src="/images/bullet-h4.png" />
+              <h1 class="subtitle">기본정보</h1>
+            </div>
+            <table>
+              <tbody>
+                <tr>
+                  <td id="profile" rowspan="5">
+                    <img src="/images/icon-avatar.png" alt="" />
+                  </td>
+                </tr>
+                <tr>
+                  <th>학번</th>
+                  <td>20201230</td>
+                  <th>학과</th>
+                  <td>컴퓨터과학과</td>
+                </tr>
+                <tr>
+                  <th>이름</th>
+                  <td>홍길동</td>
+                  <th>주민번호</th>
+                  <td>900103-1234567</td>
+                </tr>
+                <tr>
+                  <th>휴대폰</th>
+                  <td>010-1234-1001</td>
+                  <th>EMAIL</th>
+                  <td>hong1001@naver.com</td>
+                </tr>
+                <tr>
+                  <th>학년/학기</th>
+                  <td>010-1234-1001</td>
+                  <th>상태</th>
+                  <td style="color: green">재학중</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="subtitle-area">
+              <img src="/images/bullet-h4.png" />
+              <h1 class="subtitle">성적 상세</h1>
+            </div>
+            <table class="score-detail">
+              <tr>
+                <th>교과목코드</th>
+                <th>과목명</th>
+                <th>대상학년</th>
+                <th>담당교수</th>
+                <th>이수구분</th>
+                <th>점수</th>
+                <th>등급</th>
+                <th>취득학점</th>
+              </tr>
+              <tbody>
+                <tr>
+                  <td>830003</td>
+                  <td>자바 프로그래밍</td>
+                  <td>2학년</td>
+                  <td>손광훈</td>
+                  <td>전공</td>
+                  <td>99.0</td>
+                  <td>A+</td>
+                  <td>3</td>
+                </tr>
+              </tbody>
+              <tr>
+                <th>중간시험 점수</th>
+                <th>기말시험 점수</th>
+                <th>출석 점수</th>
+                <th>기타 점수(과제 등)</th>
+                <th>총점</th>
+                <th>전화</th>
+                <th>email</th>
+                <th>비고</th>
+              </tr>
+              <tbody>
+                <tr>
+                  <td>99</td>
+                  <td>97</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>99.0</td>
+                  <td>010-1111-2222</td>
+                  <td>snowpr@hanmail.net</td>
+                  <td>-</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </footer>
-
-      <script src="/js/community/request.js"></script>
-      <script src="/js/community/animation.js"></script>
-      <script src="/js/support/disable.js"></script>
-      <script src="/js/support/register.js"></script>
-      <!--<script src="/js/community/concat.js"></script>-->
-      <script src="/js/community/search.js"></script>
     </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script>
+    <script src="/js/community/request.js"></script>
+    <script src="/js/community/animation.js"></script>
+    <script src="/js/support/score.js"></script>
   </body>
 </html>
