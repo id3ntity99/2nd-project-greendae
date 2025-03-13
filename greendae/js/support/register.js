@@ -12,15 +12,6 @@ for (let registerBtn of registerBtns) {
 }
 
 /**
- * '신청' 버튼을 비활성화
- * @param {*} button
- */
-function disable(button) {
-  button.style.filter = "grayscale(100%)";
-  button.style.cursor = "default";
-}
-
-/**
  * 서버에 HTTP POST 요청을 전송하고 disable() 함수를 호출.
  * @param {*} event 이벤트 객체
  */
