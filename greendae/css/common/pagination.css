@@ -11,9 +11,13 @@
   width: 35px;
   height: 35px;
   border: 1px solid #dedede;
-  color: #888;
+  box-sizing: border-box;
   background-color: white;
   cursor: pointer;
+}
+
+.pagination > button > a {
+  color: #888;
   font-weight: bold;
 }
 
