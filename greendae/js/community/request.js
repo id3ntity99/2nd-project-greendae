@@ -48,3 +48,21 @@ async function request(url) {
     }
   });
 }
+
+async function postRequest(url, body) {
+  await fetch(url, {
+    method: "POST",
+    body: body,
+    "Content-type": "application/json;charset=utf-8",
+  }).then((response) => {
+    if (response.status === 200) {
+      // HTTP 응답이 200번(OK)인 경우
+      handleOK(response);
+    } else if (response.redirected) {
+      handleRedirect(response);
+    } else if (response.status / 100 === 4) {
+      //HTTP 응답이 400번대인 경우
+      handleErr(response);
+    }
+  });
+}
