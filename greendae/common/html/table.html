@@ -3,19 +3,21 @@
     <div class="title-area">
       <h1>공지사항</h1>
     </div>
-    <div id="search-area">
-      <select class="search-input">
-        <option value="">전체</option>
-        <option value="">공지</option>
-      </select>
-      <input
-        type="search"
-        name="keyword"
-        class="search-box search-input"
-        placeholder="검색어를 입력하세요"
-      />
-      <input type="submit" class="search-btn search-input" value="검색" />
-    </div>
+    <form id="search-form" action="#">
+      <div id="search-area">
+        <select class="search-input">
+          <option value="all">전체</option>
+          <option value="notice">공지</option>
+        </select>
+        <input
+          type="search"
+          name="keyword"
+          class="search-box search-input"
+          placeholder="검색어를 입력하세요"
+        />
+        <input type="submit" class="search-btn search-input" value="검색" />
+      </div>
+    </form>
     <table>
       <tr>
         <th>번호</th>
