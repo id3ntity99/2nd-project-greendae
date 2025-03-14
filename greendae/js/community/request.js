@@ -16,10 +16,16 @@ function handleOK(response) {
  * @param {*} response 서버로부터 전달받은 HTTP response
  */
 function handleErr(response) {
-  const jsonBody = JSON.parse(response);
-  alert(
-    `[DEBUG] 에러 발생! Status Code: ${response.status} Response Body: ${jsonBody}`
-  );
+  try {
+    const resBody = response.json();
+    console.log(
+      `[DEBUG] 에러 발생! Status Code: ${
+        response.status
+      } Response: ${JSON.stringify(resBody)}`
+    );
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 /**
@@ -32,37 +38,60 @@ function handleRedirect(response) {
 }
 
 /**
+ * 기본 핸들러. HTTP Status Code 200, 302, 400~500번대 응답을 처리한다.
+ * @param {*} response 서버로부터 전달받은 HTTP response.
+ */
+function defaultHandler(response) {
+  if (response.status === 200) {
+    handleOK(response);
+  } else if (response.redirected) {
+    handleRedirect(response);
+  } else {
+    handleErr(response);
+  }
+}
+
+/**
  *  매개변수 URL로 HTTP GET 요청을 전송한다.
  * @param {*} url <a> 태그의 href 속성 값
  */
 async function request(url) {
+  requestWithHandler(url, defaultHandler);
+}
+
+/**
+ * 매개변수 URL로 HTTP GET 요청을 전송한다.
+ * @param {*} url 호스트 URL
+ * @param {*} resHandlerFunc 요청에 대한 응답을 처리하는 함수.
+ */
+async function requestWithHandler(url, resHandlerFunc) {
   await fetch(url).then((response) => {
-    if (response.status === 200) {
-      // HTTP 응답이 200번(OK)인 경우
-      handleOK(response);
-    } else if (response.redirected) {
-      handleRedirect(response);
-    } else if (response.status / 100 === 4) {
-      //HTTP 응답이 400번대인 경우
-      handleErr(response);
-    }
+    resHandlerFunc(response);
   });
 }
 
+/**
+ * 매개변수 URL로 HTTP POST 요청을 전송한다.
+ * @param {*} url 호스트URL
+ * @param {*} body HTTP POST 요청의 body에 포함될 JSON 데이터
+ */
 async function postRequest(url, body) {
+  postRequestWithHandler(url, body, defaultHandler);
+}
+
+/**
+ *
+ * 매개변수 URL로 HTTP POST 요청을 전송한다.
+ * @param {*} url 호스트URL
+ * @param {*} body HTTP POST 요청의 body에 포함될 JSON 데이터
+ * @param {*} handlerFunc 요청에 대한 응답을 처리하는 함수.
+ */
+async function postRequestWithHandler(url, body, handlerFunc) {
   await fetch(url, {
     method: "POST",
     body: body,
     "Content-type": "application/json;charset=utf-8",
   }).then((response) => {
-    if (response.status === 200) {
-      // HTTP 응답이 200번(OK)인 경우
-      handleOK(response);
-    } else if (response.redirected) {
-      handleRedirect(response);
-    } else if (response.status / 100 === 4) {
-      //HTTP 응답이 400번대인 경우
-      handleErr(response);
-    }
+    handlerFunc(response);
   });
 }
