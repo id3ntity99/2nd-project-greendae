@@ -3,7 +3,7 @@
  *  설명 : 서버에 검색 키워드와 선택한 옵션을 전송하는 자바스크립트
  */
 
-import URLEnum from "../url/URLEnum";
+import URLEnum from "/js/url/URLEnum.js";
 
 const form = document.getElementById("search-form");
 const searchBox = document.getElementsByClassName("search-box")[0];

@@ -1,4 +1,4 @@
-import URLEnum from "../url/URLEnum";
+import URLEnum from "/js/url/URLEnum.js";
 
 const detailBtns = document.getElementsByClassName("detail-btn");
 const form = document.getElementById("search-form");
