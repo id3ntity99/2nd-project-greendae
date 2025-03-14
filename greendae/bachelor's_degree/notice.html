@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>학사 공지사항</title>
-    <link rel="stylesheet" href="/2nd-project-greendae/greendae/css/common/footer.css">
-    <link rel="stylesheet" href="/2nd-project-greendae/greendae/css/common/header.css">
-    <link rel="stylesheet" href="/2nd-project-greendae/greendae/css/bachelor's_degree/1.css">
-    
+    <link rel="stylesheet" href="/greendae/css/common/footer.css">
+    <link rel="stylesheet" href="/greendae/css/common/header.css">
+    <link rel="stylesheet" href="/greendae/css/common/nav.css">
+    <link rel="stylesheet" href="/greendae/css/bachelor's_degree/notion.css">
+    <title>학사공지사항</title>
 </head>
-
 <body>
     <header>
         <div>
@@ -76,12 +75,11 @@
                     <h3>공지사항</h3>
                 </div>
                 <div>
-                    <form >
+                    <form class="search_first">
                         <fieldset>
-                            
-                            <a href="#"><img src="#" alt="#"></a>
+                            <a href="#">전체<img src="/greendae/images/btn-sel-open01.png" alt="#"></a>
                             <input type="text" placeholder="검색어를 입력해주세요.">
-                            <button type="submit">검색</button>
+                            <button type="submit" class="btn_submit">검색</button>
                         </fieldset>
                     </form>
                 </div>
@@ -89,49 +87,48 @@
                     <table border="0">
                         <thead>
                             <tr>
-                                <th>번호</th>
-                                <th>제목</th>
-                                <th>작성자</th>
-                                <th>작성일</th>
-                                <th>조회</th>
+                                <th class="table_num">번호</th>
+                                <th class="table_title">제목</th>
+                                <th class="table_writer">작성자</th>
+                                <th class="table_day">작성일</th>
+                                <th class="table_select">조회</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <th>3</th>
-                                <th><img src="#" alt="#">2025학년도 신입학 3차 추가모집 모집요강 및 모집···</th>
-                                <th>담당자</th>
-                                <th>24.04.09</th>
-                                <th>160</th>
+                                <th class="table_content">3</th>
+                                <th class="table_content"><img src="#" alt="#">2025학년도 신입학 3차 추가모집 모집요강 및 모집···</th>
+                                <th class="table_content">담당자</th>
+                                <th class="table_content">24.04.09</th>
+                                <th class="table_content">160</th>
                             </tr>
                             <tr>
-                                <th>2</th>
-                                <th><img src="#" alt="#">2025학년도 2차 추가모집 모집요강 및 모집···</th>
-                                <th>담당자</th>
-                                <th>24.04.09</th>
-                                <th>160</th>
+                                <th class="table_content">2</th>
+                                <th class="table_content"><img src="#" alt="#">2025학년도 2차 추가모집 모집요강 및 모집···</th>
+                                <th class="table_content">담당자</th>
+                                <th class="table_content">24.04.09</th>
+                                <th class="table_content">160</th>
                             </tr>
                             <tr>
-                                <th>1</th>
-                                <th>2025학년도 추가모집 모집요강 및 모집인원 공지</th>
-                                <th>담당자</th>
-                                <th>24.04.09</th>
-                                <th>160</th>
+                                <th class="table_content">1</th>
+                                <th class="table_content">2025학년도 추가모집 모집요강 및 모집인원 공지</th>
+                                <th class="table_content">담당자</th>
+                                <th class="table_content">24.04.09</th>
+                                <th class="table_content">160</th>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-                <div>
-                    <ul>
-                        <li><a href="#"><img src="#" alt="#"></a></li>
-                        <li><a href="#"><img src="#" alt="#"></a></li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#"><img src="#" alt="#"></a></li>
-                        <li><a href="#"><img src="#" alt="#"></li>
-                    </ul>
-                </div>
+                <div class="pagination">
+                    <!--<a></a> 태그 대신 자바스크립트 fetch("/page.do?pg=1") 함수를 사용할 것-->
+                    <button><<</button>
+                    <button class="prev"><</button>
+                    <button>1</button>
+                    <button>2</button>
+                    <button>3</button>
+                    <button class="next">></button>
+                    <button>>></button>
+                  </div>
             </article>
         </section>    
     </main>
