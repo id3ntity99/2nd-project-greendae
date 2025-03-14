@@ -1,4 +1,4 @@
-import URLEnum from "../url/URLEnum";
+import URLEnum from "/js/url/URLEnum.js";
 
 const detailBtns = document.getElementsByClassName("detail-btn");
 const form = document.getElementById("search-form");
@@ -21,8 +21,8 @@ form.addEventListener("submit", async (event) => {
 });
 
 function addListener(target) {
-  target.addEventListener("click", () => {
-    request(url.scoreDetailURL); //TODO: 필요시 URL 수정
+  target.addEventListener("click", async () => {
+    await request(url.scoreDetailURL); //TODO: 필요시 URL 수정
     console.log("[TEST] 성공적으로 상세 페이지를 가져왔습니다.");
     $(function () {
       $("#dialog").dialog({

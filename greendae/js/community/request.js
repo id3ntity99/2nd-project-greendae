@@ -16,16 +16,7 @@ function handleOK(response) {
  * @param {*} response 서버로부터 전달받은 HTTP response
  */
 function handleErr(response) {
-  try {
-    const resBody = response.json();
-    console.log(
-      `[DEBUG] 에러 발생! Status Code: ${
-        response.status
-      } Response: ${JSON.stringify(resBody)}`
-    );
-  } catch (error) {
-    console.log(error);
-  }
+  console.log(`[DEBUG] 에러 발생! Status Code: ${response.status} `);
 }
 
 /**
