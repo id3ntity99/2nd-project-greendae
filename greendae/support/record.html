@@ -1,20 +1,19 @@
 <!--
     작성자: id3ntity99(이현민)
-    설명 : 학생지원 > 수강신청 페이지
+    설명 : 학생지원 > 성적조회 페이지
 -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>수강신청</title>
+    <title>학적</title>
     <link rel="stylesheet" href="/css/common/header.css" />
     <link rel="stylesheet" href="/css/common/nav.css" />
     <link rel="stylesheet" href="/css/common/side-menu.css" />
     <link rel="stylesheet" href="/css/common/table.css" />
-    <link rel="stylesheet" href="/css/common/pagination.css" />
     <link rel="stylesheet" href="/css/common/footer.css" />
-    <link rel="stylesheet" href="/css/support/lecture-register.css" />
+    <link rel="stylesheet" href="/css/support/record.css" />
   </head>
   <body>
     <div id="wrapper">
@@ -56,7 +55,7 @@
               &ensp;&ensp;
             </a>
             <a href="">&ensp;&ensp;학생지원&ensp;&ensp;</a>
-            <a href="">&ensp;&ensp;수강신청</a>
+            <a href="">&ensp;&ensp;학적</a>
           </div>
         </div>
       </nav>
@@ -73,122 +72,139 @@
         </aside>
         <section>
           <div class="title-area">
-            <h1>수강신청</h1>
+            <h1>학적</h1>
           </div>
-          <form id="search-form" action="#">
-            <div id="search-area">
-              <select class="search-input">
-                <option value="전체">전체</option>
-                <option value="공지">공지</option>
-              </select>
-              <input
-                type="search"
-                name="keyword"
-                class="search-box search-input"
-                placeholder="검색어를 입력하세요"
-              />
-              <input
-                type="submit"
-                class="search-btn search-input"
-                value="검색"
-              />
-            </div>
-          </form>
+          <div class="subtitle-area">
+            <img src="/images/bullet-h4.png" />
+            <h1 class="subtitle">기본정보</h1>
+          </div>
           <table>
-            <tr>
-              <th>개설학과</th>
-              <th>구분</th>
-              <th>학년</th>
-              <th>코드</th>
-              <th>과목명</th>
-              <th>학점</th>
-              <th>담당교수</th>
-              <th>수강인원</th>
-              <th>비고</th>
-              <th>신청</th>
-            </tr>
             <tbody>
               <tr>
-                <td>컴퓨터공학</td>
-                <td>전공</td>
-                <td>1</td>
-                <td>830001</td>
-                <td>컴퓨터과학개론</td>
-                <td>3</td>
-                <td>김컴공</td>
-                <td>12/30</td>
-                <td></td>
-                <td>
-                  <button class="register-btn">신청</button>
+                <td id="profile" rowspan="5">
+                  <img src="/images/icon-avatar.png" alt="" />
                 </td>
+                <th>학번</th>
+                <td>20201230</td>
+                <th>학과</th>
+                <td>컴퓨터과학과</td>
               </tr>
               <tr>
-                <td>컴퓨터공학</td>
-                <td>전공</td>
-                <td>1</td>
-                <td>830001</td>
-                <td>컴퓨터과학개론</td>
-                <td>3</td>
-                <td>김컴공</td>
-                <td>12/30</td>
-                <td></td>
-                <td>
-                  <button class="register-btn">신청</button>
-                </td>
+                <th>이름</th>
+                <td>홍길동</td>
+                <th>주민번호</th>
+                <td>900103-1234567</td>
               </tr>
               <tr>
-                <td>컴퓨터공학</td>
-                <td>전공</td>
-                <td>1</td>
-                <td>830001</td>
-                <td>컴퓨터과학개론</td>
-                <td>3</td>
-                <td>김컴공</td>
-                <td>12/30</td>
-                <td></td>
-                <td>
-                  <button class="register-btn">신청</button>
-                </td>
+                <th>휴대폰</th>
+                <td>010-1234-1001</td>
+                <th>EMAIL</th>
+                <td>hong1001@naver.com</td>
               </tr>
               <tr>
-                <td>컴퓨터공학</td>
-                <td>전공</td>
-                <td>1</td>
-                <td>830001</td>
-                <td>컴퓨터과학개론</td>
-                <td>3</td>
-                <td>김컴공</td>
-                <td>12/30</td>
-                <td></td>
-                <td>
-                  <button class="register-btn">신청</button>
-                </td>
+                <th>학년/학기</th>
+                <td>010-1234-1001</td>
+                <th>상태</th>
+                <td style="color: green">재학중</td>
               </tr>
             </tbody>
           </table>
-          <div class="pagination">
-            <button>
-              <a href="#"> << </a>
-            </button>
-            <button class="prev">
-              <a href="#"> < </a>
-            </button>
-            <button>
-              <a href="#"> 1 </a>
-            </button>
-            <button>
-              <a href="#"> 2 </a>
-            </button>
-            <button>
-              <a href="#"> 3 </a>
-            </button>
-            <button class="next">
-              <a href="#"> > </a>
-            </button>
-            <button>
-              <a href="#">>></a>
-            </button>
+          <div class="subtitle-area">
+            <img src="/images/bullet-h4.png" />
+            <h1 class="subtitle">취득학점현황</h1>
           </div>
+          <table>
+            <tbody>
+              <tr>
+                <th>구분</th>
+                <th>전공(7)</th>
+                <th>교양(6)</th>
+                <th>선택(1)</th>
+                <th>사회봉사</th>
+                <th>기타</th>
+                <th>총취득학점</th>
+                <th>졸업요건학점</th>
+              </tr>
+              <tr>
+                <td>취득학점</td>
+                <td>21</td>
+                <td>16</td>
+                <td>3</td>
+                <td>0</td>
+                <td>0</td>
+                <td>40</td>
+                <td>130</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="subtitle-area">
+            <img src="/images/bullet-h4.png" />
+            <h1 class="subtitle">년도/학기별 취득학점현황</h1>
+          </div>
+          <table>
+            <tbody>
+              <tr>
+                <th>년도</th>
+                <th>학년</th>
+                <th>학기</th>
+                <th>신청학점</th>
+                <th>전공학점</th>
+                <th>선택학점</th>
+                <th>기타학점</th>
+                <th>총취득학점</th>
+                <th>평점평균</th>
+                <th>기타</th>
+              </tr>
+              <tr>
+                <td>2020</td>
+                <td>1</td>
+                <td>1</td>
+                <td>18</td>
+                <td>15</td>
+                <td>3</td>
+                <td>0</td>
+                <td>18</td>
+                <td>3.2</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>2020</td>
+                <td>2</td>
+                <td>1</td>
+                <td>18</td>
+                <td>15</td>
+                <td>3</td>
+                <td>0</td>
+                <td>18</td>
+                <td>3.2</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>2021</td>
+                <td>1</td>
+                <td>1</td>
+                <td>18</td>
+                <td>15</td>
+                <td>3</td>
+                <td>0</td>
+                <td>18</td>
+                <td>3.2</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>2021</td>
+                <td>2</td>
+                <td>1</td>
+                <td>18</td>
+                <td>15</td>
+                <td>3</td>
+                <td>0</td>
+                <td>18</td>
+                <td>3.2</td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
         </section>
       </main>
       <footer>
@@ -229,12 +245,5 @@
         </div>
       </footer>
     </div>
-    <script src="/js/url/URLEnum.js"></script>
-    <script src="/js/community/request.js"></script>
-    <script src="/js/community/animation.js"></script>
-    <script src="/js/support/disable.js"></script>
-    <script src="/js/support/register.js"></script>
-    <!--<script src="/js/community/concat.js"></script>-->
-    <script src="/js/community/search.js"></script>
   </body>
 </html>

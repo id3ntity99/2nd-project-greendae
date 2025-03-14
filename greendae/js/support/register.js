@@ -1,7 +1,10 @@
+import URLEnum from "../url/URLEnum";
+
 /**
  * 작성자: id3ntity99(이현민)
  * 설명 : 서버에 수강신청 요청을 보내는 자바스크립트. 수강신청 버튼은 한번만 클릭할 수 있다.
  */
+const url = new URLEnum();
 const registerBtns = document.getElementsByClassName("register-btn");
 
 /**
@@ -16,8 +19,10 @@ for (let registerBtn of registerBtns) {
  * @param {*} event 이벤트 객체
  */
 function doRegister(event) {
-  postRequest(null, null); //URL and JSON body for request
-  console.log("[TEST] 수강신청이 완료되었습니다.");
-  disable(event.target);
-  event.target.removeEventListener("click", doRegister);
+  const handler = function (response) {
+    console.log("[TEST] 수강신청이 완료되었습니다.");
+    disable(event.target);
+    event.target.removeEventListener("click", doRegister);
+  };
+  postRequestWithHandler(url.registerLectureURL, ReportBody, handler);
 }
