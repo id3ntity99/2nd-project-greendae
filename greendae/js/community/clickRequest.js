@@ -2,8 +2,8 @@
 for (let i = 1; i < len; i++) {
   const currentTr = tr[i];
   // table 안의 모든 <tr> 태그 클릭 시 HTTP GET 요청 전송
-  currentTr.addEventListener("click", () => {
-    onClick(currentTr);
+  currentTr.addEventListener("click", async () => {
+    await onClick(currentTr);
   });
 }
 
@@ -12,8 +12,8 @@ for (let i = 1; i < len; i++) {
  * 가져온 href 속성 값을 request()의 인자로 넘겨 HTTP 요청을 전송한다.
  * @param {*} tr 이벤트 함수를 적용할 <tr> 태그.
  */
-function onClick(tr) {
+async function onClick(tr) {
   const anchor = tr.querySelector("td a");
   const url = anchor.getAttribute("href");
-  request(url);
+  await request(url);
 }

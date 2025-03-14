@@ -18,11 +18,11 @@ for (let registerBtn of registerBtns) {
  * 서버에 HTTP POST 요청을 전송하고 disable() 함수를 호출.
  * @param {*} event 이벤트 객체
  */
-function doRegister(event) {
+async function doRegister(event) {
   const handler = function (response) {
     console.log("[TEST] 수강신청이 완료되었습니다.");
     disable(event.target);
     event.target.removeEventListener("click", doRegister);
   };
-  postRequestWithHandler(url.registerLectureURL, ReportBody, handler);
+  await postRequestWithHandler(url.registerLectureURL, ReportBody, handler);
 }
