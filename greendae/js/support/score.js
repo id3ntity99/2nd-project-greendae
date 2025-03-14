@@ -1,8 +1,11 @@
+import URLEnum from "../url/URLEnum";
+
 const detailBtns = document.getElementsByClassName("detail-btn");
 const form = document.getElementById("search-form");
 const searchBtn = document.querySelector("#search-form search-btn");
 const yearSelection = document.querySelector(".year-input");
 const semesterSelection = document.querySelector(".semester-input");
+const url = new URLEnum();
 
 for (let detailBtn of detailBtns) {
   addListener(detailBtn);
@@ -19,7 +22,7 @@ form.addEventListener("submit", async (event) => {
 
 function addListener(target) {
   target.addEventListener("click", () => {
-    request("/PATH/TO/SCORE/CONTROLLER"); //TODO: URL 삽입
+    request(url.scoreDetailURL); //TODO: 필요시 URL 수정
     console.log("[TEST] 성공적으로 상세 페이지를 가져왔습니다.");
     $(function () {
       $("#dialog").dialog({
