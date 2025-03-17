@@ -11,6 +11,67 @@
     <link rel="stylesheet" href="/css/common/pagination.css" />
     <link rel="stylesheet" href="/css/common/side-menu.css" />
   </head>
+  <style>
+    main {
+     width: auto;
+     height: auto; 
+     padding-top: 80px;   
+    }
+
+    .log {
+     width: 50%;
+     height: auto; 
+     margin : 0 auto;
+    }
+    
+    .log_head > p {    
+    
+    color:#3f97f6; 
+    }
+
+    .log_head > p:nth-child(1) {
+    font-size: x-large;    
+    font-weight: 600;
+    color:#3f97f6; 
+    }
+
+    .log_head > p:nth-child(2) {
+    margin-bottom: 20px;
+    }
+
+    .log_head ul{
+        float: left;
+    }
+    
+    .log_head a{
+        position: relative;
+        left: 270px;
+    }
+    
+    .log_main > input {
+     width: 80%;
+     height: 50px; 
+     box-sizing: border-box;
+     margin-top: 10px;
+     border-color: rgb(228, 228, 228);
+    }
+
+    .log_bottom{
+        margin-top: 20px;
+        box-sizing: border-box;
+    }
+
+    .log_bottom > p:nth-child(1){
+        font-size:large;
+        color:#194a7e;
+        font-weight:bolder;
+        margin-bottom: 4px; 
+    }
+
+    .log_bottom > p:nth-child(2){
+        margin-bottom: 3px; 
+    }
+  </style>
   <body>
     <div id="wrapper">
       <header>
@@ -56,87 +117,29 @@
         </div>
       </nav>
       <main id="container">
-        <aside id="side-menu">
-          <div class="title-area">
-            <h1>입학안내</h1>
-          </div>
-          <a href="#" class="menu">공지사항</a>
-          <a href="#" class="menu">수시모집</a>
-          <a href="#" class="menu">정시모집</a>
-          <a href="#" class="menu">편입합</a>
-          <a href="#" class="menu">입학상담</a>
-        </aside>
-        <section>
-          <div class="title-area">
-            <h1>공지사항</h1>
-          </div>
-          <div id="search-area">
-            <select class="search-input">
-              <option value="">전체</option>
-              <option value="">공지</option>
-            </select>
-            <input
-              type="search"
-              name="keyword"
-              class="search-box search-input"
-              placeholder="검색어를 입력하세요"
-            />
-            <input type="submit" class="search-btn search-input" value="검색" />
-          </div>
-          <table>
-            <tr>
-              <th>번호</th>
-              <th>제목</th>
-              <th>작성자</th>
-              <th>작성일</th>
-              <th>조회</th>
-            </tr>
-            <tbody>
-              <tr>
-                <td>3</td>
-                <td>
-                  <img src="/images/ico-new01.gif">
-                  <a href="#">
-                  2025학년도 신입학 3차 추가모집 모집요강 및 모집···</td>
-                  </a>
-                <td>담당자</td>
-                <td>24.04.09</td>
-                <td>160</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>
-                  <img src="/images/ico-new01.gif">
-                  <a href="#">
-                    2025학년도 신입학 2차 추가모집 모집요강 및 모집···</td>
-                  </a>
-                <td>담당자</td>
-                <td>24.04.09</td>
-                <td>160</td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>
-                  <a href="#">
-                    2025학년도 신입학 추가모집 모집요강 및 모집인원 공지···</td>
-                  </a>
-                <td>담당자</td>
-                <td>24.04.09</td>
-                <td>160</td>
-              </tr>
-            </tbody>
-          </table>
-          <div class="pagination">
-            <!--<a></a> 태그 대신 자바스크립트 fetch("/page.do?pg=1") 함수를 사용할 것-->
-            <button><<</button>
-            <button class="prev"><</button>
-            <button>1</button>
-            <button>2</button>
-            <button>3</button>
-            <button class="next">></button>
-            <button>>></button>
-          </div>
-        </section>
+        <div class="log">
+            <div class="log_head">
+                <p>LOGIN<br></p>
+                <p>로그인을 하시면 더 다양한 서비스를 받으실 수 있습니다.</p>
+                <ul></ul><input type="radio" name="check"/>학부생</ul>&ensp;
+                <ul></ul><input type="radio" name="check"/>교직원</ul>
+                <a href="#">아이디/비밀번호 찾기</a>
+            </div>
+            <div class="log_main">    
+                <input type="username" name="Id" placeholder="아이디"/><br>
+                <input type="password" name="pass" placeholder="비밀번호"/><br>
+                <input type="submit" class="search-btn search-input" value="로그인"
+               style="background-color: #3f97f6;"/>
+            </div>
+            <div class="log_bottom">
+                <p><img src="/images/bullet-h4.png">&ensp;아이디, 비밀번호 안내</p>
+                <p>- 대학 구성원(학원, 교직원)은 회원가입없이 교번, 학번을 사용하여 로그인이 가능합니다.<br>
+                   - 비밀번호 분실시 학생지원팀에 방문하셔서 초기화하실 수 있습니다.<br>
+                   - 재학, 휴학, 졸업 유예인 경우 사용하실 수 있으며, 매년 학적변동이 일어날 때 상태가 변경됩니다.<br>
+                   - 문의사항이 있으시면 담당자(055-123-4567)에게 전화주세요</p>
+            </div> 
+
+        </div>
       </main>
       <footer>
         <div class="footer_Top">

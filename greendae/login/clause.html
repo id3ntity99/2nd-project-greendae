@@ -11,6 +11,69 @@
     <link rel="stylesheet" href="/css/common/pagination.css" />
     <link rel="stylesheet" href="/css/common/side-menu.css" />
   </head>
+  <style>
+    main {
+     width: auto;
+     height: auto; 
+     padding-top: 80px;   
+    }
+
+    .log {
+     width: 90%;
+     height: auto; 
+     margin : 0 auto;
+    }
+    
+    .log_head > p {    
+    
+    color:#3f97f6; 
+    }
+
+    .log_head > p:nth-child(1) {
+    font-size: x-large;    
+    font-weight: 600;
+    color:#3f97f6; 
+    }
+
+    .log_head > p:nth-child(2) {
+    margin-bottom: 20px;
+    }
+
+    .log_head ul{
+        float: left;
+    }
+    
+    .log_head a{
+        position: relative;
+        left: 270px;
+    }
+    
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 2px solid green; /* 테두리 색 */
+        }
+        td {
+            border: 1px solid #ccc; /* 셀 테두리 */
+            padding: 10px;
+            vertical-align: top; /* 상단 정렬 */
+        }
+        .title {
+            width: 20%;
+            background-color: #f0f4f8; /* 제목 배경색 */
+            font-weight: bold;
+            text-align: left;
+        }
+        .content {
+            width: 80%;
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+        }
+    </style>
+  </style>
   <body>
     <div id="wrapper">
       <header>
@@ -56,87 +119,29 @@
         </div>
       </nav>
       <main id="container">
-        <aside id="side-menu">
-          <div class="title-area">
-            <h1>입학안내</h1>
-          </div>
-          <a href="#" class="menu">공지사항</a>
-          <a href="#" class="menu">수시모집</a>
-          <a href="#" class="menu">정시모집</a>
-          <a href="#" class="menu">편입합</a>
-          <a href="#" class="menu">입학상담</a>
-        </aside>
-        <section>
-          <div class="title-area">
-            <h1>공지사항</h1>
-          </div>
-          <div id="search-area">
-            <select class="search-input">
-              <option value="">전체</option>
-              <option value="">공지</option>
-            </select>
-            <input
-              type="search"
-              name="keyword"
-              class="search-box search-input"
-              placeholder="검색어를 입력하세요"
-            />
-            <input type="submit" class="search-btn search-input" value="검색" />
-          </div>
-          <table>
-            <tr>
-              <th>번호</th>
-              <th>제목</th>
-              <th>작성자</th>
-              <th>작성일</th>
-              <th>조회</th>
-            </tr>
-            <tbody>
-              <tr>
-                <td>3</td>
-                <td>
-                  <img src="/images/ico-new01.gif">
-                  <a href="#">
-                  2025학년도 신입학 3차 추가모집 모집요강 및 모집···</td>
-                  </a>
-                <td>담당자</td>
-                <td>24.04.09</td>
-                <td>160</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>
-                  <img src="/images/ico-new01.gif">
-                  <a href="#">
-                    2025학년도 신입학 2차 추가모집 모집요강 및 모집···</td>
-                  </a>
-                <td>담당자</td>
-                <td>24.04.09</td>
-                <td>160</td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>
-                  <a href="#">
-                    2025학년도 신입학 추가모집 모집요강 및 모집인원 공지···</td>
-                  </a>
-                <td>담당자</td>
-                <td>24.04.09</td>
-                <td>160</td>
-              </tr>
-            </tbody>
-          </table>
-          <div class="pagination">
-            <!--<a></a> 태그 대신 자바스크립트 fetch("/page.do?pg=1") 함수를 사용할 것-->
-            <button><<</button>
-            <button class="prev"><</button>
-            <button>1</button>
-            <button>2</button>
-            <button>3</button>
-            <button class="next">></button>
-            <button>>></button>
-          </div>
-        </section>
+        <div class="log">
+            <div class="log_head">
+                <p>약관안내<br></p>
+                <p>※대학구성원(학생,교직원)은 회원가입 없이 학번,교번(사번) 아이디를 사용하여 로그인할 수 있습니다<br>
+                   ※만 14세 미만 아동의 경우 홈페이지 회원가입에 제한이 있습니다.</p>
+               
+            </div>
+            <div class="log_main">    
+                <table>
+                    <tr>
+                        <td class="title">이용약관</td>
+                        <td class="content">
+                            <textarea placeholder="약관내용 출력하기"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="title">개인정보 수집안내</td>
+                        <td class="content">
+                            <textarea placeholder="약관내용 출력하기"></textarea>
+                        </td>
+                    </tr>
+                </table>
+            </div>
       </main>
       <footer>
         <div class="footer_Top">
