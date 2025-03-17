@@ -194,16 +194,19 @@ main > div > aside a{
 }
 
 
-
 .section tbody:nth-child(1) tr:nth-child(1){
     background-color: #FAFAFA;
+}
+
+.section tbody:nth-child(1) tr:nth-child(1) td{
+    font-weight: 700;
 }
 
 .section td{
     height: 46px;
     font-size: 16px;
     line-height: 24px;
-    font-weight: 700;
+    font-weight: 350;
     text-align: center;
 }
 
@@ -228,11 +231,12 @@ main > div > aside a{
 .student_status_by_grade > table td {
     font-size: 16px;
     line-height: 24px;
-    font-weight: 700;
+    font-weight: 350;
 }
 
-.student_status_by_grade > table tr:nth-child(5){
+.student_status_by_grade > table tr:nth-child(5) td{
     background-color: #FAFAFA;
+    font-weight: 700;
 }
 
 .student_status_by_department{
@@ -242,8 +246,13 @@ main > div > aside a{
 .student_status_by_department > table td {
     font-size: 16px;
     line-height: 24px;
+    font-weight: 350;
+}
+
+.student_status_by_department > table tr:nth-child(5) td {
     font-weight: 700;
 }
+
 
 .student_status_by_department > table tr:nth-child(5){
     background-color: #FAFAFA;
@@ -273,7 +282,7 @@ main > div > aside a{
 .academic_notice > table td {
     font-size: 16px;
     line-height: 24px;
-    font-weight: 700;
+    font-weight: 350;
 }
 
 .admission_counseling{
@@ -283,7 +292,7 @@ main > div > aside a{
 .admission_counseling > table td {
     font-size: 16px;
     line-height: 24px;
-    font-weight: 700;
+    font-weight: 350;
 }
 
 
