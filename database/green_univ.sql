@@ -37,6 +37,8 @@ CREATE TABLE IF NOT EXISTS `green_univ`.`user` (
   `contact` VARCHAR(45) NULL,
   `role` ENUM("professor", "student", "admin") NOT NULL,
   `agreed_terms` TINYINT NOT NULL DEFAULT 0,
+  `register_date` DATETIME NOT NULL,
+  `leave_date` DATETIME NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `contact_UNIQUE` (`contact` ASC) VISIBLE,
   UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE)
@@ -47,7 +49,7 @@ ENGINE = InnoDB;
 -- Table `green_univ`.`professor`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `green_univ`.`professor` (
-  `id` CHAR(6) NOT NULL,
+  `id` CHAR(7) NOT NULL,
   `user_id` VARCHAR(20) NOT NULL,
   `department_id` INT NOT NULL,
   `is_chief` TINYINT NULL DEFAULT 0,
@@ -198,7 +200,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `green_univ`.`lecture` (
   `id` CHAR(6) NOT NULL,
   `department_id` INT NOT NULL,
-  `professor_id` CHAR(6) NOT NULL,
+  `professor_id` CHAR(7) NOT NULL,
   `level` TINYINT NOT NULL,
   `classification` ENUM("전공", "선택교양") NOT NULL,
   `name` VARCHAR(20) NOT NULL,
@@ -369,9 +371,9 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `green_univ`.`faq` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `question` VARCHAR(100) NOT NULL,
-  `answer_title` VARCHAR(45) NOT NULL,
-  `answer_content` VARCHAR(255) NOT NULL,
+  `category` VARCHAR(100) NOT NULL,
+  `question` VARCHAR(255) NOT NULL,
+  `answer` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
