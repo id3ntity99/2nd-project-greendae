@@ -18,7 +18,7 @@ USE `green_univ` ;
 -- Table `green_univ`.`department`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `green_univ`.`department` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(20) NOT NULL,
   `contact` VARCHAR(14) NOT NULL,
   PRIMARY KEY (`id`))
@@ -51,7 +51,7 @@ CREATE TABLE IF NOT EXISTS `green_univ`.`professor` (
   `user_id` VARCHAR(20) NOT NULL,
   `department_id` INT NOT NULL,
   `is_chief` TINYINT NULL DEFAULT 0,
-  PRIMARY KEY (`id`, `user_id`),
+  PRIMARY KEY (`id`),
   INDEX `fk_professor_department1_idx` (`department_id` ASC) VISIBLE,
   INDEX `fk_professor_user1_idx` (`user_id` ASC) VISIBLE,
   CONSTRAINT `fk_professor_department1`
@@ -82,7 +82,7 @@ ENGINE = InnoDB;
 -- Table `green_univ`.`file`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `green_univ`.`file` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `location` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
@@ -92,7 +92,7 @@ ENGINE = InnoDB;
 -- Table `green_univ`.`article_status`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `green_univ`.`article_status` (
-  `status` VARCHAR(10) NOT NULL,
+  `status` ENUM("open", "close") NOT NULL,
   PRIMARY KEY (`status`))
 ENGINE = InnoDB;
 
@@ -101,7 +101,7 @@ ENGINE = InnoDB;
 -- Table `green_univ`.`article_category`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `green_univ`.`article_category` (
-  `category` VARCHAR(10) NOT NULL,
+  `category` ENUM("notice", "news", "column", "employment", "bulletin", "qna") NOT NULL,
   PRIMARY KEY (`category`))
 ENGINE = InnoDB;
 
@@ -113,17 +113,17 @@ CREATE TABLE IF NOT EXISTS `green_univ`.`article` (
   `id` INT NOT NULL,
   `user_id` VARCHAR(20) NOT NULL,
   `title` VARCHAR(50) NOT NULL,
-  `category` VARCHAR(10) NOT NULL,
+  `category` ENUM("notice", "news", "column", "employment", "bulletin", "qna") NOT NULL,
+  `status` ENUM("open", "close") NULL,
   `content` TEXT NOT NULL,
   `view` INT NOT NULL DEFAULT 0,
   `image_id` INT NULL,
-  `file_id1` INT NULL,
-  `status` VARCHAR(10) NULL,
+  `file_id` INT NULL,
   `register_date` DATE NOT NULL,
   PRIMARY KEY (`id`, `user_id`),
   INDEX `fk_article_user1_idx` (`user_id` ASC) VISIBLE,
   INDEX `fk_article_image1_idx` (`image_id` ASC) VISIBLE,
-  INDEX `fk_article_file1_idx` (`file_id1` ASC) VISIBLE,
+  INDEX `fk_article_file1_idx` (`file_id` ASC) VISIBLE,
   INDEX `fk_article_article_status1_idx` (`status` ASC) VISIBLE,
   INDEX `fk_article_article_category1_idx` (`category` ASC) VISIBLE,
   CONSTRAINT `fk_article_user1`
@@ -137,7 +137,7 @@ CREATE TABLE IF NOT EXISTS `green_univ`.`article` (
     ON DELETE NO ACTION
     ON UPDATE CASCADE,
   CONSTRAINT `fk_article_file1`
-    FOREIGN KEY (`file_id1`)
+    FOREIGN KEY (`file_id`)
     REFERENCES `green_univ`.`file` (`id`)
     ON DELETE NO ACTION
     ON UPDATE CASCADE,
@@ -158,7 +158,7 @@ ENGINE = InnoDB;
 -- Table `green_univ`.`schedule`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `green_univ`.`schedule` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(25) NOT NULL,
   `date` DATE NOT NULL,
   PRIMARY KEY (`id`))
@@ -343,7 +343,7 @@ ENGINE = InnoDB;
 -- Table `green_univ`.`comment`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `green_univ`.`comment` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `user_id` VARCHAR(20) NOT NULL,
   `article_id` INT NOT NULL,
   `content` VARCHAR(255) NOT NULL,
