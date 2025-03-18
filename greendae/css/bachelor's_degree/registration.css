@@ -134,6 +134,9 @@ body {
     border-top: 2px solid #071f4b;
     border-collapse: collapse;
     margin-top: 10px;
+    border-bottom:1px solid #dedede;
+    border-right: 1px solid #dedede;
+    border-left: 1px solid #dedede;
 }
 
 .right_section > article> div:nth-child(4) >table > thead{
