@@ -203,7 +203,7 @@ CREATE TABLE IF NOT EXISTS `green_univ`.`lecture` (
   `professor_id` CHAR(7) NOT NULL,
   `level` TINYINT NOT NULL,
   `classification` ENUM("전공", "선택교양") NOT NULL,
-  `name` VARCHAR(20) NOT NULL,
+  `name` VARCHAR(50) NOT NULL,
   `credit` TINYINT NOT NULL,
   `semester` TINYINT NOT NULL,
   PRIMARY KEY (`id`),
@@ -386,6 +386,36 @@ CREATE TABLE IF NOT EXISTS `green_univ`.`term` (
   `title` VARCHAR(255) NULL,
   `content` TEXT NULL,
   PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `green_univ`.`lecture_day`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `green_univ`.`lecture_day` (
+  `lecture_id` CHAR(6) NOT NULL,
+  `day` ENUM("mon", "tue", "wed", "thur", "fri") NULL,
+  PRIMARY KEY (`lecture_id`),
+  CONSTRAINT `fk_lecture_day_lecture1`
+    FOREIGN KEY (`lecture_id`)
+    REFERENCES `green_univ`.`lecture` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `green_univ`.`lecture_time`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `green_univ`.`lecture_time` (
+  `lecture_id` CHAR(6) NOT NULL,
+  `time` ENUM("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12") NULL,
+  PRIMARY KEY (`lecture_id`),
+  CONSTRAINT `fk_lecture_time_lecture1`
+    FOREIGN KEY (`lecture_id`)
+    REFERENCES `green_univ`.`lecture` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
