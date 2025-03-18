@@ -223,25 +223,41 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
+-- Table `green_univ`.`registry_lecture`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `green_univ`.`registry_lecture` (
+  `lecture_id` CHAR(6) NOT NULL,
+  `registered_number` TINYINT NOT NULL DEFAULT 0,
+  `max_registered` TINYINT NOT NULL,
+  `register_date` DATE NULL,
+  PRIMARY KEY (`lecture_id`),
+  CONSTRAINT `fk_registry_lecture_lecture1`
+    FOREIGN KEY (`lecture_id`)
+    REFERENCES `green_univ`.`lecture` (`id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `green_univ`.`registry`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `green_univ`.`registry` (
   `student_number` CHAR(8) NOT NULL,
-  `lecture_id` CHAR(6) NOT NULL,
-  `register_date` DATE NULL,
-  PRIMARY KEY (`lecture_id`, `student_number`),
+  `registry_lecture_id` CHAR(6) NOT NULL,
+  PRIMARY KEY (`student_number`, `registry_lecture_id`),
   INDEX `fk_registry_student1_idx` (`student_number` ASC) VISIBLE,
-  INDEX `fk_registry_lecture1_idx` (`lecture_id` ASC) VISIBLE,
+  INDEX `fk_registry_registry_lecture1_idx` (`registry_lecture_id` ASC) VISIBLE,
   CONSTRAINT `fk_registry_student1`
     FOREIGN KEY (`student_number`)
     REFERENCES `green_univ`.`student` (`student_number`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
-  CONSTRAINT `fk_registry_lecture1`
-    FOREIGN KEY (`lecture_id`)
-    REFERENCES `green_univ`.`lecture` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  CONSTRAINT `fk_registry_registry_lecture1`
+    FOREIGN KEY (`registry_lecture_id`)
+    REFERENCES `green_univ`.`registry_lecture` (`lecture_id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 

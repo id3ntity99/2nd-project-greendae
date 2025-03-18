@@ -285,3 +285,12 @@ INSERT INTO `student_council` VALUES
 (2, "인문대학생회", "인문대학생회 입니다.", "instagram.com", NULL),
 (3, "공과대학생회", "공과대학생회 입니다.", "instagram.com", NULL),
 (4, "자연과학대학생회", "자연과학대학학생회 입니다.", "instagram.com", NULL);
+
+-- registry_lecture
+-- 수강신청 대상 과목
+INSERT INTO `registry_lecture` VALUES
+("101027", 0, 30, NOW()),
+("201030", 0, 30, NOW()),
+("304008", 0, 30, NOW()),
+("304021", 0, 30, NOW()),
+("304011", 0, 30, NOW());
