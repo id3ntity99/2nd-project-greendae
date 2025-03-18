@@ -1,0 +1,66 @@
+package com.greenuniv.greenuniv.entity.lecture;
+
+import com.greenuniv.greenuniv.dto.lecture.LectureDTO;
+import com.greenuniv.greenuniv.entity.BaseEntity;
+import com.greenuniv.greenuniv.entity.department.DepartmentEntity;
+import com.greenuniv.greenuniv.entity.professor.ProfessorEntity;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
+@Entity
+@Getter
+@Builder
+@ToString
+@AllArgsConstructor
+@NoArgsConstructor
+public class LectureEntity implements BaseEntity {
+
+  @Id
+  private String id;
+
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "department_id")
+  private DepartmentEntity department;
+
+  @ManyToOne
+  @JoinColumn(name = "professor_id")
+  private ProfessorEntity professor;
+
+  @Column(name = "level")
+  private int level;
+
+  @Column(name = "classification")
+  private String classification;
+
+  @Column(name = "name")
+  private String name;
+
+  @Column(name = "credit")
+  private int credit;
+
+  @Column(name = "semester")
+  private int semester;
+
+  @Override
+  public LectureDTO toDTO() {
+    return LectureDTO.builder()
+        .id(id)
+        .department(department.toDTO())
+        .professor(professor.toDTO())
+        .level(level)
+        .classification(classification)
+        .name(name)
+        .credit(credit)
+        .semester(semester)
+        .build();
+  }
+}

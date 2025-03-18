@@ -1,6 +1,6 @@
 package com.greenuniv.greenuniv.entity.article;
 
-import com.greenuniv.greenuniv.dto.article.ArticleStatusDTO;
+import com.greenuniv.greenuniv.dto.article.ArticleCategoryDTO;
 import com.greenuniv.greenuniv.entity.BaseEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -16,14 +16,15 @@ import lombok.ToString;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-public class ArticleStatusEntity implements BaseEntity {
+public class ArticleCategoryEntity implements BaseEntity {
 
   @Id
-  private String status;
+  private String category;
 
-  public ArticleStatusDTO toDTO() {
-    return ArticleStatusDTO.builder()
-        .status(status)
+  @Override
+  public ArticleCategoryDTO toDTO() {
+    return ArticleCategoryDTO.builder()
+        .category(category)
         .build();
   }
 }

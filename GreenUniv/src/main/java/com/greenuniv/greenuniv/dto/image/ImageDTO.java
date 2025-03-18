@@ -1,6 +1,7 @@
 package com.greenuniv.greenuniv.dto.image;
 
-import java.io.File;
+import com.greenuniv.greenuniv.dto.BaseDTO;
+import com.greenuniv.greenuniv.entity.image.ImageEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,10 +11,18 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ImageDTO {
+public class ImageDTO implements BaseDTO {
 
   private int id;
-  private File location;
-  private File thumbnailLocation;
+  private String location;
+  private String thumbnailLocation;
 
+  @Override
+  public ImageEntity toEntity() {
+    return ImageEntity.builder()
+        .id(id)
+        .location(location)
+        .thumbnailLocation(thumbnailLocation)
+        .build();
+  }
 }
