@@ -28,11 +28,11 @@ public class ProfessorEntity implements BaseEntity {
   @Id
   private String id;
 
-  @OneToOne
+  @OneToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "user_id")
   private UserEntity user;
 
-  @ManyToOne(fetch = FetchType.EAGER)
+  @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "department_id")
   private DepartmentEntity department;
 

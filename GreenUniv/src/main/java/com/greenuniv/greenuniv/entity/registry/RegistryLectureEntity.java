@@ -24,7 +24,7 @@ import lombok.ToString;
 public class RegistryLectureEntity implements BaseEntity {
 
   @Id
-  @OneToOne(fetch = FetchType.EAGER)
+  @OneToOne(fetch = FetchType.LAZY)
   private LectureEntity lectureEntity;
 
   @Column(name = "registered_number")

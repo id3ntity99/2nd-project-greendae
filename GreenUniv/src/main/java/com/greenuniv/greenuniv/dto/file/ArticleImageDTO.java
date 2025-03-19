@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class FileDTO {
+public class ArticleImageDTO {
 
   private int id;
   private File location;

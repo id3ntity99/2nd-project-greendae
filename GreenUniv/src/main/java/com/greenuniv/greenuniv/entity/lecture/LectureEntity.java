@@ -27,11 +27,11 @@ public class LectureEntity implements BaseEntity {
   @Id
   private String id;
 
-  @ManyToOne(fetch = FetchType.EAGER)
+  @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "department_id")
   private DepartmentEntity department;
 
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "professor_id")
   private ProfessorEntity professor;
 
