@@ -57,5 +57,67 @@
   }
 
   .right_section > article > table{
-    border: 3px solid red;
+
+  }
+
+  .right_section>article> div:nth-child(2){
+    width: 930px;
+    height: 24px;
+    float: left;
+    margin-left: 20px;
+    margin-top: 40px;
+
+  }
+
+  .right_section>article> div:nth-child(2)>h4{
+    font-size: 18px;
+    color: #145074;
+    line-height: 100%;
+  }
+
+  .right_section>article>.table_1{
+    width: 930px;
+    height: 337px;
+    margin-left: 235px;
+    border-top: 2px solid #000000;
+  }
+  .right_section>article>.table_1>tbody>tr{
+    width: 930px;
+    height: 67px;
+    
+    
+    
+  }
+  .right_section>article>.table_1>tbody>tr>.qna_content{
+    border: 2px solid red;
+    
+    
+    
+  }
+
+  .right_section>article>.table_1>tbody>tr>td{
+    border-bottom: 1px solid #d8d8d8;
+    
+  }
+
+  .right_section>article>.table_1>tbody>tr>.qna{
+    background-color: #3282d3;
+    width: 30px;
+    height: 30px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    
+    
+
+
+  }
+
+  .right_section>article> div:nth-child(3){
+    border: 2px solid red;
+  }
+
+  .right_section>article> div:nth-child(4){
+    border: 2px solid green;
   }
