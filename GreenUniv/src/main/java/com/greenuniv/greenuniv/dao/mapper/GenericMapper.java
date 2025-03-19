@@ -1,18 +1,10 @@
 package com.greenuniv.greenuniv.dao.mapper;
 
-import java.util.List;
+import com.greenuniv.greenuniv.entity.BaseEntity;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
-public interface GenericMapper<T, K> {
-
-  void insert(T t);
+public interface GenericMapper<T extends BaseEntity, K> {
 
   T select(K id);
-
-  List<T> selectAll();
-
-  void update(T t);
-
-  void delete(K id);
 }

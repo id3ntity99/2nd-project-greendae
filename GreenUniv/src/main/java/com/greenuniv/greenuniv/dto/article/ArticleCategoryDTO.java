@@ -1,5 +1,7 @@
 package com.greenuniv.greenuniv.dto.article;
 
+import com.greenuniv.greenuniv.dto.BaseDTO;
+import com.greenuniv.greenuniv.entity.article.ArticleCategoryEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -9,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class ArticleCategoryDTO {
+public class ArticleCategoryDTO implements BaseDTO {
 
   public static final String NOTICE = "notice";
   public static final String NEWS = "news";
@@ -20,4 +22,10 @@ public class ArticleCategoryDTO {
 
   private String category;
 
+  @Override
+  public ArticleCategoryEntity toEntity() {
+    return ArticleCategoryEntity.builder()
+        .category(category)
+        .build();
+  }
 }

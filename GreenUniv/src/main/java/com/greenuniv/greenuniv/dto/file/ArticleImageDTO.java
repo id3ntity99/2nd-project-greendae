@@ -1,4 +1,4 @@
-package com.greenuniv.greenuniv.dto.image;
+package com.greenuniv.greenuniv.dto.file;
 
 import java.io.File;
 import lombok.AllArgsConstructor;
@@ -7,13 +7,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@Builder
-@AllArgsConstructor
 @NoArgsConstructor
-public class ImageDTO {
+@AllArgsConstructor
+@Builder
+public class ArticleImageDTO {
 
   private int id;
   private File location;
-  private File thumbnailLocation;
-
 }
