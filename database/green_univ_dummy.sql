@@ -62,7 +62,8 @@ INSERT INTO `user` VALUES
 
 
 
-INSERT INTO `article_category` VALUES ("notice"),
+INSERT INTO `article_category` VALUES 
+("notice"),
 ("news"),
 ("column"),
 ("employment"),
@@ -73,8 +74,16 @@ INSERT INTO `article_status` VALUES ("open"), ("close");
 
 
 INSERT INTO `club` SET `name`="배드민턴 중앙동아리", `content`="배트민턴 중앙동아리를 소개합니다!";
-INSERT INTO `club` (`name`, `content`, `url`) VALUES ("연극 동아리 Masquerade", "연극 중앙동아리 Masquerade를 소개합니다!", "https://instagram.com"),
+INSERT INTO `club` (`name`, `content`, `url`) VALUES 
+("연극 동아리 Masquerade", "연극 중앙동아리 Masquerade를 소개합니다!", "https://instagram.com"),
 ("코딩 동아리 Code:us", "코딩 동아리 Code:us를 소개합니다!", "https://facebook.com");
+
+INSERT INTO `college` VALUES 
+(1, "인문사회대학"),
+(2, "자연과학대학"),
+(3, "공과대학"),
+(4, "사범대학"),
+(5, "대학원");
 
 INSERT INTO `department` VALUES (101, "국어국문학과", "051-123-1001"),
 (102, "영어영문학과", "051-123-1002"),
@@ -274,9 +283,9 @@ INSERT INTO `schedule` VALUES
 
 -- 학생정보
 INSERT INTO `student` VALUES
-("20250001", "hgd123", 112, NULL, 1, 1, "in"),
-("20250002", "kyh123", 202, NULL, 1, 1, "in"),
-("20250003", "kmj123", 406, NULL, 1, 1, "in");
+("20250001", "hgd123", 112, NULL, 1, 1, 0, 130,"in"),
+("20250002", "kyh123", 202, NULL, 1, 1, 0, 130, "grad"),
+("20250003", "kmj123", 406, NULL, 1, 1, 0, 130, "break");
 
 -- 학생회
 -- image_id는 각 학생회 소개 페이지에 삽입될 대표 이미지 1장을 위한 컬럼.
@@ -294,3 +303,14 @@ INSERT INTO `registry_lecture` VALUES
 ("304008", 0, 30, NOW()),
 ("304021", 0, 30, NOW()),
 ("304011", 0, 30, NOW());
+
+-- registry
+-- 수강신청 내역. 
+-- registry와 registry_lecture는 일대일 관계.
+-- 한명의 학생이 여러 강의를 수강할 수는 있지만, 한명의 학생이 하나의 강의를 여러번 신청할 수는 없다.
+INSERT INTO `registry` VALUES
+("20250001", "101027"),
+("20250001", "201030"),
+("20250001", "304008"),
+("20250001", "304011"),
+("20250001", "304021");

@@ -70,27 +70,6 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `green_univ`.`image`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `green_univ`.`image` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `location` VARCHAR(255) NOT NULL,
-  `thumbnail_location` VARCHAR(255) NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `green_univ`.`file`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `green_univ`.`file` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `location` VARCHAR(255) NOT NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `green_univ`.`article_status`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `green_univ`.`article_status` (
@@ -119,28 +98,14 @@ CREATE TABLE IF NOT EXISTS `green_univ`.`article` (
   `status` ENUM("open", "close") NULL,
   `content` TEXT NOT NULL,
   `view` INT NOT NULL DEFAULT 0,
-  `image_id` INT NULL,
-  `file_id` INT NULL,
   `register_date` DATE NOT NULL,
   PRIMARY KEY (`id`, `user_id`),
   INDEX `fk_article_user1_idx` (`user_id` ASC) VISIBLE,
-  INDEX `fk_article_image1_idx` (`image_id` ASC) VISIBLE,
-  INDEX `fk_article_file1_idx` (`file_id` ASC) VISIBLE,
   INDEX `fk_article_article_status1_idx` (`status` ASC) VISIBLE,
   INDEX `fk_article_article_category1_idx` (`category` ASC) VISIBLE,
   CONSTRAINT `fk_article_user1`
     FOREIGN KEY (`user_id`)
     REFERENCES `green_univ`.`user` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE CASCADE,
-  CONSTRAINT `fk_article_image1`
-    FOREIGN KEY (`image_id`)
-    REFERENCES `green_univ`.`image` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE CASCADE,
-  CONSTRAINT `fk_article_file1`
-    FOREIGN KEY (`file_id`)
-    REFERENCES `green_univ`.`file` (`id`)
     ON DELETE NO ACTION
     ON UPDATE CASCADE,
   CONSTRAINT `fk_article_article_status1`
@@ -168,6 +133,17 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
+-- Table `green_univ`.`image`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `green_univ`.`image` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `location` VARCHAR(255) NULL,
+  `thumbnail_location` VARCHAR(255) NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `green_univ`.`student`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `green_univ`.`student` (
@@ -177,10 +153,13 @@ CREATE TABLE IF NOT EXISTS `green_univ`.`student` (
   `image_id` INT NULL,
   `grade` TINYINT NOT NULL DEFAULT 1,
   `semester` TINYINT NOT NULL DEFAULT 1,
+  `graduation_credit` TINYINT NOT NULL,
+  `current_credit` VARCHAR(45) NOT NULL DEFAULT 0,
   `status` ENUM("in", "grad", "break") NULL DEFAULT 'in',
   PRIMARY KEY (`student_number`, `user_id`),
   INDEX `fk_student_department_idx` (`department_id` ASC) VISIBLE,
   INDEX `fk_student_user1_idx` (`user_id` ASC) VISIBLE,
+  INDEX `fk_student_organization_image1_idx` (`image_id` ASC) VISIBLE,
   CONSTRAINT `fk_student_department`
     FOREIGN KEY (`department_id`)
     REFERENCES `green_univ`.`department` (`id`)
@@ -190,7 +169,12 @@ CREATE TABLE IF NOT EXISTS `green_univ`.`student` (
     FOREIGN KEY (`user_id`)
     REFERENCES `green_univ`.`user` (`id`)
     ON DELETE CASCADE
-    ON UPDATE CASCADE)
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_student_organization_image1`
+    FOREIGN KEY (`image_id`)
+    REFERENCES `green_univ`.`image` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
@@ -262,6 +246,23 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
+-- Table `green_univ`.`file`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `green_univ`.`file` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `article_id` INT NOT NULL,
+  `location` VARCHAR(255) NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_file_article1_idx` (`article_id` ASC) VISIBLE,
+  CONSTRAINT `fk_file_article1`
+    FOREIGN KEY (`article_id`)
+    REFERENCES `green_univ`.`article` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `green_univ`.`score`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `green_univ`.`score` (
@@ -294,13 +295,31 @@ CREATE TABLE IF NOT EXISTS `green_univ`.`student_council` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(25) NOT NULL,
   `content` VARCHAR(255) NOT NULL,
-  `sns_url` TEXT NULL,
+  `url` TEXT NULL,
   `image_id` INT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_student_council_image1_idx` (`image_id` ASC) VISIBLE,
-  CONSTRAINT `fk_student_council_image1`
+  INDEX `fk_student_council_organization_image1_idx` (`image_id` ASC) VISIBLE,
+  CONSTRAINT `fk_student_council_organization_image1`
     FOREIGN KEY (`image_id`)
     REFERENCES `green_univ`.`image` (`id`)
+    ON DELETE SET NULL
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `green_univ`.`article_image`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `green_univ`.`article_image` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `article_id` INT NOT NULL,
+  `location` VARCHAR(255) NOT NULL,
+  `thumbnail_location` VARCHAR(255) NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_image_article1_idx` (`article_id` ASC) VISIBLE,
+  CONSTRAINT `fk_image_article1`
+    FOREIGN KEY (`article_id`)
+    REFERENCES `green_univ`.`article` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -316,12 +335,12 @@ CREATE TABLE IF NOT EXISTS `green_univ`.`club` (
   `url` TEXT NULL,
   `image_id` INT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_club_image1_idx` (`image_id` ASC) VISIBLE,
-  CONSTRAINT `fk_club_image1`
+  INDEX `fk_club_organization_image1_idx` (`image_id` ASC) VISIBLE,
+  CONSTRAINT `fk_club_organization_image1`
     FOREIGN KEY (`image_id`)
     REFERENCES `green_univ`.`image` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE SET NULL
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
