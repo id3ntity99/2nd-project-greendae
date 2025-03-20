@@ -5,6 +5,8 @@ import com.greenuniv.greenuniv.entity.BaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -22,6 +24,10 @@ public class DepartmentEntity implements BaseEntity {
   @Id
   private int id;
 
+  @ManyToOne
+  @JoinColumn(name = "college_id")
+  private CollegeEntity college;
+
   @Column(name = "name")
   private String name;
 
@@ -32,6 +38,7 @@ public class DepartmentEntity implements BaseEntity {
   public DepartmentDTO toDTO() {
     return DepartmentDTO.builder()
         .id(id)
+        .college(college.toDTO())
         .name(name)
         .contact(contact)
         .build();
