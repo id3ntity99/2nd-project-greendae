@@ -15,13 +15,30 @@ CREATE SCHEMA IF NOT EXISTS `green_univ` DEFAULT CHARACTER SET utf8 ;
 USE `green_univ` ;
 
 -- -----------------------------------------------------
+-- Table `green_univ`.`college`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `green_univ`.`college` (
+  `id` INT NOT NULL,
+  `name` VARCHAR(20) NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `green_univ`.`department`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `green_univ`.`department` (
   `id` INT NOT NULL AUTO_INCREMENT,
+  `college_id` INT NOT NULL,
   `name` VARCHAR(20) NOT NULL,
   `contact` VARCHAR(14) NOT NULL,
-  PRIMARY KEY (`id`))
+  PRIMARY KEY (`id`),
+  INDEX `fk_department_college1_idx` (`college_id` ASC) VISIBLE,
+  CONSTRAINT `fk_department_college1`
+    FOREIGN KEY (`college_id`)
+    REFERENCES `green_univ`.`college` (`id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
@@ -70,24 +87,6 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `green_univ`.`article_status`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `green_univ`.`article_status` (
-  `status` ENUM("open", "close") NOT NULL,
-  PRIMARY KEY (`status`))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `green_univ`.`article_category`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `green_univ`.`article_category` (
-  `category` ENUM("notice", "news", "column", "employment", "bulletin", "qna") NOT NULL,
-  PRIMARY KEY (`category`))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `green_univ`.`article`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `green_univ`.`article` (
@@ -101,21 +100,9 @@ CREATE TABLE IF NOT EXISTS `green_univ`.`article` (
   `register_date` DATE NOT NULL,
   PRIMARY KEY (`id`, `user_id`),
   INDEX `fk_article_user1_idx` (`user_id` ASC) VISIBLE,
-  INDEX `fk_article_article_status1_idx` (`status` ASC) VISIBLE,
-  INDEX `fk_article_article_category1_idx` (`category` ASC) VISIBLE,
   CONSTRAINT `fk_article_user1`
     FOREIGN KEY (`user_id`)
     REFERENCES `green_univ`.`user` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE CASCADE,
-  CONSTRAINT `fk_article_article_status1`
-    FOREIGN KEY (`status`)
-    REFERENCES `green_univ`.`article_status` (`status`)
-    ON DELETE NO ACTION
-    ON UPDATE CASCADE,
-  CONSTRAINT `fk_article_article_category1`
-    FOREIGN KEY (`category`)
-    REFERENCES `green_univ`.`article_category` (`category`)
     ON DELETE NO ACTION
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
@@ -190,6 +177,11 @@ CREATE TABLE IF NOT EXISTS `green_univ`.`lecture` (
   `name` VARCHAR(50) NOT NULL,
   `credit` TINYINT NOT NULL,
   `semester` TINYINT NOT NULL,
+  `description` TEXT NULL,
+  `textbook` VARCHAR(255) NULL,
+  `classroom` VARCHAR(50) NULL,
+  `start_date` DATE NULL,
+  `end_date` DATE NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_lecture_department1_idx` (`department_id` ASC) VISIBLE,
   INDEX `fk_lecture_professor1_idx` (`professor_id` ASC) VISIBLE,
@@ -348,13 +340,13 @@ ENGINE = InnoDB;
 -- Table `green_univ`.`menu`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `green_univ`.`menu` (
-  `menu_id` INT NOT NULL AUTO_INCREMENT,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `main` VARCHAR(10) NOT NULL,
   `soup` VARCHAR(10) NOT NULL,
   `rice` VARCHAR(10) NOT NULL,
   `side_1` VARCHAR(10) NULL,
   `side_2` VARCHAR(10) NULL,
-  PRIMARY KEY (`menu_id`))
+  PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
 
@@ -366,13 +358,13 @@ CREATE TABLE IF NOT EXISTS `green_univ`.`meal` (
   `menu_id` INT NOT NULL,
   `date` DATE NOT NULL,
   `meal_time` ENUM("breakfast", "lunch", "dinner") NOT NULL,
-  PRIMARY KEY (`id`),
+  PRIMARY KEY (`id`, `menu_id`),
   INDEX `fk_meal_menu1_idx` (`menu_id` ASC) VISIBLE,
   CONSTRAINT `fk_meal_menu1`
     FOREIGN KEY (`menu_id`)
-    REFERENCES `green_univ`.`menu` (`menu_id`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE)
+    REFERENCES `green_univ`.`menu` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
@@ -428,14 +420,15 @@ ENGINE = InnoDB;
 -- Table `green_univ`.`lecture_day`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `green_univ`.`lecture_day` (
+  `id` INT NOT NULL AUTO_INCREMENT,
   `lecture_id` CHAR(6) NOT NULL,
   `day` ENUM("mon", "tue", "wed", "thur", "fri") NULL,
-  PRIMARY KEY (`lecture_id`),
+  PRIMARY KEY (`id`),
   CONSTRAINT `fk_lecture_day_lecture1`
     FOREIGN KEY (`lecture_id`)
     REFERENCES `green_univ`.`lecture` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
@@ -443,14 +436,16 @@ ENGINE = InnoDB;
 -- Table `green_univ`.`lecture_time`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `green_univ`.`lecture_time` (
+  `id` INT NOT NULL AUTO_INCREMENT,
   `lecture_id` CHAR(6) NOT NULL,
-  `time` ENUM("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12") NULL,
-  PRIMARY KEY (`lecture_id`),
+  `start_at` TIME NULL,
+  `end_at` TIME NULL,
+  PRIMARY KEY (`id`),
   CONSTRAINT `fk_lecture_time_lecture1`
     FOREIGN KEY (`lecture_id`)
     REFERENCES `green_univ`.`lecture` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
