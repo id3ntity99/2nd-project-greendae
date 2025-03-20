@@ -16,6 +16,7 @@ import lombok.ToString;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
+@Deprecated
 public class ArticleStatusEntity implements BaseEntity {
 
   @Id

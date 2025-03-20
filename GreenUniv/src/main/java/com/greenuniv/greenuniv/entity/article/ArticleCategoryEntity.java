@@ -4,6 +4,7 @@ import com.greenuniv.greenuniv.dto.article.ArticleCategoryDTO;
 import com.greenuniv.greenuniv.entity.BaseEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -14,8 +15,10 @@ import lombok.ToString;
 @Getter
 @Builder
 @ToString
+@Table(name = "article_category")
 @AllArgsConstructor
 @NoArgsConstructor
+@Deprecated
 public class ArticleCategoryEntity implements BaseEntity {
 
   @Id
