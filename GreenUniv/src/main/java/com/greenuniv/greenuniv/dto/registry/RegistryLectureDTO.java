@@ -1,4 +1,4 @@
-package com.greenuniv.greenuniv.dto.register;
+package com.greenuniv.greenuniv.dto.registry;
 
 import com.greenuniv.greenuniv.dto.BaseDTO;
 import com.greenuniv.greenuniv.dto.lecture.LectureDTO;

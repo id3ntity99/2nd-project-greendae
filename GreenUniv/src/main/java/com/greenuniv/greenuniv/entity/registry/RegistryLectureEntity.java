@@ -1,6 +1,6 @@
 package com.greenuniv.greenuniv.entity.registry;
 
-import com.greenuniv.greenuniv.dto.register.RegistryLectureDTO;
+import com.greenuniv.greenuniv.dto.registry.RegistryLectureDTO;
 import com.greenuniv.greenuniv.entity.BaseEntity;
 import com.greenuniv.greenuniv.entity.lecture.LectureEntity;
 import jakarta.persistence.Column;
