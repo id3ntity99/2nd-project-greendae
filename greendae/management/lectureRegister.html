@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/css/management/EducationOperation.css">
+    <link rel="stylesheet" href="/css/management/lectureRegister.css">
     <link rel="stylesheet" href="/css/common/pagination.css" />
     <link rel="stylesheet" href="/css/common/header.css" />
     <link rel="stylesheet" href="/css/common/footer.css" />
@@ -74,12 +74,12 @@
             </aside>
             <section>
                 <div class="title-area">
-                    <h1>강의 등록</h1>
-                    <h2>학사운영&ensp;&ensp;<span>>&ensp;&ensp;강의등록</span></h2>
+                  <h1>강의 등록</h1>
+                  <h2>학사운영&ensp;&ensp;<span>>&ensp;&ensp;강의등록</span></h2>
                 </div>
-                <div class="university_status">
-                  <p><img src="/images/bullet-h4.png" alt="#"> 대학 운영 현황</p>
-                  <table border="1">                        
+                <div>
+                  <p><img src="/images/bullet-h4.png" alt="#"> 기본정보 입력</p>
+                  <table class="Enter_basic_information">                        
                     <tr>
                       <td>과목코드</td>
                       <td>학과 코드 + 연도 + 학기 + 순번 조합 자동생성</td>
@@ -119,8 +119,47 @@
                         <input type="text">
                       </td>
                     </tr>
+                  </table>
+              </div>
+              <div>
+                <p><img src="/images/bullet-h4.png" alt="#"> 대학 운영 현황</p>
+                <table border="1">                        
+                  <tr>
+                    <td>수업 기간</td>
+                    <td>
+                      <input type="text">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>수업 시간</td>
+                    <td>
+                      <input type="text">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>평가방식</td>
+                    <td>
+                      <input type="text" placeholder="출석 10%, 과제 30%, 시험 60%">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>교재</td>
+                    <td>
+                      <input type="text" placeholder="출판사-도서명-저자 입력">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>강의실</td>
+                    <td>
+                      <input type="text" placeholder="인문관 301호">
+                    </td>
+                    <td>최대 수강인원</td>
+                    <td>
+                      <input type="text">
+                    </td>
+                  </tr>
                 </table>
-
+                <button>등록</button>
               </div>
             </section>
         </div>
