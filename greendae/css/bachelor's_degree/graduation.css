@@ -63,6 +63,7 @@ body {
     height: 50px;
     float: right;
     margin-top: 30px;
+    
      
   }
 
@@ -111,6 +112,7 @@ body {
     height: 102px;
     font-size: 16px;
     font-weight: bolder;
+    background-color: #f4f8fc;
   }
 
   .right_section > article > div:nth-child(2)>table>thead>tr>.get_score{
@@ -118,12 +120,14 @@ body {
     height: 102px;
     font-size: 16px;
     font-weight: bolder;
+    background-color: #f4f8fc;
   }
   .right_section > article > div:nth-child(2)>table>thead>tr>.gradu_score{
     width: 555px;
     height: 50px;
     font-size: 16px;
     font-weight: bolder;
+    background-color: #f4f8fc;
   }
 
   .right_section > article > div:nth-child(2)>table>thead>tr>.common_gradu{
@@ -131,6 +135,7 @@ body {
     height: 50px;
     font-size: 16px;
     font-weight: bolder;
+    background-color: #f4f8fc;
   }
   
   .right_section > article> div:nth-child(2)>table>tbody{
@@ -192,18 +197,21 @@ body {
     height: 50px;
     font-size: 16px;
     font-weight: bolder;
+    background-color: #f4f8fc;
   }
   .right_section > article > div:nth-child(3)>table>thead>tr>.th_2{
     width: 276px;
     height: 102px;
     font-size: 16px;
     font-weight: bolder;
+    background-color: #f4f8fc;
   }
 
   .right_section > article > div:nth-child(3)>table>thead>tr>.th_3{
     width: 276px;
     height: 50px;
     font-size: 16px;
+    background-color: #f4f8fc;
     font-weight: bolder;
   }
 
@@ -211,6 +219,7 @@ body {
     width: 184px;
     height: 50px;
     font-size: 16px;
+    background-color: #f4f8fc;
     font-weight: bolder;
   }
 
@@ -218,6 +227,7 @@ body {
     width: 184px;
     height: 50px;
     font-size: 16px;
+    background-color: #f4f8fc;
     font-weight: bolder;
   }
 
@@ -299,6 +309,7 @@ body {
     width: 276px;
     height: 126px;
     font-size: 16px;
+    background-color: #f4f8fc;
     font-weight: bolder;
   }
 
@@ -306,12 +317,14 @@ body {
     width: 137px;
     height: 126px;
     font-size: 16px;
+    background-color: #f4f8fc;
     font-weight: bolder;
   }
 
   .right_section > article > div:nth-child(4)>table>thead>tr>.th_8{
     width: 507px;
     height: 50px;
+    background-color: #f4f8fc;
     font-size: 16px;
     font-weight: bolder;
   }
@@ -319,6 +332,7 @@ body {
   .right_section > article > div:nth-child(4)>table>thead>tr>.th_9{
     width: 137px;
     height: 74px;
+    background-color: #f4f8fc;
     font-size: 16px;
     font-weight: bolder;
   }
@@ -327,12 +341,14 @@ body {
     width: 137px;
     height: 74px;
     font-size: 16px;
+    background-color: #f4f8fc;
     font-weight: bolder;
   }
 
   .right_section > article > div:nth-child(4)>table>thead>tr>.th_11{
     width: 229px;
     height: 74px;
+    background-color: #f4f8fc;
     font-size: 16px;
     font-weight: bolder;
   }
