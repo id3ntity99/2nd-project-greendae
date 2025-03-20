@@ -1,3 +1,19 @@
+html,body{
+  height: auto;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* 최소 높이를 화면 높이(뷰포트 높이)로 설정 */
+}
+
+#container {
+  flex: 1; /* 메인이 차오르면 푸터가 밀려남 */
+}
+
 /*메인*/
 #container{
     width: 1200px;
@@ -75,49 +91,171 @@
     line-height: 100%;
   }
 
-  .right_section>article>.table_1{
+  .right_section > article > .board_table_horizon1{
+    margin-left: 20px;
+    float: left;
     width: 930px;
-    height: 337px;
-    margin-left: 235px;
+    height: 340px;
+    border-collapse: collapse;
+    border-spacing: 0;
+    table-layout: fixed;
+    text-align: center;
     border-top: 2px solid #000000;
-  }
-  .right_section>article>.table_1>tbody>tr{
-    width: 930px;
-    height: 67px;
-    
-    
-    
-  }
-  .right_section>article>.table_1>tbody>tr>.qna_content{
-    border: 2px solid red;
-    
-    
-    
-  }
 
-  .right_section>article>.table_1>tbody>tr>td{
+  }
+  .right_section>article>.board_table_horizon1>colgroup{
+    box-sizing: border-box;
+    -webkit-text-size-adjust: 100%;
+  
+  }
+  .board_table_horizon1 .col_num{
+    width: 30px;
+    height: 30px;
+  }
+  .board_table_horizon1 .col_subject{
+    box-sizing: border-box;
+    -webkit-text-size-adjust: 100%;
+  }
+  
+  .board_table_horizon1>tbody>tr>td{
+    text-align: left;
+    font-size: 16px;
     border-bottom: 1px solid #d8d8d8;
     
   }
-
-  .right_section>article>.table_1>tbody>tr>.qna{
-    background-color: #3282d3;
+  .board_table_horizon1 td:first-child{
     width: 30px;
     height: 30px;
-    align-items: center;
+    text-align: center;
+    vertical-align: middle;
+    padding: 0;
+  }
+  .board_table_horizon1 td:first-child div{
+    width: 30px;
+    height: 30px;
     display: flex;
+    align-items: center;
     justify-content: center;
+    background-color: #3282D3;
+    font-weight: bold;
+    color: white;
+  }
+
+  .right_section>article> .div_3 > h4{
+    width: 930px;
+    height: 24px;
+    float: left;
+    margin-left: 235px;
     margin-top: 20px;
     
+  }
+
+  .right_section>article> .div_3 > h4{
+
+    font-size: 18px;
+    color: #145074;
+    line-height: 100%;
+  }
+
+  .right_section > article > .board_table_horizon2{
+   border-top: 2px solid #000000;
+   float: left;
+   margin-left: 235px;
+   width: 930px;
+   height: 270px;
+   margin-top: 5px;
+   text-align: center;
+   border-collapse: collapse;
+   border-spacing: 0;
+   table-layout: fixed;
+  }
+
+  .board_table_horizon2>tbody>tr>td{
+    text-align: left;
+    font-size: 16px;
+    border-bottom: 1px solid #d8d8d8;
     
-
-
+  }
+  .board_table_horizon2 td:first-child{
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    vertical-align: middle;
+    padding: 0;
+  }
+  .board_table_horizon2 td:first-child div{
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #3282D3;
+    font-weight: bold;
+    color: white;
   }
 
-  .right_section>article> div:nth-child(3){
-    border: 2px solid red;
+  .right_section>article> .div_4 > h4{
+    width: 930px;
+    height: 24px;
+    float: left;
+    margin-left: 235px;
+    margin-top: 20px;
+    font-size: 18px;
+    color: #145074;
+    line-height: 100%;  
   }
 
-  .right_section>article> div:nth-child(4){
-    border: 2px solid green;
-  }
+  .right_section > article > .board_table_horizon3{
+    border-top: 2px solid #000000;
+    float: left;
+    margin-left: 235px;
+    width: 930px;
+    height: 270px;
+    margin-top: 5px;
+    margin-bottom: 100px;
+    text-align: center;
+    border-collapse: collapse;
+    border-spacing: 0;
+    table-layout: fixed;
+    
+   }
+ 
+   .board_table_horizon3>tbody>tr>td{
+     text-align: left;
+     font-size: 16px;
+     border-bottom: 1px solid #d8d8d8;
+     
+   }
+   .board_table_horizon3 td:first-child{
+     width: 30px;
+     height: 30px;
+     text-align: center;
+     vertical-align: middle;
+     padding: 0;
+   }
+   .board_table_horizon3 td:first-child div{
+     width: 30px;
+     height: 30px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     background-color: #3282D3;
+     font-weight: bold;
+     color: white;
+   }
+
+   .A{
+    background-color: #999999 !important;
+   }
+
+
+   .board_table_horizon1>tbody>tr> .td_A{
+    background-color: #efefef;
+   }
+   .board_table_horizon2>tbody>tr> .td_A{
+    background-color: #efefef;
+    
+   }
+   .board_table_horizon3>tbody>tr> .td_A{
+    background-color: #efefef;
+   }
