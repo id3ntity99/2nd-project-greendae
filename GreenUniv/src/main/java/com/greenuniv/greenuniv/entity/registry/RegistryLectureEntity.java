@@ -1,6 +1,6 @@
 package com.greenuniv.greenuniv.entity.registry;
 
-import com.greenuniv.greenuniv.dto.BaseDTO;
+import com.greenuniv.greenuniv.dto.register.RegistryLectureDTO;
 import com.greenuniv.greenuniv.entity.BaseEntity;
 import com.greenuniv.greenuniv.entity.lecture.LectureEntity;
 import jakarta.persistence.Column;
@@ -29,7 +29,7 @@ public class RegistryLectureEntity implements BaseEntity {
   @Id
   @OneToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "lecture_id")
-  private LectureEntity lectureEntity;
+  private LectureEntity lecture;
 
   @Column(name = "registered_number")
   private int registeredNumber;
@@ -41,7 +41,12 @@ public class RegistryLectureEntity implements BaseEntity {
   private LocalDate registerDate;
 
   @Override
-  public BaseDTO toDTO() {
-    return null;
+  public RegistryLectureDTO toDTO() {
+    return RegistryLectureDTO.builder()
+        .lecture(lecture.toDTO())
+        .registeredNumber(registeredNumber)
+        .maxRegistered(maxRegistered)
+        .registerDate(registerDate)
+        .build();
   }
 }

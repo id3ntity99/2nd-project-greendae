@@ -2,7 +2,7 @@ package com.greenuniv.greenuniv.dto.register;
 
 import com.greenuniv.greenuniv.dto.BaseDTO;
 import com.greenuniv.greenuniv.dto.lecture.LectureDTO;
-import com.greenuniv.greenuniv.entity.BaseEntity;
+import com.greenuniv.greenuniv.entity.registry.RegistryLectureEntity;
 import java.time.LocalDate;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -21,7 +21,12 @@ public class RegistryLectureDTO implements BaseDTO {
   private LocalDate registerDate;
 
   @Override
-  public BaseEntity toEntity() {
-    return null;
+  public RegistryLectureEntity toEntity() {
+    return RegistryLectureEntity.builder()
+        .lecture(lecture.toEntity())
+        .registeredNumber(registeredNumber)
+        .maxRegistered(maxRegistered)
+        .registerDate(registerDate)
+        .build();
   }
 }
