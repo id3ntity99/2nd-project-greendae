@@ -7,7 +7,9 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import java.time.LocalDate;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,12 +21,14 @@ import lombok.ToString;
 @Getter
 @Builder
 @ToString
+@Table(name = "registry_lecture")
 @AllArgsConstructor
 @NoArgsConstructor
 public class RegistryLectureEntity implements BaseEntity {
 
   @Id
   @OneToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "lecture_id")
   private LectureEntity lectureEntity;
 
   @Column(name = "registered_number")

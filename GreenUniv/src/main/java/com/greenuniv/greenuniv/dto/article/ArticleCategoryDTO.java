@@ -1,7 +1,6 @@
 package com.greenuniv.greenuniv.dto.article;
 
 import com.greenuniv.greenuniv.dto.BaseDTO;
-import com.greenuniv.greenuniv.entity.article.ArticleCategoryEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
