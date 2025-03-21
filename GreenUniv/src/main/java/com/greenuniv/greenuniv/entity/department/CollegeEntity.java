@@ -1,6 +1,6 @@
-package com.greenuniv.greenuniv.entity.image;
+package com.greenuniv.greenuniv.entity.department;
 
-import com.greenuniv.greenuniv.dto.image.ArticleImageDTO;
+import com.greenuniv.greenuniv.dto.department.CollegeDTO;
 import com.greenuniv.greenuniv.entity.BaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -16,26 +16,22 @@ import lombok.ToString;
 @Getter
 @Builder
 @ToString
-@Table(name = "article_image")
+@Table(name = "college")
 @AllArgsConstructor
 @NoArgsConstructor
-public class ArticleImageEntity implements BaseEntity {
+public class CollegeEntity implements BaseEntity {
 
   @Id
   private int id;
 
-  @Column(name = "location")
-  private String location;
-
-  @Column(name = "thumbnail_location")
-  private String thumbnailLocation;
+  @Column(name = "name")
+  private String name;
 
   @Override
-  public ArticleImageDTO toDTO() {
-    return ArticleImageDTO.builder()
+  public CollegeDTO toDTO() {
+    return CollegeDTO.builder()
         .id(id)
-        .location(location)
-        .thumbnailLocation(thumbnailLocation)
+        .name(name)
         .build();
   }
 }

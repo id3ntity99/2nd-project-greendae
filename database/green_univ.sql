@@ -15,12 +15,32 @@ CREATE SCHEMA IF NOT EXISTS `green_univ` DEFAULT CHARACTER SET utf8 ;
 USE `green_univ` ;
 
 -- -----------------------------------------------------
+-- Table `green_univ`.`image`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `green_univ`.`image` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `location` VARCHAR(255) NULL,
+  `thumbnail_location` VARCHAR(255) NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `green_univ`.`college`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `green_univ`.`college` (
   `id` INT NOT NULL,
-  `name` VARCHAR(20) NULL,
-  PRIMARY KEY (`id`))
+  `name` VARCHAR(20) NOT NULL,
+  `eng_name` VARCHAR(100) NULL,
+  `description` TEXT NOT NULL,
+  `image_id` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_college_image1_idx` (`image_id` ASC) VISIBLE,
+  CONSTRAINT `fk_college_image1`
+    FOREIGN KEY (`image_id`)
+    REFERENCES `green_univ`.`image` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
@@ -30,8 +50,11 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `green_univ`.`department` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `college_id` INT NOT NULL,
+  `est_year` YEAR NULL,
   `name` VARCHAR(20) NOT NULL,
+  `eng_name` VARCHAR(100) NULL,
   `contact` VARCHAR(14) NOT NULL,
+  `office` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_department_college1_idx` (`college_id` ASC) VISIBLE,
   CONSTRAINT `fk_department_college1`
@@ -49,9 +72,15 @@ CREATE TABLE IF NOT EXISTS `green_univ`.`user` (
   `id` VARCHAR(20) NOT NULL,
   `password` VARCHAR(255) NOT NULL,
   `name` VARCHAR(45) NOT NULL,
+  `eng_name` VARCHAR(50) NOT NULL,
+  `gender` ENUM("m", "f") NOT NULL,
+  `nationality` VARCHAR(20) NOT NULL,
   `social_number` VARCHAR(45) NOT NULL,
   `email` VARCHAR(45) NOT NULL,
-  `contact` VARCHAR(45) NULL,
+  `contact` VARCHAR(45) NOT NULL,
+  `zip` CHAR(5) NOT NULL,
+  `address` VARCHAR(255) NOT NULL,
+  `address_detail` VARCHAR(100) NOT NULL,
   `role` ENUM("professor", "student", "admin") NOT NULL,
   `agreed_terms` TINYINT NOT NULL DEFAULT 0,
   `register_date` DATETIME NOT NULL,
@@ -69,6 +98,13 @@ CREATE TABLE IF NOT EXISTS `green_univ`.`professor` (
   `id` CHAR(7) NOT NULL,
   `user_id` VARCHAR(20) NOT NULL,
   `department_id` INT NOT NULL,
+  `graduated_from` VARCHAR(100) NOT NULL,
+  `graduated_at` DATE NOT NULL,
+  `major` VARCHAR(50) NOT NULL,
+  `degree` ENUM("master", "phd") NOT NULL,
+  `employed_at` DATE NOT NULL,
+  `status` ENUM("in", "break", "out") NOT NULL,
+  `position` ENUM("full", "assoc", "asst") NOT NULL,
   `is_chief` TINYINT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   INDEX `fk_professor_department1_idx` (`department_id` ASC) VISIBLE,
@@ -120,17 +156,6 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `green_univ`.`image`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `green_univ`.`image` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `location` VARCHAR(255) NULL,
-  `thumbnail_location` VARCHAR(255) NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `green_univ`.`student`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `green_univ`.`student` (
@@ -140,13 +165,20 @@ CREATE TABLE IF NOT EXISTS `green_univ`.`student` (
   `image_id` INT NULL,
   `grade` TINYINT NOT NULL DEFAULT 1,
   `semester` TINYINT NOT NULL DEFAULT 1,
-  `graduation_credit` TINYINT NOT NULL,
-  `current_credit` VARCHAR(45) NOT NULL DEFAULT 0,
-  `status` ENUM("in", "grad", "break") NULL DEFAULT 'in',
+  `current_credit` INT NOT NULL DEFAULT 0,
+  `graduation_credit` INT NOT NULL,
+  `status` ENUM("in", "grad", "break", "expell") NOT NULL DEFAULT 'in',
+  `entrance_type` ENUM("regular", "rolling") NOT NULL,
+  `entrance_year` YEAR NOT NULL,
+  `entrance_grade` TINYINT NULL,
+  `entrance_semester` TINYINT NOT NULL,
+  `graduation_year` YEAR NULL,
+  `supvis_prof_id` CHAR(7) NOT NULL,
   PRIMARY KEY (`student_number`, `user_id`),
   INDEX `fk_student_department_idx` (`department_id` ASC) VISIBLE,
   INDEX `fk_student_user1_idx` (`user_id` ASC) VISIBLE,
   INDEX `fk_student_organization_image1_idx` (`image_id` ASC) VISIBLE,
+  INDEX `fk_student_professor1_idx` (`supvis_prof_id` ASC) VISIBLE,
   CONSTRAINT `fk_student_department`
     FOREIGN KEY (`department_id`)
     REFERENCES `green_univ`.`department` (`id`)
@@ -160,6 +192,11 @@ CREATE TABLE IF NOT EXISTS `green_univ`.`student` (
   CONSTRAINT `fk_student_organization_image1`
     FOREIGN KEY (`image_id`)
     REFERENCES `green_univ`.`image` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_student_professor1`
+    FOREIGN KEY (`supvis_prof_id`)
+    REFERENCES `green_univ`.`professor` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -182,6 +219,7 @@ CREATE TABLE IF NOT EXISTS `green_univ`.`lecture` (
   `classroom` VARCHAR(50) NULL,
   `start_date` DATE NULL,
   `end_date` DATE NULL,
+  `evaluation_methods` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_lecture_department1_idx` (`department_id` ASC) VISIBLE,
   INDEX `fk_lecture_professor1_idx` (`professor_id` ASC) VISIBLE,
@@ -221,6 +259,8 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `green_univ`.`registry` (
   `student_number` CHAR(8) NOT NULL,
   `registry_lecture_id` CHAR(6) NOT NULL,
+  `current_year` YEAR NOT NULL,
+  `register_date` DATE NOT NULL,
   PRIMARY KEY (`student_number`, `registry_lecture_id`),
   INDEX `fk_registry_student1_idx` (`student_number` ASC) VISIBLE,
   INDEX `fk_registry_registry_lecture1_idx` (`registry_lecture_id` ASC) VISIBLE,

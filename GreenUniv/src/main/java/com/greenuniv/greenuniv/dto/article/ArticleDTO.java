@@ -1,9 +1,9 @@
 package com.greenuniv.greenuniv.dto.article;
 
 import com.greenuniv.greenuniv.dto.BaseDTO;
-import com.greenuniv.greenuniv.dto.file.ArticleImageDTO;
 import com.greenuniv.greenuniv.dto.user.UserDTO;
 import com.greenuniv.greenuniv.entity.article.ArticleEntity;
+import java.time.LocalDate;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,18 +18,23 @@ public class ArticleDTO implements BaseDTO {
   private int id;
   private UserDTO user;
   private String title;
-  private ArticleCategoryDTO category;
-  private ArticleStatusDTO status;
+  private String category;
+  private String status;
   private String content;
   private int view;
-  private com.greenuniv.greenuniv.dto.image.ArticleImageDTO image;
-  private ArticleImageDTO file;
-  private String registerDate;
+  private LocalDate registerDate;
 
   @Override
   public ArticleEntity toEntity() {
     return ArticleEntity.builder()
-
+        .id(id)
+        .user(user.toEntity())
+        .title(title)
+        .category(category)
+        .status(status)
+        .content(content)
+        .view(view)
+        .registerDate(registerDate)
         .build();
   }
 }
