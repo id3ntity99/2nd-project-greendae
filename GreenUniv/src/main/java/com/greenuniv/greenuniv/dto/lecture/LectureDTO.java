@@ -29,6 +29,7 @@ public class LectureDTO implements BaseDTO {
   private String classroom;
   private LocalDate startDate;
   private LocalDate endDate;
+  private String evaluationMethods;
 
   @Override
   public LectureEntity toEntity() {
@@ -46,6 +47,7 @@ public class LectureDTO implements BaseDTO {
         .classroom(classroom)
         .startDate(startDate)
         .endDate(endDate)
+        .evaluationMethods(evaluationMethods)
         .build();
   }
 }

@@ -68,6 +68,8 @@ public class LectureEntity implements BaseEntity {
   @Column(name = "end_date")
   private LocalDate endDate;
 
+  @Column(name = "evaluation_methods")
+  private String evaluationMethods;
 
   @Override
   public LectureDTO toDTO() {
@@ -85,6 +87,7 @@ public class LectureEntity implements BaseEntity {
         .classroom(classroom)
         .startDate(startDate)
         .endDate(endDate)
+        .evaluationMethods(evaluationMethods)
         .build();
   }
 }
