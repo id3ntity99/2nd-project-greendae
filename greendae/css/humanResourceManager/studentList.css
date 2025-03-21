@@ -138,7 +138,7 @@ main > div > aside p{
 main > div > aside a{
     font-size: 13px;
     font-weight: 350;
-    line-height: 200%;
+    line-height: 170%;
     margin-left: 10px;
 }
 
@@ -343,7 +343,7 @@ main > div > aside a{
   
   #search-area {
     float: right;
-    margin: 35px 0px;
+    margin: 10px 0px;
   }
   
   #search-area > .search-input {
@@ -413,6 +413,8 @@ main > div > aside a{
     width: 20px;
     height: 20px;
   }
+
+  
 
 
 
