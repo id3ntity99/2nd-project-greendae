@@ -14,6 +14,7 @@ import lombok.NoArgsConstructor;
 public class DepartmentDTO implements BaseDTO {
 
   private int id;
+  private CollegeDTO college;
   private String name;
   private String contact;
 
@@ -21,6 +22,7 @@ public class DepartmentDTO implements BaseDTO {
   public DepartmentEntity toEntity() {
     return DepartmentEntity.builder()
         .id(id)
+        .college(college.toEntity())
         .name(name)
         .contact(contact)
         .build();

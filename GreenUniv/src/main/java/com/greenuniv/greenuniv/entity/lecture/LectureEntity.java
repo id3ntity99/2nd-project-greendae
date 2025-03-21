@@ -10,6 +10,8 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import java.time.LocalDate;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -20,6 +22,7 @@ import lombok.ToString;
 @Getter
 @Builder
 @ToString
+@Table(name = "lecture")
 @AllArgsConstructor
 @NoArgsConstructor
 public class LectureEntity implements BaseEntity {
@@ -50,6 +53,22 @@ public class LectureEntity implements BaseEntity {
   @Column(name = "semester")
   private int semester;
 
+  @Column(name = "description")
+  private String description;
+
+  @Column(name = "textbook")
+  private String textbook;
+
+  @Column(name = "classroom")
+  private String classroom;
+
+  @Column(name = "start_date")
+  private LocalDate startDate;
+
+  @Column(name = "end_date")
+  private LocalDate endDate;
+
+
   @Override
   public LectureDTO toDTO() {
     return LectureDTO.builder()
@@ -61,6 +80,11 @@ public class LectureEntity implements BaseEntity {
         .name(name)
         .credit(credit)
         .semester(semester)
+        .description(description)
+        .textbook(textbook)
+        .classroom(classroom)
+        .startDate(startDate)
+        .endDate(endDate)
         .build();
   }
 }
