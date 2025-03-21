@@ -85,7 +85,7 @@
                       <td>학과 코드 + 연도 + 학기 + 순번 조합 자동생성</td>
                       <td>개설학과</td>
                       <td>
-                        <select name="" id="">
+                        <select>
                           <option value="">인문사회대학</option>
                         </select>
                         <select name="" id="">
@@ -108,43 +108,69 @@
                       </td>
                     </tr>
                     <tr>
-                      <td>강의명</td>
+                      <td>이수구분</td>
+                      <td>
+                        <select name="" id="">
+                          <option value="전공 선택">전공선택</option>
+                        </select>
+                      </td>
+                      <td>담당교수</td>
                       <td>
                         <input type="text">
                       </td>
                     </tr>
                     <tr>
+                      <td>강의명</td>
+                      <td colspan="3">
+                        <input type="text" placeholder="강좌명 입력">
+                      </td>
+                    </tr>
+                    <tr>
                       <td>강의 설명</td>
-                      <td>
-                        <input type="text">
+                      <td colspan="3">
+                        <input type="text" placeholder="강의 개요 및 목표, 학습 내용 등">
                       </td>
                     </tr>
                   </table>
               </div>
               <div>
                 <p><img src="/images/bullet-h4.png" alt="#"> 대학 운영 현황</p>
-                <table border="1">                        
+                <table class="University_operation_status">                        
                   <tr>
                     <td>수업 기간</td>
-                    <td>
-                      <input type="text">
+                    <td colspan="3">
+                      <input type="date">
+                      <span> ~ </span>
+                      <input type="date">
                     </td>
                   </tr>
                   <tr>
                     <td>수업 시간</td>
-                    <td>
-                      <input type="text">
+                    <td colspan="3">
+                      <input type="time">
+                      <span> ~ </span>
+                      <input type="time">
+                      <input type="checkbox" id="week">
+                      <span>월</span>
+                      <input type="checkbox" id="week">
+                      <span>화</span>
+                      <input type="checkbox" id="week">
+                      <span>수</span>
+                      <input type="checkbox" id="week">
+                      <span>목</span>
+                      <input type="checkbox" id="week">
+                      <span>금</span>
                     </td>
                   </tr>
                   <tr>
                     <td>평가방식</td>
-                    <td>
+                    <td colspan="3">
                       <input type="text" placeholder="출석 10%, 과제 30%, 시험 60%">
                     </td>
                   </tr>
                   <tr>
                     <td>교재</td>
-                    <td>
+                    <td colspan="3">
                       <input type="text" placeholder="출판사-도서명-저자 입력">
                     </td>
                   </tr>
@@ -159,12 +185,12 @@
                     </td>
                   </tr>
                 </table>
-                <button>등록</button>
+                <button class="btn_register">등록</button>
               </div>
             </section>
         </div>
     </main>
-    <footer class="footer">
+    <footer class="footer" curse>
         <div>
             <p>Copyrightⓒ Green University All rights reserved. ADMINISTRATOR Version 1.4.1</p>
         </div>
