@@ -1,8 +1,7 @@
-package com.greenuniv.greenuniv.dto.file;
+package com.greenuniv.greenuniv.dto.faq;
 
 import com.greenuniv.greenuniv.dto.BaseDTO;
-import com.greenuniv.greenuniv.dto.article.ArticleDTO;
-import com.greenuniv.greenuniv.entity.file.FileEntity;
+import com.greenuniv.greenuniv.entity.faq.FaqEntity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import lombok.AllArgsConstructor;
@@ -12,21 +11,23 @@ import lombok.NoArgsConstructor;
 
 @Data
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
-public class FileDTO implements BaseDTO {
+@NoArgsConstructor
+public class FaqDTO implements BaseDTO {
 
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
-  private ArticleDTO article;
-  private String location;
+  private String category;
+  private String question;
+  private String answer;
 
   @Override
-  public FileEntity toEntity() {
-    return FileEntity.builder()
+  public FaqEntity toEntity() {
+    return FaqEntity.builder()
         .id(id)
-        .article(article.toEntity())
-        .location(location)
+        .category(category)
+        .question(question)
+        .answer(answer)
         .build();
   }
 }

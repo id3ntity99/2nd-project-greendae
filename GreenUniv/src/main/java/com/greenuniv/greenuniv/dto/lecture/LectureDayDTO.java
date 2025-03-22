@@ -10,6 +10,8 @@ package com.greenuniv.greenuniv.dto.lecture;
 
 import com.greenuniv.greenuniv.dto.BaseDTO;
 import com.greenuniv.greenuniv.entity.lecture.LectureDayEntity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import java.util.Arrays;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -29,6 +31,7 @@ public class LectureDayDTO implements BaseDTO {
   public static final String FRIDAY = "fri";
   public static final String[] WEEK_DAYS = {MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY};
 
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
   private LectureDTO lecture;
   private String day;

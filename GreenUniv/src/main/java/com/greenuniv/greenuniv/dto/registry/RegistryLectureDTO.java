@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 
 @Data
 @Builder
@@ -18,6 +19,7 @@ public class RegistryLectureDTO implements BaseDTO {
   private LectureDTO lecture;
   private int registeredNumber;
   private int maxRegistered;
+  @CreationTimestamp
   private LocalDate registerDate;
 
   @Override

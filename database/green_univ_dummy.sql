@@ -60,6 +60,7 @@ INSERT INTO `user` VALUES
 ("hgd123", SHA2("abc@123", 256), "홍길동","Hong Gil Dong", "m", "대한민국", "010203-9875643", "hgd123@example.com", "010-2222-1234", "12345", "부산광역시 남구", "행복아파트 101동 501호", "student", 1, NOW(), NULL),
 ("kyh123", SHA2("abc@123", 256), "김영희","Hong Gil Dong", "m", "대한민국", "010203-9875642", "kyh123@example.com", "010-2222-1233", "12345", "부산광역시 남구", "행복아파트 101동 501호", "student", 1, NOW(), NULL),
 ("kmj123", SHA2("abc@123", 256), "김민지","Hong Gil Dong", "m", "대한민국", "010203-9875641", "kmj123@example.com", "010-2222-1232", "12345", "부산광역시 남구", "행복아파트 101동 501호", "student", 1, NOW(), NULL);
+INSERT INTO `user` VALUES ("hs1202", SHA2("abc@123", 256), "한선" , "Han Seon", "f", "대한민국", "051202-1234567",  "hs1202@example.com", "010-8434-5604", "12345", "부산광역시 남구", "행복아파트 1010동 1002호", "student", 1, NOW(), NULL);
 
 INSERT INTO `club` SET `name`="배드민턴 중앙동아리", `content`="배트민턴 중앙동아리를 소개합니다!";
 INSERT INTO `club` (`name`, `content`, `url`) VALUES 

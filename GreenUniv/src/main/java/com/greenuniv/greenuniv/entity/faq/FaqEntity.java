@@ -1,6 +1,6 @@
-package com.greenuniv.greenuniv.entity.image;
+package com.greenuniv.greenuniv.entity.faq;
 
-import com.greenuniv.greenuniv.dto.image.ImageDTO;
+import com.greenuniv.greenuniv.dto.faq.FaqDTO;
 import com.greenuniv.greenuniv.entity.BaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -18,27 +18,31 @@ import lombok.ToString;
 @Getter
 @Builder
 @ToString
-@Table(name = "image")
+@Table(name = "faq")
 @AllArgsConstructor
 @NoArgsConstructor
-public class ImageEntity implements BaseEntity {
+public class FaqEntity implements BaseEntity {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
 
-  @Column(name = "location")
-  private String location;
+  @Column(name = "category")
+  private String category;
 
-  @Column(name = "thumbnail_location")
-  private String thumbnailLocation;
+  @Column(name = "question")
+  private String question;
+
+  @Column(name = "answer")
+  private String answer;
 
   @Override
-  public ImageDTO toDTO() {
-    return ImageDTO.builder()
+  public FaqDTO toDTO() {
+    return FaqDTO.builder()
         .id(id)
-        .location(location)
-        .thumbnailLocation(thumbnailLocation)
+        .category(category)
+        .question(question)
+        .answer(answer)
         .build();
   }
 }

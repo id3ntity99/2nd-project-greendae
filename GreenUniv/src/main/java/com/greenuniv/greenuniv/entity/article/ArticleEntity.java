@@ -11,6 +11,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import java.time.LocalDate;
+import java.util.Arrays;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -57,6 +58,7 @@ public class ArticleEntity implements BaseEntity {
   public ArticleDTO toDTO() {
     return ArticleDTO.builder()
         .id(id)
+        .user(user.toDTO())
         .title(title)
         .category(category)
         .status(status)
@@ -65,4 +67,26 @@ public class ArticleEntity implements BaseEntity {
         .registerDate(registerDate)
         .build();
   }
+
+  public static class ArticleEntityBuilder {
+
+    public ArticleEntity build() throws IllegalArgumentException {
+      boolean isCategoryLegal = Arrays.asList(ArticleDTO.CATEGORIES).contains(category);
+      boolean isStatusLegal = Arrays.asList(ArticleDTO.STATUS).contains(status);
+
+      if (!isCategoryLegal) {
+        String message = String.format("유효하지 않은 카테고리([%s]): %s",
+            Arrays.toString(ArticleDTO.CATEGORIES),
+            category);
+        throw new IllegalArgumentException(message);
+      } else if (!isStatusLegal) {
+        String message = String.format("유효하지 않은 게시물 상태([%s]): %s",
+            Arrays.toString(ArticleDTO.STATUS), status);
+        throw new IllegalArgumentException(message);
+      }
+
+      return new ArticleEntity(id, user, title, category, status, content, view, registerDate);
+    }
+  }
+
 }
