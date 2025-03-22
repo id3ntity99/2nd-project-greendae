@@ -210,7 +210,7 @@ CREATE TABLE IF NOT EXISTS `green_univ`.`lecture` (
   `department_id` INT NOT NULL,
   `professor_id` CHAR(7) NOT NULL,
   `level` TINYINT NOT NULL,
-  `classification` ENUM("전공", "선택교양") NOT NULL,
+  `classification` ENUM("major", "selective") NOT NULL,
   `name` VARCHAR(50) NOT NULL,
   `credit` TINYINT NOT NULL,
   `semester` TINYINT NOT NULL,
