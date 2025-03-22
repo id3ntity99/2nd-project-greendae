@@ -86,7 +86,7 @@ public class ProfessorEntity implements BaseEntity {
 
     public ProfessorEntity build() throws IllegalArgumentException {
       boolean isDegreeLegal = Arrays.asList(ProfessorDTO.DEGREES).contains(degree);
-      boolean isStatusLegal = Arrays.asList(ProfessorDTO.STATUS).contains(status);
+      boolean isStatusLegal = Arrays.asList(ProfessorDTO.STATUSES).contains(status);
       boolean isPositionLegal = Arrays.asList(ProfessorDTO.POSITIONS).contains(position);
 
       if (!isDegreeLegal) {
