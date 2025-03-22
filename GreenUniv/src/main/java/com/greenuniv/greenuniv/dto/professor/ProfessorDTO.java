@@ -59,14 +59,23 @@ public class ProfessorDTO implements BaseDTO {
       return Arrays.asList(matcher).contains(input);
     }
 
-    public ProfessorDTO build() {
+    public ProfessorDTO build() throws IllegalArgumentException {
       boolean isDegreeLegal = isLegal(DEGREES, degree);
       boolean isStatusLegal = isLegal(STATUSES, status);
       boolean isPositionLegal = isLegal(POSITIONS, position);
 
-      if (!isDegreeLegal && !isStatusLegal && !isPositionLegal) {
-        throw new IllegalArgumentException("");
-        //TODO: Currently working position. Use If-else to properly raise exception.
+      if (!isDegreeLegal) {
+        String message = String.format("유효하지 않은 교수 학위([%s]): %s", Arrays.toString(DEGREES),
+            degree);
+        throw new IllegalArgumentException(message);
+      } else if (!isStatusLegal) {
+        String message = String.format("유효하지 않은 교수 상태([%s]): %s", Arrays.toString(STATUSES),
+            status);
+        throw new IllegalArgumentException(message);
+      } else if (isPositionLegal) {
+        String message = String.format("유효하지 않은 교수 직위([%s]): %s", Arrays.toString(POSITIONS),
+            position);
+        throw new IllegalArgumentException(message);
       }
 
       return new ProfessorDTO(id, user, department, graduatedFrom, graduatedAt, major, degree,
