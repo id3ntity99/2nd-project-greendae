@@ -4,6 +4,8 @@ import com.greenuniv.greenuniv.dto.BaseDTO;
 import com.greenuniv.greenuniv.dto.article.ArticleDTO;
 import com.greenuniv.greenuniv.dto.user.UserDTO;
 import com.greenuniv.greenuniv.entity.comment.CommentEntity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,6 +17,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class CommentDTO implements BaseDTO {
 
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
   private UserDTO user;
   private ArticleDTO article;

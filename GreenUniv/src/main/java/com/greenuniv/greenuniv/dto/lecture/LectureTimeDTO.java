@@ -25,6 +25,11 @@ public class LectureTimeDTO implements BaseDTO {
 
   @Override
   public LectureTimeEntity toEntity() {
-    return null;
+    return LectureTimeEntity.builder()
+        .id(id)
+        .lecture(lecture.toEntity())
+        .startAt(startAt)
+        .endAt(endAt)
+        .build();
   }
 }

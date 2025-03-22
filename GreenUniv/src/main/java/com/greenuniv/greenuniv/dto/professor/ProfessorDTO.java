@@ -49,6 +49,13 @@ public class ProfessorDTO implements BaseDTO {
         .id(id)
         .user(user.toEntity())
         .department(department.toEntity())
+        .graduatedFrom(graduatedFrom)
+        .graduatedAt(graduatedAt)
+        .major(major)
+        .degree(degree)
+        .employedAt(employedAt)
+        .status(status)
+        .position(position)
         .isChief(isChief)
         .build();
   }

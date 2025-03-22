@@ -35,6 +35,7 @@ public class RegistryEntity implements BaseEntity {
   private StudentEntity student;
 
   @OneToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "registry_lecture_id")
   private RegistryLectureEntity registryLecture;
 
   @Column(name = "current_year")

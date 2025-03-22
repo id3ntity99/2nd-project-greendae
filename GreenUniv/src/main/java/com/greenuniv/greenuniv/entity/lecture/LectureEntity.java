@@ -12,6 +12,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import java.time.LocalDate;
+import java.util.Arrays;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -89,5 +90,20 @@ public class LectureEntity implements BaseEntity {
         .endDate(endDate)
         .evaluationMethods(evaluationMethods)
         .build();
+  }
+
+  public static class LectureEntityBuilder {
+
+    public LectureEntity build() throws IllegalArgumentException {
+      boolean isClassLegal = Arrays.asList(LectureDTO.CLASSES).contains(classification);
+      if (!isClassLegal) {
+        String message = String.format("유효하지 않은 강의 분류([%s]): %s",
+            Arrays.toString(LectureDTO.CLASSES),
+            classification);
+        throw new IllegalArgumentException(message);
+      }
+      return new LectureEntity(id, department, professor, level, classification, name, credit,
+          semester, description, textbook, classroom, startDate, endDate, evaluationMethods);
+    }
   }
 }
