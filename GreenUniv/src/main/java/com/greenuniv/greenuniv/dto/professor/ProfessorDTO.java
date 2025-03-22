@@ -22,9 +22,9 @@ public class ProfessorDTO implements BaseDTO {
   public static final String[] DEGREES = {DEGREE_MASTER, DEGREE_PHD};
 
   public static final String STATUS_IN = "in";
-  public static final String STATUS_BREAK = "break";
   public static final String STATUS_OUT = "out";
-  public static final String[] STATUS = {STATUS_IN, STATUS_BREAK, STATUS_OUT};
+  public static final String STATUS_BREAK = "break";
+  public static final String[] STATUSES = {STATUS_IN, STATUS_OUT, STATUS_BREAK};
 
   public static final String POSITION_FULL = "full";
   public static final String POSITION_ASSOCIATE = "assoc";
@@ -55,21 +55,22 @@ public class ProfessorDTO implements BaseDTO {
 
   public static class ProfessorDTOBuilder {
 
-    public ProfessorDTO build() throws IllegalArgumentException {
-      boolean isDegreeLegal = Arrays.asList(DEGREES).contains(degree);
-      boolean isStatusLegal = Arrays.asList(STATUS).contains(status);
-      boolean isPositionLegal = Arrays.asList(POSITIONS).contains(position);
+    private boolean isLegal(String[] matcher, String input) {
+      return Arrays.asList(matcher).contains(input);
+    }
 
-      if (!isDegreeLegal) {
-        throw new IllegalArgumentException("유효하지 않은 교수 학위: " + degree);
-      } else if (!isStatusLegal) {
-        throw new IllegalArgumentException("유효하지 않은 교수 상태 : " + status);
-      } else if (!isPositionLegal) {
-        throw new IllegalArgumentException("유효하지 않은 교수 직위: " + position);
+    public ProfessorDTO build() {
+      boolean isDegreeLegal = isLegal(DEGREES, degree);
+      boolean isStatusLegal = isLegal(STATUSES, status);
+      boolean isPositionLegal = isLegal(POSITIONS, position);
+
+      if (!isDegreeLegal && !isStatusLegal && !isPositionLegal) {
+        throw new IllegalArgumentException("");
+        //TODO: Currently working position. Use If-else to properly raise exception.
       }
 
-      return new ProfessorDTO(id, user, department, graduatedFrom, graduatedAt, major,
-          degree, employedAt, status, position, isChief);
+      return new ProfessorDTO(id, user, department, graduatedFrom, graduatedAt, major, degree,
+          employedAt, status, position, isChief);
     }
   }
 }
