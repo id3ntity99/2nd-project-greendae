@@ -4,7 +4,35 @@
     <meta charset="UTF-8">
     <title>main</title>
     <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/common/header.css" />
+    <link rel="stylesheet" href="/css/common/footer.css" />
+    <script src="https://kit.fontawesome.com/516da99189.js" crossorigin="anonymous"></script>
 </head>
+<script>
+    const prev = document.querySelector('.prev');
+    const next = document.querySelector('.next');
+    const slideBox = document.querySelector('.slide_box')
+    const slide = document.querySelectorAll('.slide_item img')
+    const slideLangth = slide.length
+    let currentIndex = 0;
+
+    const moveSlide = function(num){
+        slideBox.style.transform = `translateX(${-num * 400}px)`;
+        currentIndex = num;
+    }
+
+    prev.addEventListener('click', ()=>{
+        if(currentIndex !== 0){
+            moveSlide(currentIndex -1)
+        }
+    })
+
+    next.addEventListener('click', ()=>{
+        if(currentIndex !== slideLangth -1){
+            moveSlide(currentIndex +1)
+        }
+    })
+</script>
 
 <body>
     <header>
@@ -26,12 +54,69 @@
                 <div class="header_Bottom_container">
                     <a href="#" class="header_logo"></a>
                     <div class="header_Bottom_Menu">
-                        <a href="#">대학소개</a>
-                        <a href="#">입학안내</a>
-                        <a href="#">대학·대학원</a>
-                        <a href="#">학사안내</a>
-                        <a href="#">대학생활</a>
-                        <a href="#">커뮤니티</a>
+                        <ul>
+                            <li>
+                                <a href="#">대학소개</a>
+                                <ul class="submenu">
+                                    <li><a href="#">총장 인사말</a></li>
+                                    <li><a href="#">교육이념</a></li>
+                                    <li><a href="#">총장 연혁</a></li>
+                                    <li><a href="#">조직도</a></li>
+                                    <li><a href="#">오시는길</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">입학안내</a>
+                                <ul class="submenu">
+                                    <li><a href="#">공지사항</a></li>
+                                    <li><a href="#">수시모집</a></li>
+                                    <li><a href="#">정시모집</a></li>
+                                    <li><a href="#">편입학</a></li>
+                                    <li><a href="#">입락상담</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">대학·대학원</a>
+                                <ul class="submenu">
+                                    <li><a href="#">인문사회대학</a></li>
+                                    <li><a href="#">자연과학대학</a></li>
+                                    <li><a href="#">공과대학</a></li>
+                                    <li><a href="#">사범대학</a></li>
+                                    <li><a href="#">대학원</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">학사안내</a>
+                                <ul class="submenu">
+                                    <li><a href="#">공지사항</a></li>
+                                    <li><a href="#">학사일정</a></li>
+                                    <li><a href="#">수강신청</a></li>
+                                    <li><a href="#">성적</a></li>
+                                    <li><a href="#">수료 및 졸업</a></li>
+                                    <li><a href="#">자주묻는질문</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">대학생활</a>
+                                <ul class="submenu">
+                                    <li><a href="#">학생회소개</a></li>
+                                    <li><a href="#">동아리/스터디</a></li>
+                                    <li><a href="#">식단안내</a></li>
+                                    <li><a href="#">갤러리</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">커뮤니티</a>
+                                <ul class="submenu">
+                                    <li><a href="#">공지사항</a></li>
+                                    <li><a href="#">뉴스 및 칼럼</a></li>
+                                    <li><a href="#">취업정보</a></li>
+                                    <li><a href="#">자유게시판</a></li>
+                                    <li><a href="#">질문과 답변</a></li>
+                                    <li><a href="#">자료실</a></li>
+                                </ul>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -52,8 +137,7 @@
                     <div></div>
                 </div>
             </div>
-        </div>
-        
+        </div> 
         <div class="main_article">
             <div class="Academic_Information">
                 <div>
