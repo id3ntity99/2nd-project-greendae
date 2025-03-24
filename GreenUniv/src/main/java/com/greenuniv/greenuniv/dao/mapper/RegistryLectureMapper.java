@@ -1,10 +1,12 @@
 package com.greenuniv.greenuniv.dao.mapper;
 
-import com.greenuniv.greenuniv.entity.BaseEntity;
+import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
-public interface GenericMapper<T extends BaseEntity, K> {
+public interface RegistryMapper {
 
   T select(K id);
+
+  List<T> selectAll();
 }
