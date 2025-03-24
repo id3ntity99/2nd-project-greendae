@@ -72,16 +72,16 @@ CREATE TABLE IF NOT EXISTS `green_univ`.`user` (
   `id` VARCHAR(20) NOT NULL,
   `password` VARCHAR(255) NOT NULL,
   `name` VARCHAR(45) NOT NULL,
-  `eng_name` VARCHAR(50) NOT NULL,
+  `eng_name` VARCHAR(50) NULL,
   `gender` ENUM("m", "f") NOT NULL,
-  `nationality` VARCHAR(20) NOT NULL,
+  `nationality` VARCHAR(20) NULL,
   `social_number` VARCHAR(45) NOT NULL,
   `email` VARCHAR(45) NOT NULL,
   `contact` VARCHAR(45) NOT NULL,
   `zip` CHAR(5) NOT NULL,
   `address` VARCHAR(255) NOT NULL,
   `address_detail` VARCHAR(100) NOT NULL,
-  `role` ENUM("professor", "student", "admin") NOT NULL,
+  `role` ENUM("professor", "student", "admin", "general") NOT NULL,
   `agreed_terms` TINYINT NOT NULL DEFAULT 0,
   `register_date` DATETIME NOT NULL,
   `leave_date` DATETIME NULL,
@@ -210,7 +210,7 @@ CREATE TABLE IF NOT EXISTS `green_univ`.`lecture` (
   `department_id` INT NOT NULL,
   `professor_id` CHAR(7) NOT NULL,
   `level` TINYINT NOT NULL,
-  `classification` ENUM("major", "selective") NOT NULL,
+  `classification` ENUM("major", "selective", "liberal") NOT NULL,
   `name` VARCHAR(50) NOT NULL,
   `credit` TINYINT NOT NULL,
   `semester` TINYINT NOT NULL,
@@ -240,11 +240,12 @@ ENGINE = InnoDB;
 -- Table `green_univ`.`registry_lecture`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `green_univ`.`registry_lecture` (
+  `id` INT NOT NULL AUTO_INCREMENT,
   `lecture_id` CHAR(6) NOT NULL,
   `registered_number` TINYINT NOT NULL DEFAULT 0,
   `max_registered` TINYINT NOT NULL,
   `register_date` DATE NULL,
-  PRIMARY KEY (`lecture_id`),
+  PRIMARY KEY (`id`),
   CONSTRAINT `fk_registry_lecture_lecture1`
     FOREIGN KEY (`lecture_id`)
     REFERENCES `green_univ`.`lecture` (`id`)

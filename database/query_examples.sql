@@ -82,15 +82,15 @@ LEFT JOIN `image`
 ON (`st`.image_id IS NOT NULL AND `st`.image_id= `image`.id)
 WHERE student_number = "20250003";
 
--- 학생정보(학적) > 취득학점현황(미완성)
-SELECT 
-COUNT(case when `lec`.classification = "전공" then `lec`.classification END) AS `major_count`,
-COUNT(case when `lec`.classification = "선택교양" then `lec`.classification END) AS `selective_count`,
-FROM `student` AS `st`
-JOIN `registry` AS `reg`
-ON `st`.student_number = `reg`.student_number
+-- 학생정보(학적) > 취득학점현황
+-- 전공 취득학점
+SELECT
+*
+FROM `registry` AS reg
+JOIN `student` AS `std`
+ON `reg`.student_number = `std`.student_number
 JOIN `registry_lecture` AS `reg_lec`
-ON reg.registry_lecture_id = reg_lec.lecture_id
+ON `reg`.registry_lecture_id = `reg_lec`.lecture_id
 JOIN `lecture` AS `lec`
-ON reg_lec.lecture_id = lec.id
-WHERE user_id = "hgd123";
+ON `reg_lec`.lecture_id = `lec`.id
+WHERE `std`.student_number = "20250001";
