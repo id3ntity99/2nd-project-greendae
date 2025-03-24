@@ -156,3 +156,7 @@ a {
   display: block;
   
 }
+
+.submenu a{
+  text-align: inherit;
+}
