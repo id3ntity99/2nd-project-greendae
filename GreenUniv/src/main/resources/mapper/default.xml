@@ -2,20 +2,42 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.greenuniv.greenuniv.dao.mapper.GenericMapper">
+<mapper namespace="com.greenuniv.greenuniv.dao.mapper.RegistryLectureMapper">
+  <resultMap id="registryLecture"
+    type="com.greenuniv.greenuniv.dto.registry.RegistryLectureDTO" autoMapping="true">
+    <id column="id"/>
+    <result property="registeredNumber" column="registered_number"/>
+    <result property="maxRegistered" column="max_registered"/>
+    <result property="regsterDate" column="register_date"/>
+    <association property="lecture" javaType="com.greenuniv.greenuniv.dto.lecture.LectureDTO">
+      <result property="level" column="lecture_level"/>
+      <result property="classification" column="lecture_classification"/>
+      <result property="name" column="lecture_name"/>
+      <result property="credit" column="lecture_credit"/>
+      <collection property="department"
+        ofType="com.greenuniv.greenuniv.dto.department.DepartmentDTO">
+        <result property="name" column="department_name"/>
+      </collection>
+      <collection property="professor" ofType="com.greenuniv.greenuniv.dto.professor.ProfessorDTO">
+        <association property="user" column="user_id">
+          <result property="name" column="user_name"/>
+        </association>
+      </collection>
+    </association>
+  </resultMap>
 
-  <!--수강신청 과목 조회-->
-  <select id="select" resultType="hashmap">
+  <!--수강신청 과목 전체 조회-->
+  <select id="selectAllRegistryLectures" resultMap="registryLecture">
     SELECT
-    `dept`.`name` AS `개설학과`,
-    `lec`.`classification` AS `구분`,
-    `lec`.`level` AS `학년`,
-    `lec`.id AS `코드`,
-    `lec`.`name` AS `과목명`,
-    `lec`.credit AS `학점`,
-    `user`.`name` AS `담당교수`,
-    `reg_lec`.registered_number AS `현재 수강신청 인원수`,
-    `reg_lec`.max_registered AS `최대 수강신청 인원수`
+    `dept`.`name` AS `department_name`,
+    `lec`.`classification` AS `lecture_classification`,
+    `lec`.`level` AS `lecture_level`,
+    `lec`.id AS `lecture_id`,
+    `lec`.`name` AS `lecture_name`,
+    `lec`.credit AS `lecture_credit`,
+    `user`.`name` AS `user_name`,
+    `reg_lec`.registered_number AS `registered_number`,
+    `reg_lec`.max_registered AS `max_registered`
     FROM `registry_lecture` AS `reg_lec`
     JOIN `lecture` AS `lec`
     ON `reg_lec`.`lecture_id` = `lec`.`id`
@@ -26,5 +48,4 @@
     JOIN `user`
     ON `user`.id = `prof`.user_id;
   </select>
-
 </mapper>
