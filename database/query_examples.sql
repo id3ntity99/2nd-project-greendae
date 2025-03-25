@@ -83,24 +83,26 @@ WHERE student_number = "20250001";
 
 -- 학생정보 (학적) > 기본정보 조회
 -- CASE 문을 사용하지 않음. `student`.`status`의 값을 [재학중, 졸업, 휴학]에 매핑하는 로직은 스프링에서 수행
-SELECT 
-image.location AS `프로필 사진 경로`,
-st.student_number AS `학번`,
-`dept`.`name` AS `학과`,
-`user`.`name` AS `이름`,
-`user`.social_number AS `주민번호`,
-`user`.contact AS `연락처`,
-`user`.email AS `이메일`,
-`st`.grade AS `학년`,
-`st`.semester AS `학기`,
-`st`.`status` AS `상태`
+SELECT
+`img`.location AS `image_location`,
+st.student_number AS `student_number`,
+`dept`.`name` AS `department_name`,
+`user`.`name` AS `user_name`,
+`user`.social_number AS `social_number`,
+`user`.contact AS `user_contact`,
+`user`.email AS `user_email`,
+`st`.grade AS `student_grade`,
+`st`.semester AS `student_semester`,
+`st`.current_credit AS `current_credit`,
+`st`.graduation_credit AS `graduation_credit`,
+`st`.`status` as `student_status`
 FROM `student` AS `st`
 JOIN `user`
 ON `st`.user_id = `user`.id
 JOIN `department` AS `dept`
 ON `st`.department_id = dept.id
-LEFT JOIN `image`
-ON (`st`.image_id IS NOT NULL AND `st`.image_id= `image`.id)
+LEFT JOIN `image` AS `img`
+ON (`st`.image_id IS NOT NULL AND `st`.image_id = `img`.id)
 WHERE student_number = "20250003";
 
 -- 학생정보(학적) > 취득학점현황
