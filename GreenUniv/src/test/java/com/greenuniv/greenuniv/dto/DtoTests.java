@@ -6,9 +6,7 @@ package com.greenuniv.greenuniv.dto;
  */
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import com.greenuniv.greenuniv.dto.lecture.LectureDTO;
 import com.greenuniv.greenuniv.dto.lecture.LectureDayDTO;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -22,11 +20,9 @@ class DtoTests {
     LectureDayDTO dto = LectureDayDTO.builder()
         .id(1)
         .day(LectureDayDTO.MONDAY)
-        .lecture(new LectureDTO())
         .build();
     assertEquals(1, dto.getId());
     assertEquals(LectureDayDTO.MONDAY, dto.getDay());
-    assertNotNull(dto.getLecture());
   }
 
   @Test
@@ -35,7 +31,6 @@ class DtoTests {
       LectureDayDTO.builder()
           .id(1)
           .day("sunday")
-          .lecture(new LectureDTO())
           .build();
     });
   }
