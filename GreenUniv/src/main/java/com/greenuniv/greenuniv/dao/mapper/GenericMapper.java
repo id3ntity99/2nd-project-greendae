@@ -20,7 +20,9 @@ public interface GenericMapper<T extends BaseDTO, K> {
 
   List<T> selectAll();
 
-  void update(T t);
+  void updateById(K id, T t);
 
   void deleteById(K id);
+
+  void updateColumn(String columnName, Object value, K id);
 }
