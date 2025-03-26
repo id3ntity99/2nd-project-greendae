@@ -3,7 +3,7 @@ package com.greenuniv.greenuniv.dto.lecture;
 import com.greenuniv.greenuniv.dto.BaseDTO;
 import com.greenuniv.greenuniv.dto.department.DepartmentDTO;
 import com.greenuniv.greenuniv.dto.professor.ProfessorDTO;
-import com.greenuniv.greenuniv.entity.lecture.LectureEntity;
+import com.greenuniv.greenuniv.entity.lecture.LectureInfoEntity;
 import java.time.LocalDate;
 import java.util.Arrays;
 import lombok.AllArgsConstructor;
@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class LectureDTO implements BaseDTO {
+public class LectureInfoDTO implements BaseDTO {
 
   public static final String CLASS_MAJOR = "major";
   public static final String CLASS_SELECTIVE = "selective";
@@ -37,8 +37,8 @@ public class LectureDTO implements BaseDTO {
   private String evaluationMethods;
 
   @Override
-  public LectureEntity toEntity() {
-    return LectureEntity.builder()
+  public LectureInfoEntity toEntity() {
+    return LectureInfoEntity.builder()
         .id(id)
         .department(department.toEntity())
         .professor(professor.toEntity())
@@ -56,9 +56,9 @@ public class LectureDTO implements BaseDTO {
         .build();
   }
 
-  public static class LectureDTOBuilder {
+  public static class LectureInfoDTOBuilder {
 
-    public LectureDTO build() throws IllegalArgumentException {
+    public LectureInfoDTO build() throws IllegalArgumentException {
       boolean isClassLegal = Arrays.asList(CLASSES).contains(classification);
 
       if (!isClassLegal) {
@@ -66,7 +66,7 @@ public class LectureDTO implements BaseDTO {
             classification);
         throw new IllegalArgumentException(message);
       }
-      return new LectureDTO(id, department, professor, level, classification, name, credit,
+      return new LectureInfoDTO(id, department, professor, level, classification, name, credit,
           semester, description, textbook, classroom, startDate, endDate, evaluationMethods);
     }
   }

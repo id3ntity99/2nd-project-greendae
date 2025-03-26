@@ -23,10 +23,10 @@ import lombok.ToString;
 @Getter
 @Builder
 @ToString
-@Table(name = "lecture")
+@Table(name = "lecture_info")
 @AllArgsConstructor
 @NoArgsConstructor
-public class LectureEntity implements BaseEntity {
+public class LectureInfoEntity implements BaseEntity {
 
   @Id
   private String id;
@@ -92,9 +92,9 @@ public class LectureEntity implements BaseEntity {
         .build();
   }
 
-  public static class LectureEntityBuilder {
+  public static class LectureInfoEntityBuilder {
 
-    public LectureEntity build() throws IllegalArgumentException {
+    public LectureInfoEntity build() throws IllegalArgumentException {
       boolean isClassLegal = Arrays.asList(LectureInfoDTO.CLASSES).contains(classification);
       if (!isClassLegal) {
         String message = String.format("유효하지 않은 강의 분류([%s]): %s",
@@ -102,7 +102,7 @@ public class LectureEntity implements BaseEntity {
             classification);
         throw new IllegalArgumentException(message);
       }
-      return new LectureEntity(id, department, professor, level, classification, name, credit,
+      return new LectureInfoEntity(id, department, professor, level, classification, name, credit,
           semester, description, textbook, classroom, startDate, endDate, evaluationMethods);
     }
   }
