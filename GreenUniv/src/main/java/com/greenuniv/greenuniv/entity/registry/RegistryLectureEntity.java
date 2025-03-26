@@ -39,9 +39,6 @@ public class RegistryLectureEntity implements BaseEntity {
   @Column(name = "registered_number")
   private int registeredNumber;
 
-  @Column(name = "max_registered")
-  private int maxRegistered;
-
   @Column(name = "register_date")
   private LocalDate registerDate;
 
@@ -51,7 +48,6 @@ public class RegistryLectureEntity implements BaseEntity {
         .id(id)
         .lecture(lecture.toDTO())
         .registeredNumber(registeredNumber)
-        .maxRegistered(maxRegistered)
         .registerDate(registerDate)
         .build();
   }

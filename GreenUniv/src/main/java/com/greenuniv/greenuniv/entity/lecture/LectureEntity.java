@@ -42,6 +42,9 @@ public class LectureEntity implements BaseEntity {
   @JoinColumn(name = "lecture_time_id")
   private LectureTimeEntity lectureTime;
 
+  @Column(name = "max_registered")
+  private int maxRegistered;
+
   @Override
   public LectureDTO toDTO() {
     return LectureDTO.builder()
