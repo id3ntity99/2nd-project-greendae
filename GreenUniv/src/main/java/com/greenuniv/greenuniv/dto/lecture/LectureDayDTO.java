@@ -27,20 +27,18 @@ public class LectureDayDTO implements BaseDTO {
   public static final String MONDAY = "mon";
   public static final String TUESDAY = "tue";
   public static final String WEDNESDAY = "wed";
-  public static final String THURSDAY = "thu";
+  public static final String THURSDAY = "thur";
   public static final String FRIDAY = "fri";
   public static final String[] WEEK_DAYS = {MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY};
 
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
-  private LectureDTO lecture;
   private String day;
 
   @Override
   public LectureDayEntity toEntity() {
     return LectureDayEntity.builder()
         .id(id)
-        .lecture(lecture.toEntity())
         .day(day)
         .build();
   }
@@ -52,7 +50,7 @@ public class LectureDayDTO implements BaseDTO {
       if (!isLegal) {
         throw new IllegalArgumentException("유효하지 않은 요일: " + day);
       }
-      return new LectureDayDTO(id, lecture, day);
+      return new LectureDayDTO(id, day);
     }
   }
 }

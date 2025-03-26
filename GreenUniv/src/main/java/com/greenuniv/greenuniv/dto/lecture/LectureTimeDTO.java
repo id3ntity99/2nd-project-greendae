@@ -18,7 +18,7 @@ public class LectureTimeDTO implements BaseDTO {
 
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
-  private LectureDTO lecture;
+  private LectureInfoDTO lecture;
   private LocalTime startAt;
   private LocalTime endAt;
 
@@ -27,7 +27,6 @@ public class LectureTimeDTO implements BaseDTO {
   public LectureTimeEntity toEntity() {
     return LectureTimeEntity.builder()
         .id(id)
-        .lecture(lecture.toEntity())
         .startAt(startAt)
         .endAt(endAt)
         .build();

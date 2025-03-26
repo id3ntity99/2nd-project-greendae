@@ -1,10 +1,28 @@
 package com.greenuniv.greenuniv.dao.mapper;
 
-import com.greenuniv.greenuniv.entity.BaseEntity;
+import com.greenuniv.greenuniv.dto.BaseDTO;
+import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.context.annotation.Primary;
 
+/**
+ * @param <T> BaseDTO를 상속하는 모든 DTO 클래스
+ * @param <K> DTO에서 사용하는 Primary Key
+ * @author id3ntity99(이현민)  Mybatis mapper. Strategy 패턴을 적용.
+ */
 @Mapper
-public interface GenericMapper<T extends BaseEntity, K> {
+@Primary
+public interface GenericMapper<T extends BaseDTO, K> {
 
-  T select(K id);
+  void insert(T t);
+
+  T selectById(K id);
+
+  List<T> selectAll();
+
+  void updateById(K id, T t);
+
+  void deleteById(K id);
+
+  void updateColumn(String columnName, Object value, K id);
 }
