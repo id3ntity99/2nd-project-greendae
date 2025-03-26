@@ -4,10 +4,8 @@ import com.greenuniv.greenuniv.dao.mapper.GenericMapper;
 import com.greenuniv.greenuniv.dto.BaseDTO;
 import java.util.List;
 import lombok.AllArgsConstructor;
-import lombok.Setter;
 import org.springframework.stereotype.Service;
 
-@Setter
 @Service
 @AllArgsConstructor
 public class DefaultGenericService<T extends BaseDTO, K> implements GenericService<T, K> {
