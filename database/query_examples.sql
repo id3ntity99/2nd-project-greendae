@@ -2,22 +2,22 @@ USE green_univ;
 
 -- 학생지원 >  수강신청 페이지에 나오는 과목들 조회
 SELECT
-`dept`.`name` AS `개설학과`,
-`lec`.`classification` AS `구분`,
-`lec`.`level` AS `학년`,
-`lec`.id AS `코드`,
-`lec`.`name` AS `과목명`,
-`lec`.credit AS `학점`,
-`user`.`name` AS `담당교수`,
-`reg_lec`.registered_number AS `현재 수강신청 인원수`,
-`reg_lec`.max_registered AS `최대 수강신청 인원수`
+`dept`.`name` AS `department_name`,
+`lec_info`.`classification` AS `lecture_classification`,
+`lec_info`.`level` AS `lecture_level`,
+`lec_info`.id AS `lecture_id`,
+`lec_info`.`name` AS `lecture_name`,
+`lec_info`.credit AS `lecture_credit`,
+`user`.`name` AS `user_name`,
+`reg_lec`.registered_number AS `registered_number`,
+`reg_lec`.max_registered AS `max_registered`
 FROM `registry_lecture` AS `reg_lec`
-JOIN `lecture` AS `lec`
-ON `reg_lec`.`lecture_id` = `lec`.`id`
+JOIN `lecture_info` AS `lec_info`
+ON `reg_lec`.`lecture_id` = `lec_info`.`id`
 JOIN `department` AS  `dept`
-ON `dept`.`id` = `lec`.`department_id`
+ON `dept`.`id` = `lec_info`.`department_id`
 JOIN `professor` AS `prof` 
-ON `lec`.professor_id = prof.id
+ON `lec_info`.professor_id = prof.id
 JOIN `user`
 ON `user`.id = `prof`.user_id;
 
@@ -117,3 +117,31 @@ ON `reg`.registry_lecture_id = `reg_lec`.lecture_id
 JOIN `lecture` AS `lec`
 ON `reg_lec`.lecture_id = `lec`.id
 WHERE `std`.student_number = "20250001";
+
+-- 강의목록 전체 조회
+SELECT 
+`lec`.lecture_id AS `lecture_code`,
+`dept`.`name` AS `department_name`,
+`lec_info`.`level` AS `lecture_level`,
+`lec_info`.classification AS `lec_classification`,
+`lec_info`.`name` AS `lecture_name`,
+`user`.`name` AS `professr_name`,
+`lec_info`.credit AS `lec_credit`,
+`lec_d`.`day` AS `lecture_day`,
+`lec_t`.start_at AS `lecture_starts`,
+`lec_t`.end_at AS `lecture_ends`
+FROM `lecture` AS `lec`
+JOIN `lecture_info` AS `lec_info`
+ON `lec`.lecture_id = `lec_info`.id
+JOIN `professor` AS `prof`
+ON `lec_info`.professor_id = `prof`.id
+JOIN `user`
+ON `prof`.user_id = `user`.id
+JOIN `department` AS `dept`
+ON `dept`.id = `lec_info`.department_id
+JOIN `lecture_day` AS `lec_d`
+ON `lec`.lecture_day_id = `lec_d`.id
+JOIN `lecture_time` AS `lec_t`
+ON `lec`.lecture_time_id = `lec_t`.id
+GROUP BY `lecture_code`;
+
