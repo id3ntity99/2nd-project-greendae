@@ -9,7 +9,7 @@
     <result property="registeredNumber" column="registered_number"/>
     <result property="maxRegistered" column="max_registered"/>
     <result property="regsterDate" column="register_date"/>
-    <association property="lecture" javaType="com.greenuniv.greenuniv.dto.lecture.LectureDTO">
+    <association property="lecture" javaType="com.greenuniv.greenuniv.dto.lecture.LectureInfoDTO">
       <id property="id" column="lecture_id"/>
       <result property="level" column="lecture_level"/>
       <result property="classification" column="lecture_classification"/>
@@ -31,21 +31,21 @@
   <select id="selectAll" resultMap="allRegistryLectureMap">
     SELECT
     `dept`.`name` AS `department_name`,
-    `lec`.`classification` AS `lecture_classification`,
-    `lec`.`level` AS `lecture_level`,
-    `lec`.id AS `lecture_id`,
-    `lec`.`name` AS `lecture_name`,
-    `lec`.credit AS `lecture_credit`,
+    `lec_info`.`classification` AS `lecture_classification`,
+    `lec_info`.`level` AS `lecture_level`,
+    `lec_info`.id AS `lecture_id`,
+    `lec_info`.`name` AS `lecture_name`,
+    `lec_info`.credit AS `lecture_credit`,
     `user`.`name` AS `user_name`,
     `reg_lec`.registered_number AS `registered_number`,
     `reg_lec`.max_registered AS `max_registered`
     FROM `registry_lecture` AS `reg_lec`
-    JOIN `lecture` AS `lec`
-    ON `reg_lec`.`lecture_id` = `lec`.`id`
+    JOIN `lecture_info` AS `lec_info`
+    ON `reg_lec`.`lecture_id` = `lec_info`.`id`
     JOIN `department` AS `dept`
-    ON `dept`.`id` = `lec`.`department_id`
+    ON `dept`.`id` = `lec_info`.`department_id`
     JOIN `professor` AS `prof`
-    ON `lec`.professor_id = prof.id
+    ON `lec_info`.professor_id = prof.id
     JOIN `user`
     ON `user`.id = `prof`.user_id;
   </select>
@@ -54,21 +54,21 @@
   <select id="selectById" resultMap="allRegistryLectureMap">
     SELECT
     `dept`.`name` AS `department_name`,
-    `lec`.`classification` AS `lecture_classification`,
-    `lec`.`level` AS `lecture_level`,
-    `lec`.id AS `lecture_id`,
-    `lec`.`name` AS `lecture_name`,
-    `lec`.credit AS `lecture_credit`,
+    `lec_info`.`classification` AS `lecture_classification`,
+    `lec_info`.`level` AS `lecture_level`,
+    `lec_info`.id AS `lecture_id`,
+    `lec_info`.`name` AS `lecture_name`,
+    `lec_info`.credit AS `lecture_credit`,
     `user`.`name` AS `user_name`,
     `reg_lec`.registered_number AS `registered_number`,
     `reg_lec`.max_registered AS `max_registered`
     FROM `registry_lecture` AS `reg_lec`
-    JOIN `lecture` AS `lec`
-    ON `reg_lec`.`lecture_id` = `lec`.`id`
+    JOIN `lecture_info` AS `lec_info`
+    ON `reg_lec`.`lecture_id` = `lec_info`.`id`
     JOIN `department` AS `dept`
-    ON `dept`.`id` = `lec`.`department_id`
+    ON `dept`.`id` = `lec_info`.`department_id`
     JOIN `professor` AS `prof`
-    ON `lec`.professor_id = prof.id
+    ON `lec_info`.professor_id = prof.id
     JOIN `user`
     ON `user`.id = `prof`.user_id
     WHERE `reg_lec`.`lecture_id` = #{id};
