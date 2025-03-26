@@ -1,7 +1,7 @@
 package com.greenuniv.greenuniv.dto.score;
 
 import com.greenuniv.greenuniv.dto.BaseDTO;
-import com.greenuniv.greenuniv.dto.lecture.LectureDTO;
+import com.greenuniv.greenuniv.dto.lecture.LectureInfoDTO;
 import com.greenuniv.greenuniv.dto.student.StudentDTO;
 import com.greenuniv.greenuniv.entity.score.ScoreEntity;
 import lombok.AllArgsConstructor;
@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 public class ScoreDTO implements BaseDTO {
 
   private StudentDTO student;
-  private LectureDTO lecture;
+  private LectureInfoDTO lecture;
   private int attendScore;
   private int midScore;
   private int finalScore;

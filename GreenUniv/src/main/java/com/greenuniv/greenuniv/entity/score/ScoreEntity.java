@@ -2,7 +2,7 @@ package com.greenuniv.greenuniv.entity.score;
 
 import com.greenuniv.greenuniv.dto.score.ScoreDTO;
 import com.greenuniv.greenuniv.entity.BaseEntity;
-import com.greenuniv.greenuniv.entity.lecture.LectureEntity;
+import com.greenuniv.greenuniv.entity.lecture.LectureInfoEntity;
 import com.greenuniv.greenuniv.entity.student.StudentEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -33,7 +33,7 @@ public class ScoreEntity implements BaseEntity {
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "lecture_id")
-  private LectureEntity lecture;
+  private LectureInfoEntity lecture;
 
   @Column(name = "attend_score")
   private int attendScore;

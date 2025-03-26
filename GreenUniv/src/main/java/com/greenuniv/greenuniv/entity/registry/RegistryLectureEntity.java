@@ -2,7 +2,7 @@ package com.greenuniv.greenuniv.entity.registry;
 
 import com.greenuniv.greenuniv.dto.registry.RegistryLectureDTO;
 import com.greenuniv.greenuniv.entity.BaseEntity;
-import com.greenuniv.greenuniv.entity.lecture.LectureEntity;
+import com.greenuniv.greenuniv.entity.lecture.LectureInfoEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -34,7 +34,7 @@ public class RegistryLectureEntity implements BaseEntity {
 
   @OneToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "lecture_id")
-  private LectureEntity lecture;
+  private LectureInfoEntity lecture;
 
   @Column(name = "registered_number")
   private int registeredNumber;
