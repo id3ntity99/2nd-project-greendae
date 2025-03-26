@@ -220,6 +220,7 @@ CREATE TABLE IF NOT EXISTS `green_univ`.`lecture` (
   `start_date` DATE NULL,
   `end_date` DATE NULL,
   `evaluation_methods` VARCHAR(45) NOT NULL,
+  `max_registered` TINYINT NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_lecture_department1_idx` (`department_id` ASC) VISIBLE,
   INDEX `fk_lecture_professor1_idx` (`professor_id` ASC) VISIBLE,
@@ -243,7 +244,6 @@ CREATE TABLE IF NOT EXISTS `green_univ`.`registry_lecture` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `lecture_id` CHAR(6) NOT NULL,
   `registered_number` TINYINT NOT NULL DEFAULT 0,
-  `max_registered` TINYINT NOT NULL,
   `register_date` DATE NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_registry_lecture_lecture1`

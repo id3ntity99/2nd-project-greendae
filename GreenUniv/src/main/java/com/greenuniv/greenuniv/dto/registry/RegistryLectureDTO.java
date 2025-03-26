@@ -22,7 +22,6 @@ public class RegistryLectureDTO implements BaseDTO {
   private int id;
   private LectureDTO lecture;
   private int registeredNumber;
-  private int maxRegistered;
   @CreationTimestamp
   private LocalDate registerDate;
 
@@ -32,7 +31,6 @@ public class RegistryLectureDTO implements BaseDTO {
         .id(id)
         .lecture(lecture.toEntity())
         .registeredNumber(registeredNumber)
-        .maxRegistered(maxRegistered)
         .registerDate(registerDate)
         .build();
   }

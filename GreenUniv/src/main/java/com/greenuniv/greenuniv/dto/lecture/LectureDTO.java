@@ -35,6 +35,7 @@ public class LectureDTO implements BaseDTO {
   private LocalDate startDate;
   private LocalDate endDate;
   private String evaluationMethods;
+  private int maxRegistered;
 
   @Override
   public LectureEntity toEntity() {
@@ -53,6 +54,7 @@ public class LectureDTO implements BaseDTO {
         .startDate(startDate)
         .endDate(endDate)
         .evaluationMethods(evaluationMethods)
+        .maxRegistered(maxRegistered)
         .build();
   }
 
@@ -67,7 +69,8 @@ public class LectureDTO implements BaseDTO {
         throw new IllegalArgumentException(message);
       }
       return new LectureDTO(id, department, professor, level, classification, name, credit,
-          semester, description, textbook, classroom, startDate, endDate, evaluationMethods);
+          semester, description, textbook, classroom, startDate, endDate, evaluationMethods,
+          maxRegistered);
     }
   }
 }

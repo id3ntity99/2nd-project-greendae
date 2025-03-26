@@ -72,6 +72,9 @@ public class LectureEntity implements BaseEntity {
   @Column(name = "evaluation_methods")
   private String evaluationMethods;
 
+  @Column(name = "max_registered")
+  private int maxRegistered;
+
   @Override
   public LectureDTO toDTO() {
     return LectureDTO.builder()
@@ -89,6 +92,7 @@ public class LectureEntity implements BaseEntity {
         .startDate(startDate)
         .endDate(endDate)
         .evaluationMethods(evaluationMethods)
+        .maxRegistered(maxRegistered)
         .build();
   }
 
@@ -103,7 +107,8 @@ public class LectureEntity implements BaseEntity {
         throw new IllegalArgumentException(message);
       }
       return new LectureEntity(id, department, professor, level, classification, name, credit,
-          semester, description, textbook, classroom, startDate, endDate, evaluationMethods);
+          semester, description, textbook, classroom, startDate, endDate, evaluationMethods,
+          maxRegistered);
     }
   }
 }
