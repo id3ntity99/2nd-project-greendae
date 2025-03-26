@@ -1,6 +1,6 @@
 package com.greenuniv.greenuniv.entity.lecture;
 
-import com.greenuniv.greenuniv.dto.lecture.LectureDTO;
+import com.greenuniv.greenuniv.dto.lecture.LectureInfoDTO;
 import com.greenuniv.greenuniv.entity.BaseEntity;
 import com.greenuniv.greenuniv.entity.department.DepartmentEntity;
 import com.greenuniv.greenuniv.entity.professor.ProfessorEntity;
@@ -73,8 +73,8 @@ public class LectureEntity implements BaseEntity {
   private String evaluationMethods;
 
   @Override
-  public LectureDTO toDTO() {
-    return LectureDTO.builder()
+  public LectureInfoDTO toDTO() {
+    return LectureInfoDTO.builder()
         .id(id)
         .department(department.toDTO())
         .professor(professor.toDTO())
@@ -95,10 +95,10 @@ public class LectureEntity implements BaseEntity {
   public static class LectureEntityBuilder {
 
     public LectureEntity build() throws IllegalArgumentException {
-      boolean isClassLegal = Arrays.asList(LectureDTO.CLASSES).contains(classification);
+      boolean isClassLegal = Arrays.asList(LectureInfoDTO.CLASSES).contains(classification);
       if (!isClassLegal) {
         String message = String.format("유효하지 않은 강의 분류([%s]): %s",
-            Arrays.toString(LectureDTO.CLASSES),
+            Arrays.toString(LectureInfoDTO.CLASSES),
             classification);
         throw new IllegalArgumentException(message);
       }

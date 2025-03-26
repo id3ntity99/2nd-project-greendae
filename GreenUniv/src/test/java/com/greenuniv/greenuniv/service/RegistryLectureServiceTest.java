@@ -4,9 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import com.greenuniv.greenuniv.dao.mapper.GenericMapper;
 import com.greenuniv.greenuniv.dto.registry.RegistryLectureDTO;
-import com.greenuniv.greenuniv.dto.user.UserDTO;
 import java.util.List;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
@@ -21,9 +19,6 @@ class RegistryLectureServiceTest {
 
   @Autowired
   private GenericService<RegistryLectureDTO, String> service;
-
-  @Autowired
-  private GenericMapper<UserDTO, String> userMapper;
 
   private void assertLecture(RegistryLectureDTO lecture) {
     assertNotNull(lecture.getLecture().getDepartment().getName());
