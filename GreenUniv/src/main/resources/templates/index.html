@@ -14,11 +14,11 @@
     <div class="header_Top">
       <div>
         <div class="header_Top_Menu">
-          <a href="#">HOME</a>
+          <a th:href="@{/}">HOME</a>
           <span class="separator">|</span>
-          <a href="#">사이트맵</a>
+          <a th:href="@{/introduce/map}">사이트맵</a>
           <span class="separator">|</span>
-          <a href="#">로그인</a>
+          <a th:href="@{/login/login}">로그인</a>
           <span class="separator">|</span>
           <a href="#">학생지원</a>
         </div>
@@ -26,17 +26,17 @@
     </div>
     <div class="header_Bottom">
       <div class="header_Bottom_container">
-        <a href="#" class="header_logo"></a>
+        <a th:href="@{/}" class="header_logo"></a>
         <div class="header_Bottom_Menu">
           <ul>
             <li>
               <a href="#">대학소개</a>
               <ul class="submenu">
-                <li><a href="#">총장 인사말</a></li>
-                <li><a href="#">교육이념</a></li>
-                <li><a href="#">총장 연혁</a></li>
-                <li><a href="#">조직도</a></li>
-                <li><a href="#">오시는길</a></li>
+                <li><a th:href="@{/introduce/greeting}">총장 인사말</a></li>
+                <li><a th:href="@{/introduce/ideology}">교육이념</a></li>
+                <li><a th:href="@{/introduce/history}">연혁</a></li>
+                <li><a th:href="@{/introduce/organization}">조직도</a></li>
+                <li><a th:href="@{/introduce/map}">오시는길</a></li>
               </ul>
             </li>
             <li>

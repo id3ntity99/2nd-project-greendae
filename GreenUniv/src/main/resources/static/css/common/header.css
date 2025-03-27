@@ -1,14 +1,14 @@
 @font-face {
   font-family: "Noto Sans KR";
-  src: url("../../font/NotoSansKR-Light.otf") format("otf"),
-  url("../../font/NotoSansKR-Light.woff") format("woff"),
-  url("../../font/NotoSansKR-Light.woff2") format("woff2"),
-  url("../../font/NotoSansKR-Medium.otf") format("otf"),
-  url("../../font/NotoSansKR-Medium.woff") format("woff"),
-  url("../../font/NotoSansKR-Medium.woff2") format("woff2"),
-  url("../../font/NotoSansKR-Regular.otf") format("otf"),
-  url("../../font/NotoSansKR-Regular.woff") format("woff"),
-  url("../../font/NotoSansKR-Regular.woff2") format("woff2");
+  src: url("/font/NotoSansKR-Light.otf") format("otf"),
+    url("/font/NotoSansKR-Light.woff") format("woff"),
+    url("/font/NotoSansKR-Light.woff2") format("woff2"),
+    url("/font/NotoSansKR-Medium.otf") format("otf"),
+    url("/font/NotoSansKR-Medium.woff") format("woff"),
+    url("/font/NotoSansKR-Medium.woff2") format("woff2"),
+    url("/font/NotoSansKR-Regular.otf") format("otf"),
+    url("/font/NotoSansKR-Regular.woff") format("woff"),
+    url("/font/NotoSansKR-Regular.woff2") format("woff2");
 }
 
 * {
@@ -87,7 +87,7 @@ a {
   display: flex;
   width: 196px;
   height: 50px;
-  background-image: url("../../images/header_logo.png");
+  background-image: url("/images/header_logo.png");
 }
 
 
@@ -100,6 +100,8 @@ a {
   max-width: 702px;
   height: 100%;
 }
+
+
 
 
 .header_Bottom_Menu ul {
@@ -124,7 +126,7 @@ a {
   transition: background-color 0.3s;
 }
 
-.header_Bottom_Menu > ul > li > ul a {
+.header_Bottom_Menu > ul > li > ul a{
   background-color: #3F97F6;
   color: white;
   padding: 20px 25px;
@@ -135,12 +137,12 @@ a {
   position: absolute;
   background-color: #f9f9f9;
   min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
 
 }
 
-.header_Bottom_Menu > ul > li > ul a:hover {
+.header_Bottom_Menu > ul > li >ul a:hover {
   background-color: #555;
 }
 
@@ -152,9 +154,9 @@ a {
 
 .submenu li {
   display: block;
-
+  
 }
 
-.submenu a {
+.submenu a{
   text-align: inherit;
 }
