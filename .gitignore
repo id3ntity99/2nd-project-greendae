@@ -188,3 +188,5 @@ gradle-app.setting
 
 */*.mwb.bak
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,intellij,java,gradle
+
+database/create_user.sql
