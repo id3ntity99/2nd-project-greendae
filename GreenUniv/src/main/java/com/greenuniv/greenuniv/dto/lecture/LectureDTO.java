@@ -13,7 +13,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class LectureDTO implements BaseDTO {
 
-  private int id;
   private LectureInfoDTO lectureInfo;
   private LectureDayDTO lectureDay;
   private LectureTimeDTO lectureTime;
@@ -21,7 +20,6 @@ public class LectureDTO implements BaseDTO {
   @Override
   public LectureEntity toEntity() {
     return LectureEntity.builder()
-        .id(id)
         .lectureInfo(lectureInfo.toEntity())
         .lectureDay(lectureDay.toEntity())
         .build();
