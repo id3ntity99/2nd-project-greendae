@@ -2,7 +2,7 @@
 
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
-SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 SET @@session.restrict_fk_on_non_standard_key=OFF;
 -- -----------------------------------------------------
 -- Schema green_univ
@@ -220,7 +220,6 @@ CREATE TABLE IF NOT EXISTS `green_univ`.`lecture_info` (
   `start_date` DATE NULL,
   `end_date` DATE NULL,
   `evaluation_methods` VARCHAR(45) NOT NULL,
-  `max_registered` TINYINT NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_lecture_department1_idx` (`department_id` ASC) VISIBLE,
   INDEX `fk_lecture_professor1_idx` (`professor_id` ASC) VISIBLE,
@@ -238,17 +237,68 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
+-- Table `green_univ`.`lecture_day`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `green_univ`.`lecture_day` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `day` ENUM("mon", "tue", "wed", "thur", "fri") NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `green_univ`.`lecture_time`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `green_univ`.`lecture_time` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `start_at` TIME NULL,
+  `end_at` TIME NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `green_univ`.`lecture`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `green_univ`.`lecture` (
+  `id` CHAR(6) NOT NULL,
+  `lecture_day_id` INT NOT NULL,
+  `lecture_time_id` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_lecture_time_lecture1_idx` (`id` ASC) VISIBLE,
+  INDEX `fk_lecture_time_lecture_day1_idx` (`lecture_day_id` ASC) VISIBLE,
+  INDEX `fk_lecture_time_lecture_time1_idx` (`lecture_time_id` ASC) VISIBLE,
+  CONSTRAINT `fk_lecture_time_lecture1`
+    FOREIGN KEY (`id`)
+    REFERENCES `green_univ`.`lecture_info` (`id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_lecture_time_lecture_day1`
+    FOREIGN KEY (`lecture_day_id`)
+    REFERENCES `green_univ`.`lecture_day` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_lecture_time_lecture_time1`
+    FOREIGN KEY (`lecture_time_id`)
+    REFERENCES `green_univ`.`lecture_time` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `green_univ`.`registry_lecture`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `green_univ`.`registry_lecture` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `lecture_id` CHAR(6) NOT NULL,
+  `id` CHAR(6) NOT NULL,
   `registered_number` TINYINT NOT NULL DEFAULT 0,
+  `max_registered` TINYINT NOT NULL,
   `register_date` DATE NULL,
   PRIMARY KEY (`id`),
+  INDEX `fk_registry_lecture_lecture1_idx` (`id` ASC) VISIBLE,
   CONSTRAINT `fk_registry_lecture_lecture1`
-    FOREIGN KEY (`lecture_id`)
-    REFERENCES `green_univ`.`lecture_info` (`id`)
+    FOREIGN KEY (`id`)
+    REFERENCES `green_univ`.`lecture` (`id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
@@ -259,20 +309,20 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `green_univ`.`registry` (
   `student_number` CHAR(8) NOT NULL,
-  `registry_lecture_id` CHAR(6) NOT NULL,
+  `id` CHAR(6) NOT NULL,
   `current_year` YEAR NOT NULL,
   `register_date` DATE NOT NULL,
-  PRIMARY KEY (`student_number`, `registry_lecture_id`),
+  PRIMARY KEY (`student_number`, `id`),
   INDEX `fk_registry_student1_idx` (`student_number` ASC) VISIBLE,
-  INDEX `fk_registry_registry_lecture1_idx` (`registry_lecture_id` ASC) VISIBLE,
+  INDEX `fk_registry_registry_lecture1_idx` (`id` ASC) VISIBLE,
   CONSTRAINT `fk_registry_student1`
     FOREIGN KEY (`student_number`)
     REFERENCES `green_univ`.`student` (`student_number`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   CONSTRAINT `fk_registry_registry_lecture1`
-    FOREIGN KEY (`registry_lecture_id`)
-    REFERENCES `green_univ`.`registry_lecture` (`lecture_id`)
+    FOREIGN KEY (`id`)
+    REFERENCES `green_univ`.`registry_lecture` (`id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
@@ -454,57 +504,6 @@ CREATE TABLE IF NOT EXISTS `green_univ`.`term` (
   `title` VARCHAR(255) NULL,
   `content` TEXT NULL,
   PRIMARY KEY (`id`))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `green_univ`.`lecture_day`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `green_univ`.`lecture_day` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `day` ENUM("mon", "tue", "wed", "thur", "fri") NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `green_univ`.`lecture_time`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `green_univ`.`lecture_time` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `start_at` TIME NULL,
-  `end_at` TIME NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `green_univ`.`lecture`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `green_univ`.`lecture` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `lecture_id` CHAR(6) NOT NULL,
-  `lecture_day_id` INT NOT NULL,
-  `lecture_time_id` INT NOT NULL,
-  PRIMARY KEY (`id`, `lecture_id`),
-  INDEX `fk_lecture_time_lecture1_idx` (`lecture_id` ASC) VISIBLE,
-  INDEX `fk_lecture_time_lecture_day1_idx` (`lecture_day_id` ASC) VISIBLE,
-  INDEX `fk_lecture_time_lecture_time1_idx` (`lecture_time_id` ASC) VISIBLE,
-  CONSTRAINT `fk_lecture_time_lecture1`
-    FOREIGN KEY (`lecture_id`)
-    REFERENCES `green_univ`.`lecture_info` (`id`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  CONSTRAINT `fk_lecture_time_lecture_day1`
-    FOREIGN KEY (`lecture_day_id`)
-    REFERENCES `green_univ`.`lecture_day` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE CASCADE,
-  CONSTRAINT `fk_lecture_time_lecture_time1`
-    FOREIGN KEY (`lecture_time_id`)
-    REFERENCES `green_univ`.`lecture_time` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 

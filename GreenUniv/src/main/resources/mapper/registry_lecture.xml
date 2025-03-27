@@ -5,24 +5,27 @@
 <mapper namespace="com.greenuniv.greenuniv.dao.mapper.RegistryLectureMapper">
   <resultMap id="allRegistryLectureMap"
     type="com.greenuniv.greenuniv.dto.registry.RegistryLectureDTO" autoMapping="true">
-    <id column="id"/>
     <result property="registeredNumber" column="registered_number"/>
     <result property="maxRegistered" column="max_registered"/>
-    <result property="regsterDate" column="register_date"/>
-    <association property="lecture" javaType="com.greenuniv.greenuniv.dto.lecture.LectureInfoDTO">
-      <id property="id" column="lecture_id"/>
-      <result property="level" column="lecture_level"/>
-      <result property="classification" column="lecture_classification"/>
-      <result property="name" column="lecture_name"/>
-      <result property="credit" column="lecture_credit"/>
-      <collection property="department"
-        ofType="com.greenuniv.greenuniv.dto.department.DepartmentDTO">
-        <result property="name" column="department_name"/>
-      </collection>
-      <collection property="professor" ofType="com.greenuniv.greenuniv.dto.professor.ProfessorDTO">
-        <association property="user" column="user_id">
-          <result property="name" column="user_name"/>
-        </association>
+    <result property="registerDate" column="register_date"/>
+    <association property="lecture" javaType="com.greenuniv.greenuniv.dto.lecture.LectureDTO">
+      <collection property="lectureInfo"
+        ofType="com.greenuniv.greenuniv.dto.lecture.LectureInfoDTO">
+        <id property="id" column="lecture_code"/>
+        <result property="level" column="lecture_level"/>
+        <result property="classification" column="lecture_classification"/>
+        <result property="name" column="lecture_name"/>
+        <result property="credit" column="lecture_credit"/>
+        <collection property="department"
+          ofType="com.greenuniv.greenuniv.dto.department.DepartmentDTO">
+          <result property="name" column="department_name"/>
+        </collection>
+        <collection property="professor"
+          ofType="com.greenuniv.greenuniv.dto.professor.ProfessorDTO">
+          <association property="user" javaType="com.greenuniv.greenuniv.dto.user.UserDTO">
+            <result property="name" column="professor_name"/>
+          </association>
+        </collection>
       </collection>
     </association>
   </resultMap>
@@ -31,46 +34,50 @@
   <select id="selectAll" resultMap="allRegistryLectureMap">
     SELECT
     `dept`.`name` AS `department_name`,
-    `lec_info`.`classification` AS `lecture_classification`,
+    `lec_info`.classification AS `lecture_classification`,
     `lec_info`.`level` AS `lecture_level`,
-    `lec_info`.id AS `lecture_id`,
+    `lec_info`.id AS `lecture_code`,
     `lec_info`.`name` AS `lecture_name`,
     `lec_info`.credit AS `lecture_credit`,
-    `user`.`name` AS `user_name`,
+    `user`.`name` AS `professor_name`,
     `reg_lec`.registered_number AS `registered_number`,
     `reg_lec`.max_registered AS `max_registered`
     FROM `registry_lecture` AS `reg_lec`
+    JOIN `lecture` AS `lec`
+    ON `reg_lec`.id = `lec`.id
     JOIN `lecture_info` AS `lec_info`
-    ON `reg_lec`.`lecture_id` = `lec_info`.`id`
+    ON `lec`.id = `lec_info`.id
     JOIN `department` AS `dept`
-    ON `dept`.`id` = `lec_info`.`department_id`
+    ON `lec_info`.department_id = `dept`.id
     JOIN `professor` AS `prof`
-    ON `lec_info`.professor_id = prof.id
+    ON `lec_info`.professor_id = `prof`.id
     JOIN `user`
-    ON `user`.id = `prof`.user_id;
+    ON `prof`.user_id = `user`.id;
   </select>
 
   <!--아이디를 이용해 특정 수강신청 과목을 조회-->
   <select id="selectById" resultMap="allRegistryLectureMap">
     SELECT
     `dept`.`name` AS `department_name`,
-    `lec_info`.`classification` AS `lecture_classification`,
+    `lec_info`.classification AS `lecture_classification`,
     `lec_info`.`level` AS `lecture_level`,
-    `lec_info`.id AS `lecture_id`,
+    `lec_info`.id AS `lecture_code`,
     `lec_info`.`name` AS `lecture_name`,
     `lec_info`.credit AS `lecture_credit`,
-    `user`.`name` AS `user_name`,
+    `user`.`name` AS `professor_name`,
     `reg_lec`.registered_number AS `registered_number`,
     `reg_lec`.max_registered AS `max_registered`
     FROM `registry_lecture` AS `reg_lec`
+    JOIN `lecture` AS `lec`
+    ON `reg_lec`.id = `lec`.id
     JOIN `lecture_info` AS `lec_info`
-    ON `reg_lec`.`lecture_id` = `lec_info`.`id`
+    ON `lec`.id = `lec_info`.id
     JOIN `department` AS `dept`
-    ON `dept`.`id` = `lec_info`.`department_id`
+    ON `lec_info`.department_id = `dept`.id
     JOIN `professor` AS `prof`
-    ON `lec_info`.professor_id = prof.id
+    ON `lec_info`.professor_id = `prof`.id
     JOIN `user`
-    ON `user`.id = `prof`.user_id
-    WHERE `reg_lec`.`lecture_id` = #{id};
+    ON `prof`.user_id = `user`.id
+    WHERE `reg_lec`.`id` = #{id};
   </select>
 </mapper>
