@@ -23,7 +23,7 @@ jobs:
           distribution: "temurin"
 
       - name: Change Permission for gradlew
-        run: chmod +x ./gradlew
+        run: chmod +x ./GreenUniv/gradlew
 
       - name: Gradle Build
         uses: gradle/gradle-build-action@v2.6.0
