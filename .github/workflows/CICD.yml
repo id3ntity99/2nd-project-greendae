@@ -26,9 +26,7 @@ jobs:
         run: chmod +x ./GreenUniv/gradlew
 
       - name: Gradle Build
-        uses: gradle/gradle-build-action@v2.6.0
-        with:
-          arguments: build
+        run: ./GreenUniv/gradlew clean build
 
       - name: Docker build & push to Docker Hub
         run: |
