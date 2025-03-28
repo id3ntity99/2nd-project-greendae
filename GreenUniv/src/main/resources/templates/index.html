@@ -42,7 +42,7 @@
             <li>
               <a href="#">입학안내</a>
               <ul class="submenu">
-                <li><a href="#">공지사항</a></li>
+                <li><a th:href="@{/introduce/advice}">공지사항</a></li>
                 <li><a href="#">수시모집</a></li>
                 <li><a href="#">정시모집</a></li>
                 <li><a href="#">편입학</a></li>
@@ -52,22 +52,22 @@
             <li>
               <a href="#">대학·대학원</a>
               <ul class="submenu">
-                <li><a href="#">인문사회대학</a></li>
-                <li><a href="#">자연과학대학</a></li>
-                <li><a href="#">공과대학</a></li>
-                <li><a href="#">사범대학</a></li>
-                <li><a href="#">대학원</a></li>
+                <li><a th:href="@{/university/humanities}">인문사회대학</a></li>
+                <li><a th:href="@{/university/naturalScience}">자연과학대학</a></li>
+                <li><a th:href="@{/university/engineering}">공과대학</a></li>
+                <li><a th:href="@{/university/education}">사범대학</a></li>
+                <li><a th:href="@{/university/graduate}">대학원</a></li>
               </ul>
             </li>
             <li>
               <a href="#">학사안내</a>
               <ul class="submenu">
-                <li><a href="#">공지사항</a></li>
-                <li><a href="#">학사일정</a></li>
-                <li><a href="#">수강신청</a></li>
-                <li><a href="#">성적</a></li>
-                <li><a href="#">수료 및 졸업</a></li>
-                <li><a href="#">자주묻는질문</a></li>
+                <li><a th:href="@{/academicInformation/notice}">공지사항</a></li>
+                <li><a th:href="@{/academicInformation/schedule}">학사일정</a></li>
+                <li><a th:href="@{/academicInformation/registration}">수강신청</a></li>
+                <li><a th:href="@{/academicInformation/score}">성적</a></li>
+                <li><a th:href="@{/academicInformation/graduation}">수료 및 졸업</a></li>
+                <li><a th:href="@{/academicInformation/qna}">자주묻는질문</a></li>
               </ul>
             </li>
             <li>
