@@ -17,7 +17,7 @@ server:
 spring:
   application:
     name: GreenUniv
-    version: 0.0.3
+    version: 0.0.4
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     password: p33wsu47r5b0
