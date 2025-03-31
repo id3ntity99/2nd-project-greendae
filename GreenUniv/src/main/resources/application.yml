@@ -1,6 +1,5 @@
 logging:
   file:
-    name: greenuniv.log
     path: /data
   level:
     org:
