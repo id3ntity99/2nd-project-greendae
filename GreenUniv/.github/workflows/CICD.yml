@@ -45,7 +45,6 @@ jobs:
             sudo docker ps
             sudo docker network ls | grep green-univ || sudo docker network create green-univ
             sudo docker stop greenuniv-server || true && sudo docker rm greenuniv-server || true 
-            sudo docker network create green-univ
             sudo docker pull ${{ secrets.DOCKER_USERNAME }}/greenuniv-server
             sudo docker run -d --network green-univ -p 8080:8080 ${{ secrets.DOCKER_USERNAME }}/greenuniv-server
             sudo docker image prune -f
