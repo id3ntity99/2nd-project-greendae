@@ -1,7 +1,7 @@
 logging:
   file:
     name: greenuniv.log
-    path: ${user.home}/greenuniv/logs/
+    path: /data
   level:
     org:
       hibernate:
