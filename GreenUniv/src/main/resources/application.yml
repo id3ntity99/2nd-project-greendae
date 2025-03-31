@@ -20,9 +20,9 @@ spring:
     version: 0.0.2
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    password: 1234
+    password: p33wsu47r5b0
     url: jdbc:mysql://greenuniv-db:3306/green_univ
-    username: root
+    username: ec2-user
   devtools:
     livereload:
       enabled: true
