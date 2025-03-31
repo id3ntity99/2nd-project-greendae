@@ -21,7 +21,7 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     password: 1234
-    url: jdbc:mysql://127.0.0.1:3306/green_univ
+    url: jdbc:mysql://greenuniv-server:3306/green_univ
     username: root
   devtools:
     livereload:
