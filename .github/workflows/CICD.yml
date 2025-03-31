@@ -56,13 +56,14 @@ jobs:
             --port 22 \
             --cidr ${{ steps.ip.outputs.ipv4 }}/32
       - name: ssh into your ec2 and do whatever
-        run: |
-          sudo docker ps
-          sudo docker network ls | grep green-univ || sudo docker network create green-univ
-          sudo docker stop greenuniv-server || true && sudo docker rm greenuniv-server || true
-          sudo docker pull ${{ secrets.DOCKER_USERNAME }}/greenuniv-server
-          sudo docker run -d --network green-univ -p 8080:8080 ${{ secrets.DOCKER_USERNAME }}/greenuniv-server
-          sudo docker image prune -f
+        with:
+          script: |
+            sudo docker ps
+            sudo docker network ls | grep green-univ || sudo docker network create green-univ
+            sudo docker stop greenuniv-server || true && sudo docker rm greenuniv-server || true
+            sudo docker pull ${{ secrets.DOCKER_USERNAME }}/greenuniv-server
+            sudo docker run -d --network green-univ -p 8080:8080 ${{ secrets.DOCKER_USERNAME }}/greenuniv-server
+            sudo docker image prune -f
       - name: revoke runner ip address
         run: |
           aws ec2 revoke-security-group-ingress \
