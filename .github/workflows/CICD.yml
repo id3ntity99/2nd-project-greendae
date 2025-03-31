@@ -11,6 +11,8 @@ on:
 jobs:
   ci-cd:
     runs-on: ubuntu-latest
+    env:
+      AWS_INSTANCE_SG_ID: sg-04704689baf3253a7
     permissions:
       contents: read
     defaults:
@@ -37,17 +39,29 @@ jobs:
           docker build -f Dockerfile -t ${{ secrets.DOCKER_USERNAME }}/greenuniv-server .
           docker push ${{ secrets.DOCKER_USERNAME }}/greenuniv-server
 
-      - name: Deploy to production environment(EC2)
-        uses: appleboy/ssh-action@master
+      - name: configure aws credentials
+        uses: aws-actions/configure-aws-credentials@v1
         with:
-          host: ${{ secrets.AWS_EC2_HOST }}
-          username: ec2-user
-          key: ${{ secrets.AWS_EC2_PRIVATE_KEY }}
-          port: 22
-          script: |
-            sudo docker ps
-            sudo docker network ls | grep green-univ || sudo docker network create green-univ
-            sudo docker stop greenuniv-server || true && sudo docker rm greenuniv-server || true
-            sudo docker pull ${{ secrets.DOCKER_USERNAME }}/greenuniv-server
-            sudo docker run -d --network green-univ -p 8080:8080 ${{ secrets.DOCKER_USERNAME }}/greenuniv-server
-            sudo docker image prune -f
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+          aws-secret-access-key: ${{ AWS_PRIVATE_KEY }}
+          aws-region: ap-northeast-2
+      - name: get runner ip address
+        id: ip
+        uses: haythem/public-ip@v1.2
+      - name: whitelist runner ip address
+        run: |
+          aws ec2 authorize-security-group-ingress \
+            --group-id $AWS_INSTANCE_SG_ID \
+            --protocol tcp \
+            --port 22 \
+            --cidr ${{ steps.ip.outputs.ipv4 }}/32
+      - name: ssh into your ec2 and do whatever
+        run: |
+          ...do whatever you need to do...
+      - name: revoke runner ip address
+        run: |
+          aws ec2 revoke-security-group-ingress \
+            --group-id $AWS_INSTANCE_SG_ID \
+            --protocol tcp \
+            --port 22 \
+            --cidr ${{ steps.ip.outputs.ipv4 }}/32
